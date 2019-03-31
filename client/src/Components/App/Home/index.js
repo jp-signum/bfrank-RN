@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
 import Helmet from 'react-helmet'
 
+import { Meta } from '../../Shared/Meta'
 import media from '../../../theme/Device'
 import MailChimp from './Mailchimp'
 
@@ -184,6 +185,11 @@ const Rsvg = styled.img`
 function Home() {
     return (
         <LandingContainer>
+            <Helmet titleTemplate="Rave Nailz | %s">
+                <title>{Meta.title}</title>
+                <meta name='description' content={Meta.description}></meta>
+                <meta name='keywords' content={Meta.keywords}></meta>
+            </Helmet>
             <LandingLogo src={rSvg} alt='rSvg' />
             <InfoContainer>
                 <ShopDiv>

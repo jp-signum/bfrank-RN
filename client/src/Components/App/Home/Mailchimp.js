@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import MailchimpSubscribe from "react-mailchimp-subscribe"
 
-const mcUrl = '//RaveNailz.us20.list-manage.com/subscribe/post?u=bdba576b50d40e1fdd53264ae&amp;id=b61e7d5ed4'
-
 const RelativeContainer = styled.div`
     position: relative;
     padding-top: 10px;
@@ -12,8 +10,8 @@ const RelativeContainer = styled.div`
 const NameInput = styled.input`
     border-bottom: rgba(26, 6, 6, 0.3) 2px solid;
     transition: ease 0.5s;
-    width: 110px;
-    margin-right: 40px;
+    font-size: .8em;
+    
     :focus {
         border-bottom: #1a0606 2px solid;
         outline: none;
@@ -23,7 +21,8 @@ const NameInput = styled.input`
 const EmailInput = styled.input`
     border-bottom: rgba(26, 6, 6, 0.3) 2px solid;
     transition: ease 0.5s;
-    width: 110px;
+    padding-top: 10px;
+    font-size: .8em;
 
     :focus {
         border-bottom: #1a0606 2px solid;
@@ -49,6 +48,8 @@ const CustomForm = ({ status, message, onValidated }) => {
                     ref={node => (name = node)}
                     type='text'
                     placeholder='Name' />
+            </div>
+            <div>
                 <EmailInput
                     ref={node => (email = node)}
                     type='email'
@@ -57,9 +58,8 @@ const CustomForm = ({ status, message, onValidated }) => {
             <div>
                 <button onClick={submit}>
                     Submit
-            </button>
+                </button>
             </div>
-
             <div>
                 {status === 'sending' && <div style={{ color: '#1a0606' }}>sending...</div>}
                 {status === 'error' && (
@@ -78,10 +78,12 @@ const CustomForm = ({ status, message, onValidated }) => {
 };
 
 function Mailchimp() {
+    const url = '//RaveNailz.us20.list-manage.com/subscribe/post?u=bdba576b50d40e1fdd53264ae&amp;id=b61e7d5ed4'
+
     return (
         <RelativeContainer>
             <MailchimpSubscribe
-                url={mcUrl}
+                url={url}
                 render={({ subscribe, status, message }) => (
                     <CustomForm
                         status={status}
