@@ -39,7 +39,7 @@ const LandingLogo = styled.img`
     `}
 
     ${media.tablet`
-        width: 8vw;
+        width: 6vw;
         top: 16px;
         left: 16px;
     `}
@@ -66,7 +66,6 @@ const LandingLogo = styled.img`
 `
 
 const InfoContainer = styled.div`
-    font-family: sans-serif;
     text-align: center;
     transition: ease 0.5s;
     width: 280px;
@@ -150,7 +149,7 @@ const ListDescriptionDiv = styled.div`
     `}
 
     ${media.laptop`
-        padding: 10px 40px 12px 40px;
+        padding: 12px 40px 12px 40px;
     `}
 `
 
@@ -161,7 +160,7 @@ const WhiteContainer = styled.div`
 
 const SocialContainer = styled.div`
    color: rgba(26, 6, 6, 0.3);
-   padding-top: 6px;
+   padding-top: 12px;
 `
 
 const SociallinkDiv = styled.div`
@@ -178,7 +177,7 @@ const StyledSpan = styled.span`
 `
 
 const Rsvg = styled.img`
-    height: 130px;
+    height: 136px;
     padding: 10px 0px 10px 0px;
 `
 

@@ -2,26 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import MailchimpSubscribe from "react-mailchimp-subscribe"
 
+import media from '../../../theme/Device'
+
 const RelativeContainer = styled.div`
     position: relative;
     padding-top: 10px;
 `
 
-const NameInput = styled.input`
-    border-bottom: rgba(26, 6, 6, 0.3) 2px solid;
-    transition: ease 0.5s;
-    font-size: .8em;
-    
-    :focus {
-        border-bottom: #1a0606 2px solid;
-        outline: none;
-    }
-`
-
 const EmailInput = styled.input`
     border-bottom: rgba(26, 6, 6, 0.3) 2px solid;
     transition: ease 0.5s;
-    padding-top: 10px;
+    padding-top: 14px;
     font-size: .8em;
 
     :focus {
@@ -30,37 +21,67 @@ const EmailInput = styled.input`
     }
 `
 
+const SubscribeBtnDiv = styled.div`
+   padding: 20px 0px 6px 0px;;
+`
+
+const SubscribeBtn = styled.button`
+   font-size: 1em;
+   color: rgba(26, 6, 6, 0.3);
+   border: 2px solid rgba(26, 6, 6, 0.3);
+   border-radius: 4px;
+
+    :hover {
+        border: 2px solid rgba(26, 6, 6, 1);
+        cursor: pointer;
+        color: rgba(26, 6, 6, 1);
+    }
+`
+
+const ErrorDiv = styled.div`
+    transition: ease 0.5s;
+    padding: 6px 5px 6px 5px;
+    
+    ${media.phoneM`
+        padding: 7px 10px 7px 10px;
+    `}
+
+    ${media.phoneL`
+        padding: 8px 12px 8px 12px;
+    `}
+
+    ${media.tablet`
+        padding: 9px 40px 9px 40px;
+    `}
+
+    ${media.laptop`
+        padding: 10px 40px 10px 40px;
+    `}
+`
+
 const CustomForm = ({ status, message, onValidated }) => {
-    let email, name;
+    let email ;
     const submit = () =>
         email &&
-        name &&
         email.value.indexOf("@") > -1 &&
         onValidated({
-            EMAIL: email.value,
-            NAME: name.value
+            EMAIL: email.value
         });
 
     return (
         <div>
-            <div>
-                <NameInput
-                    ref={node => (name = node)}
-                    type='text'
-                    placeholder='Name' />
-            </div>
             <div>
                 <EmailInput
                     ref={node => (email = node)}
                     type='email'
                     placeholder='Email' />
             </div>
-            <div>
-                <button onClick={submit}>
-                    Submit
-                </button>
-            </div>
-            <div>
+            <SubscribeBtnDiv>
+                <SubscribeBtn onClick={submit}>
+                    Subscribe
+                </SubscribeBtn>
+            </SubscribeBtnDiv>
+            <ErrorDiv>
                 {status === 'sending' && <div style={{ color: '#1a0606' }}>sending...</div>}
                 {status === 'error' && (
                     <div
@@ -71,8 +92,9 @@ const CustomForm = ({ status, message, onValidated }) => {
                     <div
                         style={{ color: 'green' }}
                         dangerouslySetInnerHTML={{ __html: message }} />
+                    
                 )}
-            </div>
+            </ErrorDiv>
         </div>
     );
 };

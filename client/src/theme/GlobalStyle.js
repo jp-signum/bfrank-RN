@@ -5,6 +5,7 @@ const GlobStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
   }
 
 input {
@@ -16,6 +17,9 @@ input {
   opacity: 0;
 }
 
+button {
+  border: none;
+}
 
 `
 
