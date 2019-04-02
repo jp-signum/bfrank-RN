@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 app.use('/api', expressJwt({ secret: process.env.SECRET }));
 
 app.use('/auth', require('./routes/auth'));
-app.use(expressJwt({secret: process.env.SECRET}).unless({method:'GET'}));
+app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
 
 app.use((err, req, res, next) => {
     console.error(err);
@@ -47,14 +47,15 @@ app.use((err, req, res, next) => {
 });
 
 app.use('/admin', express.static(path.join(__dirname, '/admin/build')))
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 app.get('admin/*', (req, res) => {
     res.sendFile(path.join(__dirname + '/admin/build/index.html'))
-  })
-  
-  app.get('*', (req, res) => {
+})
+
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));
-  });
+});
 
 //start server
 app.listen(PORT, () => {
