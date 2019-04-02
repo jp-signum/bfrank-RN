@@ -1,13 +1,19 @@
 import React from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
+import styled from 'styled-components'
 
 import GlobalStyle from '../../theme/GlobalStyle'
 import Home from './Home/Current/index'
 import Footer from './Footer/index'
 
+const OverflowDiv = styled.div`
+    overflow: hidden;
+    position: relative;
+`
+
 function App() {
     return (
-        <div>
+        <OverflowDiv>
             <GlobalStyle />
             <Switch>
                 <Route
@@ -15,7 +21,7 @@ function App() {
                     component={Home} />
             </Switch>
             <Footer />
-        </div>
+        </OverflowDiv>
     )
 }
 
