@@ -7,7 +7,6 @@ const FixedContainer = styled.div`
     right: 12px;
     color: rgba(26, 6, 6, 0.3);
     font-size: 0.6em;
-    height: 100%;
 `
 
 function Footer() {
