@@ -41,6 +41,10 @@ const SubscribeBtn = styled.button`
 const ErrorDiv = styled.div`
     transition: ease 0.5s;
     padding: 6px 5px 6px 5px;
+
+    ${media.phoneS`
+        padding: 7px 8px 7px 8px;
+    `}
     
     ${media.phoneM`
         padding: 7px 10px 7px 10px;

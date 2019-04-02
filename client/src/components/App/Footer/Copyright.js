@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import mediaMax from '../../../theme/Device-Max'
 
 const MobileFix = styled.div`
-    
+    display: contents;
     
     ${mediaMax.mobile`
         display: none;

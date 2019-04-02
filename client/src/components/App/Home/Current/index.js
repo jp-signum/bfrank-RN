@@ -23,11 +23,15 @@ const LandingContainer = styled.div`
 `
 
 const LandingLogo = styled.img`
-    width: 5.5vw;
+    width: 4.8vw;
     transition: ease 0.5s;
     position: absolute;
     top: 12px;
     left: 12px;
+
+    ${media.phoneS`
+        width: 5.2vw;
+    `}
 
     ${media.phoneM`
         width: 6vw;
@@ -67,11 +71,16 @@ const LandingLogo = styled.img`
 const InfoContainer = styled.div`
     text-align: center;
     transition: ease 0.5s;
-    width: 280px;
-    padding-top: 30px;
+    width: 250px;
+    padding-top: 10px;
+
+    ${media.phoneS`
+        padding-top: 24px;
+        width: 260px;
+    `}
 
     ${media.phoneM`
-        width: 300px;
+        width: 290px;
         padding-top: 0px;
     `}
 
@@ -90,12 +99,12 @@ const ShopDiv = styled.div`
     border: 2px solid #1a0606;
     text-transform: uppercase;
     border-radius: 4px;
-    margin-bottom: 40px;
-    padding: 8px 0px 8px 0px;
+    padding: 6px 0px 6px 0px;
     letter-spacing: 1.8px;
-    font-size: 1.4em;
+    font-size: 1.2em;
     transition: ease 0.5s;
     cursor: pointer;
+    margin-bottom: 12px;
 
     :hover {
         background: #1a0606;
@@ -113,11 +122,21 @@ const ShopDiv = styled.div`
         `}
     }
 
+    ${media.phoneS`
+        font-size: 1.3em;
+        margin-bottom: 14px;
+        padding: 7px 0px 7px 0px;
+    `}
+
     ${media.phoneM`
+        font-size: 1.4em;
+        margin-bottom: 20px;
+        padding: 8px 0px 8px 0px;
         font-size: 1.6em;
     `}
 
     ${media.phoneLL`
+        margin-bottom: 30px;
         background: #1a0606;
     `}
 `
@@ -134,28 +153,36 @@ const ShopSpan = styled.span`
 const MailDiv = styled.div`
     display: flex;
     flex-direction: column;
-
-
 `
 
 const SubscribeDiv = styled.div`
     text-transform: uppercase;
     background: #1a0606;
     color: #f7e7e7;
-    font-size: 1.4em;
+    font-size: 1.2em;
     letter-spacing: 1.8px;
     border-radius: 4px 4px 0px 0px;
-    padding: 8px 0px 8px 0px;
+    padding: 6px 0px 6px 0px;
     transition: ease 0.5s;
 
+    ${media.phoneS`
+        font-size: 1.3em;
+        padding: 7px 0px 7px 0px;
+    `}
+
     ${media.phoneM`
-        font-size: 1.6em;
+        font-size: 1.4em;
+        padding: 8px 0px 8px 0px;
     `}
 `
 
 const ListDescriptionDiv = styled.div`
     transition: ease 0.5s;
-    padding: 10px 10px 10px 10px;
+    padding: 8px 8px 8px 8px;
+
+    ${media.phoneS`
+        padding: 9px 9px 9px 9px;
+    `}
     
     ${media.phoneM`
         padding: 10px 0px 10px 0px;
@@ -191,15 +218,36 @@ const SociallinkDiv = styled.div`
 
 const StyledSpan = styled.span`
     color: rgba(26, 6, 6, 0.3);
+    font-size: 0.8em;
+    transition: ease 0.5s;
 
     :hover {
         color: rgba(26, 6, 6, 1);
     }
+
+    ${media.phoneS`
+        font-size: 0.9em;
+    `}
+    
+    ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
 const Rsvg = styled.img`
-    height: 136px;
-    padding: 10px 0px 10px 0px;
+    height: 130px;
+    transition: ease 0.5s;
+    padding: 8px 8px 8px 8px;
+
+    ${media.phoneS`
+        padding: 9px 9px 9px 9px;
+        height: 134px;
+    `}
+    
+    ${media.phoneM`
+        padding: 10px 0px 10px 0px;
+        height: 136px;
+    `}
 `
 
 function Home() {
