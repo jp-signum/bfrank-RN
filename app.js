@@ -9,9 +9,7 @@ const expressJwt = require('express-jwt')
 const unless = require('express-unless')
 
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/raveNailz'
-
-
-
+const path = require('path')
 
 //cloudinary configurations
 cloudinary.config({
@@ -30,7 +28,7 @@ mongoose.connect(url,
     }
 );
 
-let PORT = 5000 || process.env.PORT
+let PORT = process.env.PORT || 5000
 
 //set up middlewares
 app.use(morgan('dev'))
@@ -48,6 +46,15 @@ app.use((err, req, res, next) => {
     return res.send({ message: err.message });
 });
 
+app.use('/admin', express.static(path.join(__dirname, '/admin/build')))
+
+app.get('admin/*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/admin/build/index.html'))
+  })
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  });
 
 //start server
 app.listen(PORT, () => {
