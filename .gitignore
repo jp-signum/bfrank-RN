@@ -14,6 +14,7 @@
 .log.idea/
 .vscode/
 *.orig
+.idea/
 
 npm-debug.log*
 yarn-debug.log*
