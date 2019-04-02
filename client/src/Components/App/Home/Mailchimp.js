@@ -60,14 +60,13 @@ const ErrorDiv = styled.div`
 `
 
 const CustomForm = ({ status, message, onValidated }) => {
-    let email ;
+    let email;
     const submit = () =>
         email &&
         email.value.indexOf("@") > -1 &&
         onValidated({
             EMAIL: email.value
         });
-
     return (
         <div>
             <div>
@@ -92,7 +91,7 @@ const CustomForm = ({ status, message, onValidated }) => {
                     <div
                         style={{ color: 'green' }}
                         dangerouslySetInnerHTML={{ __html: message }} />
-                    
+
                 )}
             </ErrorDiv>
         </div>

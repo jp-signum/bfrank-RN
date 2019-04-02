@@ -4,6 +4,7 @@ const sizes = {
     phoneS: 320,
     phoneM: 370,
     phoneL: 414,
+    phoneLL: 430,
     tablet: 620,
     laptop: 1000,
     laptopL: 1200,

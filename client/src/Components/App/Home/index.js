@@ -24,14 +24,14 @@ const LandingContainer = styled.div`
 `
 
 const LandingLogo = styled.img`
-    width: 8vw;
+    width: 5.5vw;
     transition: ease 0.5s;
     position: absolute;
     top: 12px;
     left: 12px;
 
     ${media.phoneM`
-        width: 7vw;
+        width: 6vw;
     `}
 
     ${media.phoneL`
@@ -69,12 +69,14 @@ const InfoContainer = styled.div`
     text-align: center;
     transition: ease 0.5s;
     width: 280px;
+    padding-top: 30px;
 
     ${media.phoneM`
         width: 300px;
+        padding-top: 0px;
     `}
 
-    ${media.phoneL`
+    ${media.phoneLL`
         width: 350px;
     `}
 
@@ -85,7 +87,7 @@ const InfoContainer = styled.div`
 `
 
 const ShopDiv = styled.div`
-    background: #1a0606;
+    background: #f7e7e7;
     border: 2px solid #1a0606;
     text-transform: uppercase;
     border-radius: 4px;
@@ -97,24 +99,44 @@ const ShopDiv = styled.div`
     cursor: pointer;
 
     :hover {
-        background: #f7e7e7; 
+        background: #1a0606;
+
+        ${media.phoneLL`
+            background: #f7e7e7;
+        `} 
     }
 
     :hover > a span {
-        color: #1a0606;
+        color: #f7e7e7;
+
+        ${media.phoneLL`
+            color: #1a0606;
+        `}
     }
 
     ${media.phoneM`
         font-size: 1.6em;
     `}
+
+    ${media.phoneLL`
+        background: #1a0606;
+    `}
 `
 const ShopSpan = styled.span`
-    color: #f7e7e7;
+    color: #1a0606;
+    transition: ease 0.5s;
+
+    ${media.phoneLL`
+        color: #f7e7e7;
+    `}
+    
 `
 
 const MailDiv = styled.div`
     display: flex;
     flex-direction: column;
+
+
 `
 
 const SubscribeDiv = styled.div`
