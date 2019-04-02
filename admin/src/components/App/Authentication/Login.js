@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { withContext } from "../../AppContext"
+import { withContext } from '../../AppContext'
 
-const LoginFormWrapper = styled.div`
+const LoginContainer = styled.div`
+    background: #f7e7e7;
+    color: #1a0606;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 `
 
-const LoginHeader = styled.p`
-    color: #F4FAFF;
+const LoginHeader = styled.div`
     font-size: 2em;
     text-align: center;
 `
@@ -20,7 +26,6 @@ const StyledLoginForm = styled.form`
     box-sizing: border-box;
 `
 
-
 const LoginUsernameInput = styled.input`
     
 `
@@ -28,7 +33,6 @@ const LoginUsernameInput = styled.input`
 const LoginPasswordInput = styled.input`
   
 `
-
 
 const LoginButton = styled.button`
   
@@ -42,9 +46,9 @@ class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
-            password: "",
-            errorMessage: "",
+            username: '',
+            password: '',
+            errorMessage: '',
             statusColor: ''
         }
     }
@@ -58,15 +62,15 @@ class LoginForm extends Component {
 
     clearInputs = () => {
         this.setState({
-            username: "",
-            password: "",
-            errorMessage: ""
+            username: '',
+            password: '',
+            errorMessage: ''
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({ statusColor: '' }, () => {
+        this.setState({ statusColor: 'green' }, () => {
             this.props.login(this.state)
                 .then(() => this.props.history.push("/home"))
                 .catch(err => {
@@ -76,32 +80,37 @@ class LoginForm extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
-            <LoginFormWrapper>
+            <LoginContainer>
                 <StyledLoginForm onSubmit={this.handleSubmit}>
                     <LoginHeader>Log In</LoginHeader>
-                    <LoginUsernameInput
-                        onChange={this.handleChange}
-                        value={this.state.username}
-                        name='username'
-                        type='text'
-                        placeholder='Username' />
-                    <LoginPasswordInput
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                        name='password'
-                        type='password'
-                        placeholder='Password' />
+                    <label htmlFor="unInp">
+                        <LoginUsernameInput
+                            onChange={this.handleChange}
+                            value={this.state.username}
+                            name='username'
+                            type='text'
+                            placeholder='Username' />
+                    </label>
+                    <label htmlFor="unInp">
+                        <LoginPasswordInput
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                            name='password'
+                            type='password'
+                            placeholder='Password' />
+                    </label>
                     <LoginButton
                         color=''
                         type='submit'>
                         Submit
                         </LoginButton>
                 </StyledLoginForm>
-                { this.state.errorMessage &&
+                {this.state.errorMessage &&
                     <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
                 }
-            </LoginFormWrapper>
+            </LoginContainer>
         )
     }
 }

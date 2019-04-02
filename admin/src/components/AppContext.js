@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react'
+import axios from 'axios'
 
 const AppContext = React.createContext();
 
@@ -7,17 +7,17 @@ export class AppContextProvider extends Component {
     constructor() {
         super()
         this.state = {
-            user: JSON.parse(localStorage.getItem("user")) || {},
-            token: localStorage.getItem("token") || ""
+            user: JSON.parse(localStorage.getItem('user')) || {},
+            token: localStorage.getItem('token') || ''
         }
     }
 
     login = (credentials) => {
-        return axios.post("/auth/login", credentials)
+        return axios.post('/auth/login', credentials)
             .then(response => {
                 const { token, user } = response.data;
-                localStorage.setItem("token", token)
-                localStorage.setItem("user", JSON.stringify(user))
+                localStorage.setItem('token', token)
+                localStorage.setItem('user', JSON.stringify(user))
                 this.setState({
                     user,
                     token
@@ -25,6 +25,7 @@ export class AppContextProvider extends Component {
                 return response;
             })
     }
+
 
     render() {
         return (
