@@ -36,5 +36,5 @@
   "homepage": "https://github.com/jp-signum/bFrank-RN#readme",
   "engines": {
     "node": "8.9.2"
-}
+  }
 }
