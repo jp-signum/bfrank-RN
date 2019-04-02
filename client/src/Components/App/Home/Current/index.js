@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
 import Helmet from 'react-helmet'
 
-import { Meta } from '../../Shared/Meta'
-import media from '../../../theme/Device'
+import { Meta } from '../../../Shared/Meta'
+import media from '../../../../theme/Device'
 import MailChimp from './Mailchimp'
 
-import rSvg from '../../../assets/icons/R_dark.svg'
-
+import MainLogoDark from '../../../../assets/icons/main_logo_dark.svg'
+import rSvg from '../../../../assets/icons/R_dark.svg'
 
 const LandingContainer = styled.div`
     background: #f7e7e7;

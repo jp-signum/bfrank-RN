@@ -37,7 +37,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json());
 app.use('/api', expressJwt({ secret: process.env.SECRET }));
 
-app.use('/auth', require('./server/routes/auth'));
+app.use('/auth', require('./routes/auth'));
 app.use(expressJwt({secret: process.env.SECRET}).unless({method:'GET'}));
 
 app.use((err, req, res, next) => {
