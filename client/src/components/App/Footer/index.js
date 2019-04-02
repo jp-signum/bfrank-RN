@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const FixedContainer = styled.div`
-    position: fixed;
+    position: absolute;
     bottom: 12px;
     right: 12px;
     color: rgba(26, 6, 6, 0.3);
