@@ -3,8 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 
 import GlobalStyle from '../../theme/GlobalStyle'
 import Home from './Home/index'
-import Footer from './Footer'
-
+import Footer from './Footer/index'
 
 function App() {
     return (

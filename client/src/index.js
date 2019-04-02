@@ -3,15 +3,13 @@ import ReactDom from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import ScrollToTop from '../src/components/ScrollToTop'
-import App from './components/App/App';
+import App from './components/App/App'
 
 ReactDom.render(
-        <Router>
-            <ScrollToTop>
-                <ParallaxProvider>
-                    <App />
-                </ParallaxProvider>
-            </ScrollToTop>
-        </Router>,
+    <Router>
+        <ScrollToTop>
+            <App />
+        </ScrollToTop>
+    </Router>,
     document.getElementById("root")
 )

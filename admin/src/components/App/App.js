@@ -7,29 +7,26 @@ import Login from './Authentication/Login'
 import Home from './Home/index'
 import ProtectedRoute from './Authentication/ProtectedRoute'
 
-const LandingDiv = styled.div`
-    width: 100%;
-    background-color: #F4FAFF ;
-    color: #151517;
+const RelativeContainer = styled.div`
     position: relative;
 `
 
 function App() {
     return (
-        <LandingDiv>
+        <RelativeContainer>
             <GlobStyle />
             <Switch>
                 <Route
-                    path="/login"
+                    path='/login'
                     component={Login} />
                 <ProtectedRoute
-                    path="/home"
+                    path='/home'
                     component={Home} />
                 <Route
-                    exact path="/"
-                    render={() => <Redirect to="/home" />} />
+                    exact path='/'
+                    render={() => <Redirect to='/home' />} />
             </Switch>
-        </LandingDiv>
+        </RelativeContainer>
     )
 }
 
