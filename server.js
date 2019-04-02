@@ -46,15 +46,11 @@ app.use((err, req, res, next) => {
     return res.send({ message: err.message });
 });
 
-app.use('/admin', express.static(path.join(__dirname, '/admin/build')))
-app.use(express.static(path.join(__dirname, 'client/build')))
 
-app.get('admin/*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/admin/build/index.html'))
-})
+app.use(express.static(path.join(__dirname, "client", "build")))
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 //start server
