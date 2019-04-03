@@ -10,6 +10,7 @@ const unless = require('express-unless')
 
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/raveNailz'
 const path = require('path')
+const PORT = process.env.PORT || 5000
 
 //cloudinary configurations
 cloudinary.config({
@@ -17,6 +18,10 @@ cloudinary.config({
     api_key: '769326746159981',
     api_secret: 'PKPG9bKu07BdE4PG6R-RhXgVX_k'
 })
+
+//set up middlewares
+app.use(morgan('dev'))
+app.use(bodyParser.json());
 
 //connect to db
 mongoose.set('useCreateIndex', true);
@@ -28,16 +33,8 @@ mongoose.connect(url,
     }
 );
 
-let PORT = process.env.PORT || 5000
-
-//set up middlewares
-app.use(morgan('dev'))
-app.use(bodyParser.json());
+//decode jwt and add a req.body on all request sent to /api
 app.use('/api', expressJwt({ secret: process.env.SECRET }));
-
-app.use('/auth', require('./routes/auth'));
-app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
-
 app.use((err, req, res, next) => {
     console.error(err);
     if (err.name === 'UnauthorizedError') {
@@ -46,12 +43,18 @@ app.use((err, req, res, next) => {
     return res.send({ message: err.message });
 });
 
+//routes
+app.use('/auth', require('./routes/auth'));
+app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
+
+//internal admin routes
 app.use('/', express.static(path.join(__dirname, "client", "build")))
 app.use('/admin', express.static(path.join(__dirname, "admin", "build")))
 
 app.get('/admin/*', (req, res) => {
     res.sendFile(path.join(__dirname, "admin", "build", "index.html"))
 })
+
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
