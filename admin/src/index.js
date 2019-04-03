@@ -6,7 +6,7 @@ import App from "./components/App/App";
 
 ReactDom.render(
     <AppContextProvider>
-        <Router>
+        <Router basename='/admin'>
             <App />
         </Router>
     </AppContextProvider>,
