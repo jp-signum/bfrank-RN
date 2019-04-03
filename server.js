@@ -47,9 +47,9 @@ app.use((err, req, res, next) => {
 });
 
 app.use('/admin', express.static(path.join(__dirname, "admin", "build")))
-app.use(express.static(path.join(__dirname, "client", "build")))
+app.use('/client', express.static(path.join(__dirname, "client", "build")))
 
-app.get('admin/*', (req, res) => {
+app.get('*/admin', (req, res) => {
     res.sendFile(path.join(__dirname, "admin", "build", "index.html"))
 })
 app.get("*", (req, res) => {
