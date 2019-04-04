@@ -7,7 +7,7 @@ import { PropTypes } from 'prop-types';
 import ScrollToTop from './components/ScrollToTop'
 import App from './components/App/App'
 
-const GA_KEY = 'UA-122359368-3'; 
+const GA_KEY = 'UA-122359368-3';
 
 ReactGA.initialize(GA_KEY);
 
@@ -33,11 +33,9 @@ class GAListener extends React.Component {
 
 ReactDom.render(
     <Router>
-        <GAListener>
-            <ScrollToTop>
-                <App />
-            </ScrollToTop>
-        </GAListener>
+        <ScrollToTop>
+            <App />
+        </ScrollToTop>
     </Router>,
     document.getElementById("root")
 )
