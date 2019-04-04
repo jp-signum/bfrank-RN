@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import ReactGA from 'react-ga'
 import { Route } from 'react-router-dom'
 
-
 class GoogleAnalytics extends Component {
     componentDidMount () {
       this.logPageChange(

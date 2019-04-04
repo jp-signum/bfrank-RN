@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
+import ReactGA from 'react-ga'
 
 import { Meta } from '../../../Shared/Meta'
 import media from '../../../../theme/Device'
 import MailChimp from './Mailchimp'
+import OutboundLink from '../../../Shared/OutboundLink'
 
 import MainLogoDark from '../../../../assets/icons/main_logo_dark.svg'
 import rSvg from '../../../../assets/icons/R_dark.svg'
@@ -38,33 +40,37 @@ const LandingLogo = styled.img`
     `}
 
     ${media.phoneL`
-        width: 7vw;
+        width: 6.4vw;
+    `}
+
+    ${media.phoneLL`
+        width: 6.8vw;
     `}
 
     ${media.tablet`
-        width: 6vw;
+        width: 5vw;
         top: 16px;
         left: 16px;
     `}
 
     ${media.laptop`
-        width: 5vw;
+        width: 4vw;
         left: 20px;
     `}
 
     ${media.laptopL`
-        width: 4vw;
+        width: 3vw;
     `}
 
     ${media.laptopLL`
-        width: 3vw;
+        width: 2vw;
     `}
     ${media.desktop`
-        width: 2vw;
+        width: 1vw;
     `}
 
     ${media.desktopL`
-        width: 1vw;
+        width: .5vw;
     `}
 `
 
@@ -216,24 +222,6 @@ const SociallinkDiv = styled.div`
     padding-right: 6px;
 `
 
-const StyledSpan = styled.span`
-    color: rgba(26, 6, 6, 0.3);
-    font-size: 0.8em;
-    transition: ease 0.5s;
-
-    :hover {
-        color: rgba(26, 6, 6, 1);
-    }
-
-    ${media.phoneS`
-        font-size: 0.9em;
-    `}
-    
-    ${media.phoneM`
-        font-size: 1em;
-    `}
-`
-
 const Rsvg = styled.img`
     height: 130px;
     transition: ease 0.5s;
@@ -261,13 +249,14 @@ function Home() {
             <LandingLogo src={rSvg} alt='rSvg' />
             <InfoContainer>
                 <ShopDiv>
-                    <a
-                        href='//www.etsy.com/shop/ravenailz'
+                    <ReactGA.OutboundLink
+                        eventLabel='toEtsy'
+                        to='//www.etsy.com/shop/ravenailz'
                         target='_blank'
                         rel='noopener noreferrer'
                         style={{ textDecoration: 'none' }}>
                         <ShopSpan>shop our nailz</ShopSpan>
-                    </a>
+                    </ReactGA.OutboundLink>
                 </ShopDiv>
                 <MailDiv>
                     <SubscribeDiv>join the crew</SubscribeDiv>
@@ -279,23 +268,17 @@ function Home() {
                 </MailDiv>
                 <SocialContainer>
                     <SociallinkDiv>
-                        <a
-                            href='//www.instagram.com/rave_nailz/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            style={{ textDecoration: 'none' }}>
-                            <StyledSpan>Instagram</StyledSpan>
-                        </a>
+                        <OutboundLink spanText='Instagram'
+                            eventLabel='toInstagram'
+                            to='//www.instagram.com/rave_nailz/'
+                            shop='false' />
                     </SociallinkDiv>
                     <SociallinkDiv>&#8226;</SociallinkDiv>
                     <SociallinkDiv>
-                        <a
-                            href='//www.facebook.com/RaveNailz/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            style={{ textDecoration: 'none' }}>
-                            <StyledSpan>Facebook</StyledSpan>
-                        </a>
+                        <OutboundLink spanText='Facebook'
+                            eventLabel='toFacebook'
+                            to='//www.facebook.com/RaveNailz/'
+                            shop='false' />
                     </SociallinkDiv>
                 </SocialContainer>
             </InfoContainer>
