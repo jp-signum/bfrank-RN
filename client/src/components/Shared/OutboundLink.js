@@ -5,12 +5,12 @@ import ReactGA from 'react-ga'
 import media from '../../theme/Device'
 
 const StyledSpan = styled.span`
-    color: rgba(26, 6, 6, 0.3);
+    color: rgba(255, 252, 252, 0.3);
     font-size: 0.8em;
     transition: ease 0.5s;
 
     :hover {
-        color: rgba(26, 6, 6, 1);
+        color: rgba(255, 255, 255, 1);
     }
 
     ${media.phoneS`

@@ -7,10 +7,11 @@ import media from '../../../../theme/Device'
 const RelativeContainer = styled.div`
     position: relative;
     padding-top: 10px;
+    color: #100606;
 `
 
 const EmailInput = styled.input`
-    border-bottom: rgba(26, 6, 6, 0.3) 2px solid;
+    border-bottom: rgba(16, 6, 6, 0.3) 2px solid;
     transition: ease 0.5s;
     padding-top: 14px;
     font-size: .8em;
@@ -27,12 +28,12 @@ const SubscribeBtnDiv = styled.div`
 
 const SubscribeBtn = styled.button`
    font-size: 1em;
-   color: rgba(26, 6, 6, 0.3);
-   border: 2px solid rgba(26, 6, 6, 0.3);
+   color: rgba(16, 6, 6, 0.3);
+   border: 2px solid rgba(16, 6, 6, 0.3);
    border-radius: 4px;
 
     :hover {
-        border: 2px solid rgba(26, 6, 6, 1);
+        border: 2px solid rgba(16, 6, 6, 1);
         cursor: pointer;
         color: rgba(26, 6, 6, 1);
     }

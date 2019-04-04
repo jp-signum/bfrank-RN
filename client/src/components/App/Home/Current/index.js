@@ -9,11 +9,10 @@ import MailChimp from './Mailchimp'
 import OutboundLink from '../../../Shared/OutboundLink'
 
 import MainLogoDark from '../../../../assets/icons/main_logo_dark.svg'
-import rSvg from '../../../../assets/icons/R_dark.svg'
+import rSvg from '../../../../assets/icons/R_white.svg'
 
 const LandingContainer = styled.div`
-    background: #f7e7e7;
-    color: #1a0606;
+    background: #100606;
     position: fixed;
     top: 0;
     left: 0;
@@ -101,8 +100,8 @@ const InfoContainer = styled.div`
 `
 
 const ShopDiv = styled.div`
-    background: #f7e7e7;
-    border: 2px solid #1a0606;
+    background: #100606;
+    border: 2px solid #fffcfc;
     text-transform: uppercase;
     border-radius: 4px;
     padding: 6px 0px 6px 0px;
@@ -113,19 +112,11 @@ const ShopDiv = styled.div`
     margin-bottom: 12px;
 
     :hover {
-        background: #1a0606;
-
-        ${media.phoneLL`
-            background: #f7e7e7;
-        `} 
+        background: #fffcfc;
     }
 
     :hover > a span {
-        color: #f7e7e7;
-
-        ${media.phoneLL`
-            color: #1a0606;
-        `}
+        color: #100606;
     }
 
     ${media.phoneS`
@@ -138,22 +129,14 @@ const ShopDiv = styled.div`
         font-size: 1.4em;
         margin-bottom: 20px;
         padding: 8px 0px 8px 0px;
-        font-size: 1.6em;
     `}
 
     ${media.phoneLL`
         margin-bottom: 30px;
-        background: #1a0606;
     `}
 `
 const ShopSpan = styled.span`
-    color: #1a0606;
-    transition: ease 0.5s;
-
-    ${media.phoneLL`
-        color: #f7e7e7;
-    `}
-    
+    color: #fffcfc;
 `
 
 const MailDiv = styled.div`
@@ -163,10 +146,13 @@ const MailDiv = styled.div`
 
 const SubscribeDiv = styled.div`
     text-transform: uppercase;
-    background: #1a0606;
-    color: #f7e7e7;
+    background:  #100606;
+    color: #fffcfc;
     font-size: 1.2em;
     letter-spacing: 1.8px;
+    border-top: #fffcfc 2px solid;
+    border-left: #fffcfc 2px solid;
+    border-right: #fffcfc 2px solid;
     border-radius: 4px 4px 0px 0px;
     padding: 6px 0px 6px 0px;
     transition: ease 0.5s;
@@ -185,6 +171,7 @@ const SubscribeDiv = styled.div`
 const ListDescriptionDiv = styled.div`
     transition: ease 0.5s;
     padding: 8px 8px 8px 8px;
+    color: #100606;
 
     ${media.phoneS`
         padding: 9px 9px 9px 9px;
@@ -213,7 +200,7 @@ const WhiteContainer = styled.div`
 `
 
 const SocialContainer = styled.div`
-   color: rgba(26, 6, 6, 0.3);
+   color: rgba(255, 252, 252, 0.3);
    padding-top: 12px;
 `
 
@@ -255,7 +242,7 @@ function Home() {
                         target='_blank'
                         rel='noopener noreferrer'
                         style={{ textDecoration: 'none' }}>
-                        <ShopSpan>shop our nailz</ShopSpan>
+                        <ShopSpan>shop our nails</ShopSpan>
                     </ReactGA.OutboundLink>
                 </ShopDiv>
                 <MailDiv>
