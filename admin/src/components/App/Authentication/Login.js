@@ -80,7 +80,6 @@ class LoginForm extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <LoginContainer>
                 <StyledLoginForm onSubmit={this.handleSubmit}>

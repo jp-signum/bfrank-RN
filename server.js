@@ -47,7 +47,7 @@ app.use((err, req, res, next) => {
 app.use('/auth', require('./routes/auth'));
 app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
 
-//internal admin routes
+//internal admin routes and SSR
 app.use('/', express.static(path.join(__dirname, "client", "build")))
 app.use('/admin', express.static(path.join(__dirname, "admin", "build")))
 
