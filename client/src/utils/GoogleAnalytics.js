@@ -55,7 +55,7 @@ class GoogleAnalytics extends Component {
 
     if (isGAEnabled) {
       ReactGA.initialize(
-        env.REACT_APP_GA_TRACKING_ID || 'UA-122359368-3', {
+        env.REACT_APP_GA_TRACKING_ID, {
           debug: env.REACT_APP_GA_DEBUG === 'true',
           ...options
         }
