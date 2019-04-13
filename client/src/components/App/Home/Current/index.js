@@ -228,7 +228,7 @@ const Rsvg = styled.img`
 function Home() {
     return (
         <LandingContainer>
-            <Helmet titleTemplate="Rave Nailz | %s">
+            <Helmet titleTemplate="%s | Rave Nailz">
                 <title>{Meta.title}</title>
                 <meta name='description' content={Meta.description}></meta>
                 <meta name='keywords' content={Meta.keywords}></meta>
