@@ -11,6 +11,7 @@ const unless = require('express-unless')
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/raveNailz'
 const path = require('path')
 const PORT = process.env.PORT || 5000
+const sslRedirect = require('heroku-ssl-redirect');
 
 //cloudinary configurations
 cloudinary.config({
@@ -22,6 +23,8 @@ cloudinary.config({
 //set up middlewares
 app.use(morgan('dev'))
 app.use(bodyParser.json());
+// enable ssl redirect
+app.use(sslRedirect());
 
 //connect to db
 mongoose.set('useCreateIndex', true);
