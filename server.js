@@ -15,9 +15,9 @@ const sslRedirect = require('heroku-ssl-redirect');
 
 //cloudinary configurations
 cloudinary.config({
-    cloud_name: 'deur0gpls',
-    api_key: '769326746159981',
-    api_secret: 'PKPG9bKu07BdE4PG6R-RhXgVX_k'
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
 })
 
 //set up middlewares
