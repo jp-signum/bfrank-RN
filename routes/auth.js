@@ -3,7 +3,6 @@ const User = require('../models/user')
 const authRouter = express.Router()
 const jwt = require('jsonwebtoken')
 
-//post new user to collection 
 //(sign-up)
 authRouter.post('/signup', (req, res, next) => {
     // try to find a user with the provided username. (If it already exists, them that the username is already taken.)

@@ -1,32 +1,31 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import GlobStyle from '../../theme/GlobalStyle'
 import Login from './Authentication/Login'
-import Home from './Home/index'
+import Dashboard from './Dashboard/index'
 import ProtectedRoute from './Authentication/ProtectedRoute'
 
-const RelativeContainer = styled.div`
-    position: relative;
-`
 
 function App() {
     return (
-        <RelativeContainer>
+        <div>
             <GlobStyle />
             <Switch>
                 <Route
                     path='/login'
                     component={Login} />
-                <ProtectedRoute
+                {/* <ProtectedRoute
                     path='/home'
                     component={Home} />
                 <Route
                     exact path='/'
-                    render={() => <Redirect to='/home' />} />
+                    render={() => <Redirect to='/home' />} /> */}
+                <Route
+                    path='/dashboard'
+                    component={Dashboard} />
             </Switch>
-        </RelativeContainer>
+        </div>
     )
 }
 

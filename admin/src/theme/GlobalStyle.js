@@ -34,8 +34,32 @@ input {
   opacity: 0;
 }
 
+/* strange menu link gold ring focus fix */
+
+a {
+  text-decoration: none;
+
+  :focus {
+    outline:  none !important;
+    outline-color: none !important;
+    outline-style: none !important;
+    outline-width: none !important;
+    -webkit-focus-ring-color: none !important;
+  } 
+}
+
+input {
+  :focus {
+    outline:  none !important;
+    outline-color: none !important;
+    outline-style: none !important;
+    outline-width: none !important;
+    -webkit-focus-ring-color: none !important;
+  } 
+}
+
 button {
-  border: none;
+  outline: none;
 }
 
 `

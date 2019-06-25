@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { withContext } from '../../AppContext'
 
 const LoginContainer = styled.div`
-    background: #f7e7e7;
-    color: #1a0606;
+    background: #F2F2F2;
+    color: #0D0D0D;
     position: fixed;
     top: 0;
     left: 0;
@@ -18,28 +18,44 @@ const LoginContainer = styled.div`
 const LoginHeader = styled.div`
     font-size: 2em;
     text-align: center;
+    padding-bottom: 20px;
 `
 
 const StyledLoginForm = styled.form`
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
+    margin-bottom: 100px;
 `
 
 const LoginUsernameInput = styled.input`
-    
+    margin-bottom: 16px;
+    background: #F2F2F2;
+    border-bottom: solid 2px rgb(13, 13, 13, 1.0);
 `
 
 const LoginPasswordInput = styled.input`
-  
+    margin-bottom: 20px;
+    background: #F2F2F2;
+    border-bottom: solid 2px rgb(13, 13, 13, 1.0);
 `
 
 const LoginButton = styled.button`
-  
+   background: #F2F2F2;
+   color: rgb(13, 13, 13, 0.4);
+   cursor: pointer;
+    border-radius: 4px;
+    border: solid 2px rgb(13, 13, 13, 0.4);
+    font-size: 1.4em;
+    padding: 4px 0px 4px 0px;
+   
+   :hover {
+        border: solid 2px rgb(13, 13, 13, 1.0);
+        color: rgb(13, 13, 13, 1.0);
+   }
 `
 
 const LoginErrorDiv = styled.div`
- 
+    
 `
 
 class LoginForm extends Component {
@@ -48,8 +64,7 @@ class LoginForm extends Component {
         this.state = {
             username: '',
             password: '',
-            errorMessage: '',
-            statusColor: ''
+            errorMessage: ''
         }
     }
 
@@ -70,11 +85,11 @@ class LoginForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({ statusColor: 'green' }, () => {
+        this.setState({ statusColor: '#7fe060' }, () => {
             this.props.login(this.state)
-                .then(() => this.props.history.push("/home"))
+                .then(() => this.props.history.push('/home'))
                 .catch(err => {
-                    this.setState({ errorMessage: err.message, statusColor: '' })
+                    this.setState({ errorMessage: err.message })
                 })
         })
     }
@@ -100,15 +115,13 @@ class LoginForm extends Component {
                             type='password'
                             placeholder='Password' />
                     </label>
-                    <LoginButton
-                        color=''
-                        type='submit'>
-                        Submit
-                        </LoginButton>
-                </StyledLoginForm>
-                {this.state.errorMessage &&
+                    <LoginButton type='submit'>
+                        login
+                    </LoginButton>
+                    {this.state.errorMessage &&
                     <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
                 }
+                </StyledLoginForm>
             </LoginContainer>
         )
     }

@@ -7,6 +7,7 @@ const cloudinary = require('cloudinary')
 const morgan = require('morgan')
 const expressJwt = require('express-jwt')
 const unless = require('express-unless')
+const multer = require("multer");
 
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/raveNailz'
 const path = require('path')
@@ -38,6 +39,13 @@ mongoose.connect(url,
 
 //decode jwt and add a req.body on all request sent to /api
 app.use('/api', expressJwt({ secret: process.env.SECRET }));
+
+//routes
+app.use('/auth', require('./routes/auth'));
+app.use('/api/store', require('./routes/store'));
+app.use('/api/store/nails', require('./routes/store'));
+app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
+
 app.use((err, req, res, next) => {
     console.error(err);
     if (err.name === 'UnauthorizedError') {
@@ -46,9 +54,14 @@ app.use((err, req, res, next) => {
     return res.send({ message: err.message });
 });
 
-//routes
-app.use('/auth', require('./routes/auth'));
-app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
+// //image uploading with multer
+// const upload = multer({
+//     dest: "./tmp"
+// });
+
+// app.post('/api/store/nails', upload.array('photos', 5), (req, res, next) => {
+//     //add error catch
+// });
 
 //internal admin routes and SSR
 app.use('/', express.static(path.join(__dirname, "client", "build")))
