@@ -8,6 +8,7 @@ const ItemSchema = new Schema({
     price: {
         type: Currency
     },
+    description: String,
     pictures: [String],
     quantity: {
         type: Number,

@@ -42,24 +42,24 @@ storeRouter.put("/nails/:itemId", (req, res, next) => {
         { _id: req.params.itemId },
         req.body,
         { new: true },
-        (err, todo) => {
+        (err, item) => {
             if (err) {
                 console.log("Error");
                 res.status(500);
                 return next(err);
             }
-            return res.send(todo);
+            return res.send(item);
         }
     );
 });
 
 storeRouter.delete("/nails/:itemId", (req, res, next) => {
-    Item.findOneAndRemove({ _id: req.params.todoId }, (err, todo) => {
+    Item.findOneAndRemove({ _id: req.params.itemId }, (err, item) => {
         if (err) {
             res.status(500);
             return next(err);
-        }
-        return res.send(todo);
+        } 
+        return res.send(item)
     });
 });
 

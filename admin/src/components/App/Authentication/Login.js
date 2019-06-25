@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { withContext } from '../../AppContext'
+import { withContext } from '../../../AppContext'
 
 const LoginContainer = styled.div`
     background: #F2F2F2;
