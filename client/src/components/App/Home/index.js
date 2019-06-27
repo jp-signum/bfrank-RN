@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import ReactGA from 'react-ga'
 
-import { Meta } from '../../../Shared/Meta'
-import media from '../../../../theme/Device'
+import { Meta } from '../../Shared/Meta'
+import media from '../../../theme/Device'
 import MailChimp from './Mailchimp'
-import OutboundLink from '../../../Shared/OutboundLink'
+import OutboundLink from '../../Shared/OutboundLink'
 
 import MainLogoDark from '../../../../assets/icons/main_logo_dark.svg'
 import rSvg from '../../../../assets/icons/R_white.svg'

@@ -29,11 +29,13 @@ const StyledLoginForm = styled.form`
 
 const LoginUsernameInput = styled.input`
     margin-bottom: 16px;
+    width: 100%;
     background: #F2F2F2;
     border-bottom: solid 2px rgb(13, 13, 13, 1.0);
 `
 
 const LoginPasswordInput = styled.input`
+    width: 100%;
     margin-bottom: 20px;
     background: #F2F2F2;
     border-bottom: solid 2px rgb(13, 13, 13, 1.0);
@@ -55,7 +57,7 @@ const LoginButton = styled.button`
 `
 
 const LoginErrorDiv = styled.div`
-    
+    color: #BF455B;
 `
 
 class LoginForm extends Component {
@@ -85,20 +87,23 @@ class LoginForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({ statusColor: '#7fe060' }, () => {
-            this.props.login(this.state)
-                .then(() => this.props.history.push('/home'))
-                .catch(err => {
-                    this.setState({ errorMessage: err.message })
-                })
-        })
+        this.props.login(this.state)
+            .then(() => this.props.history.push('/dashboard'))
+            .catch(err => {
+                this.setState({ errorMessage: err.message })
+            })
+    }
+
+    stopEvent = (e) => {
+        e.stopPropagation();
+        console.log('event stopped')
     }
 
     render() {
         return (
             <LoginContainer>
                 <StyledLoginForm onSubmit={this.handleSubmit}>
-                    <LoginHeader>Log In</LoginHeader>
+                    <LoginHeader>Admin</LoginHeader>
                     <label htmlFor="unInp">
                         <LoginUsernameInput
                             onChange={this.handleChange}
@@ -115,12 +120,10 @@ class LoginForm extends Component {
                             type='password'
                             placeholder='Password' />
                     </label>
-                    <LoginButton type='submit'>
-                        login
-                    </LoginButton>
+                    <LoginButton type='submit' onClick={this.stopEvent}>Login</LoginButton>
                     {this.state.errorMessage &&
-                    <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
-                }
+                        <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
+                    }
                 </StyledLoginForm>
             </LoginContainer>
         )

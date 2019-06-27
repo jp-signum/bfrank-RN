@@ -16,11 +16,11 @@ function App() {
                     path='/login'
                     component={Login} />
                 {/* <ProtectedRoute
-                    path='/home'
-                    component={Home} />
+                    path='/dashboard'
+                    component={Dashboard} />
                 <Route
                     exact path='/'
-                    render={() => <Redirect to='/home' />} /> */}
+                    render={() => <Redirect to='/dashboard' />} /> */}
                 <Route
                     path='/dashboard'
                     component={Dashboard} />
