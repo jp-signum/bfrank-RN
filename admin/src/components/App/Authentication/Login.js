@@ -94,10 +94,6 @@ class LoginForm extends Component {
             })
     }
 
-    stopEvent = (e) => {
-        e.stopPropagation();
-        console.log('event stopped')
-    }
 
     render() {
         return (

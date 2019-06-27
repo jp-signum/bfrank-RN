@@ -9,7 +9,8 @@ import Products from './Prodcuts'
 
 const DisplayContainer = styled.div`
     position: relative;
-    
+    width: 100%;
+    height: 100vh;
 `
 
 function RenderDB(props) {
@@ -23,6 +24,8 @@ function RenderDB(props) {
             return renderJSX = <Orders />;
         case 'products':
             return renderJSX = <Products />;
+        case 'main':
+            return renderJSX =  <Main />;
         default:
             return renderJSX =  <Main />;
     }

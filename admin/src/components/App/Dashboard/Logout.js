@@ -16,13 +16,13 @@ const LogoutDiv = styled.div`
 
 const LogoutSpan = styled.span`
     cursor: pointer;
-    color: #F2F2F2;
-    border: #F2F2F2 2px solid;
+    color: rgb(199, 199, 199, 0.8);
+    border: rgb(199, 199, 199, 0.8) 2px solid;
     border-radius: 4px;
     padding: 4px;
 
     :hover {
-        border: white 2px solid;
+        border: #F2F2F2 2px solid;
         color: #F2F2F2;
     }
 

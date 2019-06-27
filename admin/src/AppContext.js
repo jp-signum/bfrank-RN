@@ -76,7 +76,6 @@ export class AppContextProvider extends Component {
     }
 
     login = (credentials) => {
-        console.log('login clicked test')
         return itemAxios.post('/auth/login', credentials)
             .then(response => {
                 const { token, user } = response.data;
@@ -92,7 +91,6 @@ export class AppContextProvider extends Component {
     }
 
     logout = () => {
-        console.log('logout clicked')
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         this.setState({
