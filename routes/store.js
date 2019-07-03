@@ -3,7 +3,7 @@ const storeRouter = express.Router();
 const Item = require("../models/item");
 
 
-storeRouter.get("/", (req, res, next) => {
+storeRouter.get('/', (req, res, next) => {
     Item.find(req.query, (err, items) => {
         if (err) {
             res.status(500);
@@ -13,38 +13,27 @@ storeRouter.get("/", (req, res, next) => {
     });
 });
 
-storeRouter.get("/:itemId", (req, res, next) => {
+storeRouter.get('/:itemId', (req, res, next) => {
     Item.findOne({ _id: req.params.itemId }, (err, item) => {
         if (err) {
             res.status(500);
             return next(err);
         } else if (!item) {
             res.status(404)
-            return next(new Error("No item found."));
+            return next(new Error('No item found.'));
         }
         return res.send(item);
     });
 });
 
-storeRouter.post("/nails", (req, res, next) => {
-    let item = new Item(req.body);
-    item.save(function (err, newItem) {
-        if (err) {
-            res.status(500);
-            return next(err);
-        }
-        return res.status(201).send(newItem);
-    });
-});
-
-storeRouter.put("/nails/:itemId", (req, res, next) => {
+storeRouter.put('/nails/:itemId', (req, res, next) => {
     Item.findOneAndUpdate(
         { _id: req.params.itemId },
         req.body,
         { new: true },
         (err, item) => {
             if (err) {
-                console.log("Error");
+                console.log('Error');
                 res.status(500);
                 return next(err);
             }
@@ -53,7 +42,7 @@ storeRouter.put("/nails/:itemId", (req, res, next) => {
     );
 });
 
-storeRouter.delete("/nails/:itemId", (req, res, next) => {
+storeRouter.delete('/nails/:itemId', (req, res, next) => {
     Item.findOneAndRemove({ _id: req.params.itemId }, (err, item) => {
         if (err) {
             res.status(500);

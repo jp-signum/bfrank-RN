@@ -1,16 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-// const itemAxios = axios.create({
-//     transformRequest: [data => {
-//         const formData = new FormData();
-//         for (let key in data) {
-//             formData.append(key, data[key])
-//         }
-//         return formData
-//     }]
-// });
-
 const itemAxios = axios.create();
 
 itemAxios.interceptors.request.use((config) => {
@@ -31,6 +21,16 @@ export class AppContextProvider extends Component {
         }
     }
 
+
+    // remove after admin portion is finished
+    componentDidMount() {
+        this.getItems()
+    }
+
+    componentWillUnmount() {
+        this.getItems()
+    }
+
     getItems = () => {
         return itemAxios.get("/api/store")
             .then(response => {
@@ -38,6 +38,7 @@ export class AppContextProvider extends Component {
                 return response;
             })
     }
+
 
     addItem = (newItem) => {
         return itemAxios.post("/api/store/nails/", newItem)
@@ -87,7 +88,7 @@ export class AppContextProvider extends Component {
                 });
                 this.getItems();
                 return response;
-            }) 
+            })
     }
 
     logout = () => {

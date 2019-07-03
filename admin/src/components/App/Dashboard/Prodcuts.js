@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { withContext } from '../../../AppContext'
 
 import ItemPreview from '../../Shared/ItemPreview'
+import AddItemForm from './AddItemForm'
 
 const GridContainer = styled.div`
     display: grid;
@@ -47,6 +48,8 @@ const List = styled.div`
    height: 70vh;
    margin: -38px 0px 0px 28px;
    overflow-y: scroll;
+   display: flex;
+   flex-direction: column;
 `
 
 const Add = styled.div`
@@ -59,10 +62,9 @@ const Add = styled.div`
 `
 
 
-
 function Products(props) {
     const rawItems = props.nails
-    console.log(rawItems)
+    // console.log(rawItems)
 
     const AllItems = rawItems.map(nail => {
         return (
@@ -78,13 +80,13 @@ function Products(props) {
             <Header>
                 <Title>Products</Title>
             </Header>
-            <ListTitle>List (click to edit)</ListTitle>
+            <ListTitle>Product List</ListTitle>
             <AddTitle>Add New</AddTitle>
             <List>
                 {AllItems}
             </List>
             <Add>
-
+                <AddItemForm />
             </Add>
         </GridContainer>
     )
