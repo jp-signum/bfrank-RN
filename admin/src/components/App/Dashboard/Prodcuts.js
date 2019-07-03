@@ -19,32 +19,32 @@ const Header = styled.div`
 `
 
 const Title = styled.div`
-    color: #fffcfc;
+    color: #0D0D0D;
     font-size: 1.4em;
     position: relative;
     padding: 40px 0px 0px 30px;
 `
 
 const ListTitle = styled.div`
-    grid-column: 1 / 7;
-    margin-left: 28px;
+    grid-column: 1 / 8;
+    margin-left: 2px;
     text-align: center;
-    color: #fffcfc;
+    color: #0D0D0D;
 `
 
 const AddTitle = styled.div`
-    grid-column: 7 / 13;
+    grid-column: 8 / 13;
     margin-right: 128px;
-    margin-left: -80px;
+    margin-left: -60px;
     text-align: center;
-    color: #fffcfc;
+    color: #0D0D0D;
 `
 
 const List = styled.div`
-    background: #6C7D8C;
-   border: 1px solid #6C7D8C;
+    background: #0D0D0D;
+   border: 1px solid #0D0D0D;
    border-radius: 4px;
-   grid-column: 1 / 7;
+   grid-column: 1 / 8;
    height: 70vh;
    margin: -38px 0px 0px 28px;
    overflow-y: scroll;
@@ -53,10 +53,10 @@ const List = styled.div`
 `
 
 const Add = styled.div`
-    background: #6C7D8C;
-   border: 1px solid #6C7D8C;
+    background: #0D0D0D;
+   border: 1px solid #0D0D0D;
    border-radius: 4px;
-   grid-column: 7 / 13;
+   grid-column: 8 / 13;
     margin: -38px 128px 0px -80px;
     overflow-y: scroll;
 `
@@ -64,7 +64,6 @@ const Add = styled.div`
 
 function Products(props) {
     const rawItems = props.nails
-    // console.log(rawItems)
 
     const AllItems = rawItems.map(nail => {
         return (

@@ -38,7 +38,6 @@ function Icon(props) {
             onClick={props.onClick}>
             <IconImg
                 src={props.src}
-                alt={props.alt}
                 top={props.top}
                 left={props.left}
                 padding={props.padding}

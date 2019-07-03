@@ -62,6 +62,33 @@ button {
   outline: none;
 }
 
+/*custom modal close button cross */
+.bm-cross2 {
+  position: absolute; 
+  width: 3px; 
+  height: 14px; 
+  transform: rotate(-45deg);
+  background: #fffdfd;
+  height: 30px ;
+  width: 3px ;
+  border-radius: 4px;
+  top: -6px;
+  right: 15.5px;
+}
+
+.bm-cross3 {
+  position: absolute; 
+  width: 3px; 
+  height: 14px; 
+  transform: rotate(45deg);
+  background: #fffdfd;
+  height: 30px ;
+  width: 3px ;
+  border-radius: 4px;
+  top: -6px;
+  right: 15.5px;
+}
+
 `
 
 export default GlobStyle

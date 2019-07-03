@@ -22,11 +22,11 @@ const ViewContainer = styled.div`
    bottom: 0;
    left: 0;
    right: 0;
-   background: #143047;
+   background: #F2F2F2;
 `
 
 const ListContainer = styled.div`
-   background: #6C7D8C;
+   background: #0D0D0D;
    width: 22%;
    height: 100vh;
 `
