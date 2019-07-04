@@ -108,6 +108,40 @@ app.post('/api/store/nails', (req, res, next) => {
     addItem()
 })
 
+//editing an item with new shit
+app.put('/api/store/nails/:itemId', (req, res, next) => {
+    editItem = () => {
+        let { name, price, description, quantity } = req.body
+        let itemObj = { name, price, description, quantity }
+        const files = Object.values(req.files)
+        let clouds = files.map(file => cloudinary.uploader.upload(file.tempFilePath))
+        Promise
+            .all(clouds)
+            .then(res => {
+                let urls = res.map(cloud => cloud.url)
+                let obj = { ...itemObj, pictures: urls }
+                editItem(obj)
+            })
+            .catch((err) => res.status(400).json(err))
+        function editItem(obj) {
+            Item.findOneAndUpdate(
+                { _id: req.params.itemId },
+                obj,
+                { new: true },
+                (err, item) => {
+                    if (err) {
+                        console.log('Error');
+                        res.status(500);
+                        return next(err);
+                    }
+                    return res.send(item);
+                }
+            )
+        }
+    }
+    editItem()
+})
+
 
 //start server
 app.listen(PORT, () => {

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Currency from 'react-currency-formatter';
+import Currency from 'react-currency-formatter'
 import Modal from 'react-modal'
 
-import { customModalStyles } from './StyleConstants';
+import { customModalStyles } from './StyleConstants'
+import { withContext } from '../../AppContext'
 
 const Container = styled.div`
    margin: 14px;
@@ -196,6 +197,10 @@ const NoSpan = styled.span`
   color: #0D0D0D ;
   font-size: 1.1em;
   cursor: pointer;
+
+  :hover {
+      text-decoration: underline;
+  }
 `
 
 const TwoFactorDiv = styled.div`
@@ -204,6 +209,16 @@ const TwoFactorDiv = styled.div`
 
 const HiddenDiv = styled.div`
   display: none;
+`
+
+const EditForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+`
+
+const FileInput = styled.input`
+
 `
 
 
@@ -218,6 +233,7 @@ class Products extends Component {
             description: '',
             price: '',
             quantity: '',
+            id: '',
             images: [],
         };
     }
@@ -247,6 +263,57 @@ class Products extends Component {
         this.setState({
             showDeleteModal: false
         });
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        this.setState({
+            buttonText: '...sending'
+        })
+
+        let data = new FormData();
+        data.append('file1', this.uploadInput.files[0]);
+        data.append('file2', this.uploadInput.files[1]);
+        data.append('file3', this.uploadInput.files[2]);
+        data.append('file4', this.uploadInput.files[3]);
+        data.append('file5', this.uploadInput.files[4]);
+        data.append('name', this.state.name);
+        data.append('description', this.state.description);
+        data.append('price', this.state.price);
+        data.append('quantity', this.state.quantity);
+
+        this.props.editItem(this.props.nail._id, data)
+            .then((res) => {
+                this.clearInputs()
+            })
+            .catch(err => console.error(err.response.data.message))
+    }
+
+
+    handleChange = (e) => {
+        e.persist();
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value
+        })
+    }
+
+    clearInputs = () => {
+        this.setState({
+            name: '',
+            description: '',
+            price: '',
+            quantity: '',
+            id: '',
+            buttonText: 'Edit Item',
+            images: []
+        })
+    }
+
+    componentDidMount() {
+        this.setState({
+            id: this.props.nail._id
+        })
     }
 
     componentDidUpdate() {
@@ -305,7 +372,42 @@ class Products extends Component {
                         </CurrentContainer>
                         <EditContainer>
                             <EditTitle>Edit</EditTitle>
-                            <form></form>
+                            <EditForm
+                                encType='multipart/form-data'
+                                onSubmit={this.handleSubmit}>
+                                <input
+                                    type='text'
+                                    name='name'
+                                    value={this.state.name}
+                                    placeholder='&nbsp;'
+                                    onChange={this.handleChange}></input>
+                                <input
+                                    placeholder='&nbsp;'
+                                    type='text'
+                                    name='description'
+                                    value={this.state.description}
+                                    onChange={this.handleChange}></input>
+                                <input
+                                    type='text'
+                                    placeholder='&nbsp;'
+                                    name='price'
+                                    maxLength={2}
+                                    value={this.state.price}
+                                    onChange={this.handleChange}></input>
+                                <input
+                                    placeholder='&nbsp;'
+                                    type='text'
+                                    name='quantity'
+                                    value={this.state.quantity}
+                                    onChange={this.handleChange}></input>
+                                <FileInput
+                                    name='file'
+                                    multiple
+                                    type='file'
+                                    ref={(ref) => { this.uploadInput = ref; }}
+                                    onChange={this.handleChangeFile} />
+                                <button>{this.state.buttonText}</button>
+                            </EditForm>
                         </EditContainer>
                     </ModalContainer>
                     <DeleteItemBtn onClick={this.deleteModalShow}>
@@ -318,7 +420,7 @@ class Products extends Component {
                     {this.state.showDeleteModal
                         ? <DeleteModal>
                             <TwoFactorDiv>Are you sure you want to delete this item??</TwoFactorDiv>
-                            <AnswerDiv><YesSpan>Yes</YesSpan><NoSpan onClick={this.deleteModalHide}>No take me back to the edit page.</NoSpan></AnswerDiv>
+                            <AnswerDiv><YesSpan onClick={() => this.props.deleteItem(itemID)}>Yes</YesSpan><NoSpan onClick={this.deleteModalHide}>No take me back to the edit page.</NoSpan></AnswerDiv>
                         </DeleteModal>
                         : <HiddenDiv></HiddenDiv>
                     }
@@ -328,4 +430,4 @@ class Products extends Component {
     }
 }
 
-export default Products;
+export default withContext(Products);

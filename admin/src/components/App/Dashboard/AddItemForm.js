@@ -14,6 +14,10 @@ const Form = styled.form`
     overflow-y: scroll;
 `
 
+const AddFormInput = styled.input`
+
+`
+
 const FileInput = styled.input`
 
 `
@@ -70,6 +74,7 @@ class AddItemForm extends Component {
             description: '',
             price: '',
             quantity: '',
+            buttonText: 'Add Item',
             images: []
         })
     }
@@ -84,23 +89,23 @@ class AddItemForm extends Component {
                         type='text'
                         name='name'
                         value={this.state.name}
-                        placeholder='&nbsp;'
+                        placeholder='Name'
                         onChange={this.handleChange}></input>
                     <input
-                        placeholder='&nbsp;'
+                        placeholder='Description'
                         type='text'
                         name='description'
                         value={this.state.description}
                         onChange={this.handleChange}></input>
                     <input
                         type='text'
-                        placeholder='&nbsp;'
+                        placeholder='Price'
                         name='price'
                         maxLength={2}
                         value={this.state.price}
                         onChange={this.handleChange}></input>
                     <input
-                        placeholder='&nbsp;'
+                        placeholder='Quantity'
                         type='text'
                         name='quantity'
                         value={this.state.quantity}
