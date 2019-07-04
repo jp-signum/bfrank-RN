@@ -16,6 +16,11 @@ const Img = styled.img`
     float: left;
 `
 
+const ImgEdit = styled.img`
+    height: 144px;
+    padding: 6px;
+`
+
 const Name = styled.div`
     padding-left: 10px;
     color: #F2F2F2;
@@ -23,11 +28,16 @@ const Name = styled.div`
     font-size: 1.1em;
 `
 
+const CurrentName = styled.div`
+    padding-top: 10px;
+    font-size: 1.1em;
+`
+
 const Edit = styled.div`
     display: inline-block;
     color: rgb(242, 242, 242, 0.4);
     cursor: pointer;
-    left: 30%;
+    left: 34%;
     position: relative;
     font-size: 0.9em;
 
@@ -41,6 +51,10 @@ const Description = styled.div`
     color: #F2F2F2;
 `
 
+const CurrentDescription = styled.div`
+    padding-top: 10px;
+`
+
 const Price = styled.div`
     padding: 10px 0px 0px 10px;
     color: #F2F2F2;
@@ -48,12 +62,22 @@ const Price = styled.div`
     display: inline-block;
 `
 
+const CurrentPrice = styled.div`
+    padding-top: 10px;
+    font-size: 0.9em;
+`
+
 const Quantity = styled.div`
     color: #F2F2F2;
     display: inline-block;
     font-size: 0.9em;
-    left: 40%;
+    left: 43%;
     position: relative;
+`
+
+const CurrentQuantity = styled.div`
+    font-size: 0.9em;
+    padding-bottom: 10px;
 `
 
 const RelativeDiv1 = styled.div`
@@ -88,7 +112,7 @@ const DeleteItemBtn = styled.button`
     left: 30px;
     top: 30px;
     background: none;
-    color: #fffdfd;
+    color: rgb(242, 242, 242, 0.8);
     height: 50px;
     width: 70px;
     font-size: 1.2em;
@@ -107,7 +131,22 @@ const ModalContainer = styled.div`
     background: none;
     color: #fffdfd;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 54vw 46vw;
+    grid-gap: 10px;
+    overflow: hidden;
+    padding-left: 10px;
+`
+
+const CurrentTitle = styled.div`
+   font-size: 1.2em;
+   padding-bottom: 40px;
+   text-decoration: underline;
+`
+
+const EditTitle = styled.div`
+    font-size: 1.2em;
+    padding-bottom: 100px;
+    text-decoration: underline;
 `
 
 const CurrentContainer = styled.div`
@@ -117,26 +156,56 @@ const CurrentContainer = styled.div`
     flex-direction: column;
 `
 
-const LabelContainer = styled(CurrentContainer)`
-
-`
-
-const EditContainer = styled(CurrentContainer)`
- 
+const EditContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 `
 
 const DeleteModal = styled.div`
   position: fixed;
-  top: 20%;
-  right: 20%;
-  bottom: 20%;
-  left: 20%;
+  background: rgb(242, 242, 242);
+  color: #0D0D0D;
+  top: 25%;
+  right: 35%;
+  bottom: 35%;
+  left: 25%;
   z-index: 10;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+`
+
+const AnswerDiv = styled.div`
+  padding-top: 40px;
+`
+
+const YesSpan = styled.span`
+  color: #0D0D0D;
+    cursor: pointer;
+
+  :hover {
+      color: #BF455B;
+  }
+`
+
+const NoSpan = styled.span`
+  padding-left: 60px;
+  color: #0D0D0D ;
+  font-size: 1.1em;
+  cursor: pointer;
+`
+
+const TwoFactorDiv = styled.div`
+  font-size: 1.4em;
 `
 
 const HiddenDiv = styled.div`
   display: none;
 `
+
 
 class Products extends Component {
     constructor(props) {
@@ -144,6 +213,12 @@ class Products extends Component {
         this.state = {
             showModal: false,
             showDeleteModal: false,
+            buttonText: 'Edit Item',
+            name: '',
+            description: '',
+            price: '',
+            quantity: '',
+            images: [],
         };
     }
 
@@ -157,8 +232,21 @@ class Products extends Component {
         document.body.style.overflow = 'unset';
         this.setState({
             showModal: false,
+            showDeleteModal: false,
         });
 
+    }
+
+    deleteModalShow = () => {
+        this.setState({
+            showDeleteModal: true
+        });
+    }
+
+    deleteModalHide = () => {
+        this.setState({
+            showDeleteModal: false
+        });
     }
 
     componentDidUpdate() {
@@ -198,26 +286,29 @@ class Products extends Component {
                     style={customModalStyles}>
                     <ModalContainer>
                         <CurrentContainer>
-                            <div>Current Item Details</div>
-                            <div>{itemName}</div>
-                            <div>{itemDescription}</div>
-                            <div>{itemPrice}</div>
-                            <div>
+                            <CurrentTitle>Current Item Details</CurrentTitle>
+                            <CurrentName><span>Name: </span> {itemName}</CurrentName>
+                            <CurrentDescription><span>Description: </span>{itemDescription}</CurrentDescription>
+                            <CurrentPrice><span>Price: </span><Currency quantity={itemPrice} symbol="$" locale="en" /></CurrentPrice>
+                            <CurrentQuantity>
                                 {itemQuantity != null &&
                                     <div><span>Quantity: </span>{itemQuantity}</div>
                                 }
+                            </CurrentQuantity>
+                            <div>
+                                <ImgEdit src={itemPicArr[0]} alt='first product picture' />
+                                <ImgEdit src={itemPicArr[1]} alt='first product picture' />
+                                <ImgEdit src={itemPicArr[2]} alt='first product picture' />
+                                <ImgEdit src={itemPicArr[3]} alt='first product picture' />
+                                <ImgEdit src={itemPicArr[4]} alt='first product picture' />
                             </div>
                         </CurrentContainer>
-                        <LabelContainer>
-                            <div>Name</div>
-                            <div>Description</div>
-                            <div>Price</div>
-                            <div>Quantity</div>
-                            <div>Pics</div>
-                        </LabelContainer>
-                        <EditContainer><div>Edit</div></EditContainer>
+                        <EditContainer>
+                            <EditTitle>Edit</EditTitle>
+                            <form></form>
+                        </EditContainer>
                     </ModalContainer>
-                    <DeleteItemBtn onClick={this.deleteItem}>
+                    <DeleteItemBtn onClick={this.deleteModalShow}>
                         <span>Delete Item</span>
                     </DeleteItemBtn>
                     <ModalCloseBtn onClick={this.closeModal}>
@@ -225,12 +316,11 @@ class Products extends Component {
                         <span className="bm-cross3"></span>
                     </ModalCloseBtn>
                     {this.state.showDeleteModal
-                        ? <HiddenDiv></HiddenDiv>
-                        : <DeleteModal>
-                            <div>Are you sure you want to delete this item??</div>Are you sure you want to delete this item??
-                            <div>yes</div>
-                            <div>no take me back</div>
+                        ? <DeleteModal>
+                            <TwoFactorDiv>Are you sure you want to delete this item??</TwoFactorDiv>
+                            <AnswerDiv><YesSpan>Yes</YesSpan><NoSpan onClick={this.deleteModalHide}>No take me back to the edit page.</NoSpan></AnswerDiv>
                         </DeleteModal>
+                        : <HiddenDiv></HiddenDiv>
                     }
                 </Modal>
             </Container>
