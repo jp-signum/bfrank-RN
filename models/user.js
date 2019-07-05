@@ -1,13 +1,16 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
+const uniqueValidator = require('mongoose-unique-validator');
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     username: {
         type: String,
-        required: true,
+        lowercase: true,
+        required: [true, "can't be blank"],
+        match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
         unique: true,
-        lowercase: true
+        index: true
     }, 
     password: {
         type: String,
@@ -16,10 +19,21 @@ const userSchema = new Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
-})
+    },
+    email: {
+        type: String,
+        lowercase: true,
+        required: [true, "can't be blank"], 
+        match: [/\S+@\S+\.\S+/, 'is invalid'],
+        unique: true,
+        index: true
+    },
+    cart: [String]
+}, {timestamps: true});
 
-userSchema.pre('save', function (next) {
+UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
+
+UserSchema.pre('save', function (next) {
     const user = this;
     if (!user.isModified('password')) return next();
     bcrypt.hash(user.password, 10, (err, hash) => {
@@ -29,17 +43,17 @@ userSchema.pre('save', function (next) {
     });
 });
 
-userSchema.methods.checkPassword = function (passwordAttempt, callback) {
+UserSchema.methods.checkPassword = function (passwordAttempt, callback) {
     bcrypt.compare(passwordAttempt, this.password, (err, isMatch) => {
         if (err) return callback(err);
         callback(null, isMatch);
     });
 };
 
-userSchema.methods.withoutPassword = function () {
+UserSchema.methods.withoutPassword = function () {
     const user = this.toObject();
     delete user.password;
     return user;
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', UserSchema);

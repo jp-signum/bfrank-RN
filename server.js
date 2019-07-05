@@ -1,0 +1,149 @@
+const express = require('express')
+const app = express()
+require('dotenv').config()
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const cloudinary = require('cloudinary')
+const morgan = require('morgan')
+const expressJwt = require('express-jwt')
+const cors = require('cors');
+const fileUpload = require('express-fileupload')
+
+const unless = require('express-unless')
+const Item = require('./models/item');
+
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/raveNailz'
+const path = require('path')
+const PORT = process.env.PORT || 5000
+const sslRedirect = require('heroku-ssl-redirect')
+
+//cloudinary configurations
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+})
+
+//set up middlewares
+app.use(morgan('dev'))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp'
+}));
+
+// enable ssl redirect
+app.use(sslRedirect());
+
+//connect to db
+mongoose.set('useCreateIndex', true);
+mongoose.connect(url,
+    { useNewUrlParser: true },
+    (err) => {
+        if (err) throw err;
+        console.log('Connected to the database');
+    }
+);
+
+//decode jwt and add a req.body on all request sent to /api
+app.use('/api', expressJwt({ secret: process.env.SECRET }));
+
+//routes
+app.use('/auth', require('./routes/auth'));
+app.use('/api/store', require('./routes/store'));
+app.use('/api/store/nails', require('./routes/store'));
+app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
+
+app.use((err, req, res, next) => {
+    console.error(err);
+    if (err.name === 'UnauthorizedError') {
+        res.status(err.status)
+    }
+    return res.send({ message: err.message });
+});
+
+
+//internal admin routes and SSR
+app.use('/', express.static(path.join(__dirname, 'client', 'build')))
+app.use('/admin', express.static(path.join(__dirname, 'admin', 'build')))
+
+app.get('/admin/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'admin', 'build', 'index.html'))
+})
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
+
+//uploading multiple files with express-fileupload
+app.post('/api/store/nails', (req, res, next) => {
+    addItem = () => {
+        let { name, price, description, quantity } = req.body
+        let itemObj = { name, price, description, quantity }
+        const files = Object.values(req.files)
+        let clouds = files.map(file => cloudinary.uploader.upload(file.tempFilePath))
+        Promise
+            .all(clouds)
+            .then(res => {
+                let urls = res.map(cloud => cloud.url)
+                let obj = { ...itemObj, pictures: urls }
+                saveItem(obj)
+            })
+            .catch((err) => res.status(400).json(err))
+        function saveItem(obj) {
+            new Item(obj).save((err, item) => {
+                if (err)
+                    res.send(err)
+                else if (!item)
+                    res.send(400)
+                else {
+                    return res.status(200).send(item)
+                }
+                next()
+            })
+        }
+    }
+    addItem()
+})
+
+//editing an item with new shit
+app.put('/api/store/nails/:itemId', (req, res, next) => {
+    editItem = () => {
+        let { name, price, description, quantity } = req.body
+        let itemObj = { name, price, description, quantity }
+        const files = Object.values(req.files)
+        let clouds = files.map(file => cloudinary.uploader.upload(file.tempFilePath))
+        Promise
+            .all(clouds)
+            .then(res => {
+                let urls = res.map(cloud => cloud.url)
+                let obj = { ...itemObj, pictures: urls }
+                editItem(obj)
+            })
+            .catch((err) => res.status(400).json(err))
+        function editItem(obj) {
+            Item.findOneAndUpdate(
+                { _id: req.params.itemId },
+                obj,
+                { new: true },
+                (err, item) => {
+                    if (err) {
+                        console.log('Error');
+                        res.status(500);
+                        return next(err);
+                    }
+                    return res.send(item);
+                }
+            )
+        }
+    }
+    editItem()
+})
+
+
+//start server
+app.listen(PORT, () => {
+    console.log(`[+] Starting server on port ${PORT}`);
+});

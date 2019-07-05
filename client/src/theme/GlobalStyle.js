@@ -2,11 +2,15 @@ import { createGlobalStyle } from "styled-components"
 
 
 const GlobStyle = createGlobalStyle`
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: sans-serif;
-  }
+html, body {
+  height: 100%
+}
+  
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
 
 input {
   border: none;
@@ -20,6 +24,7 @@ input {
 button {
   border: none;
 }
+
 
 `
 
