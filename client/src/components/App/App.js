@@ -3,7 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 import GlobalStyle from '../../theme/GlobalStyle'
-import Home from './Home/Current/index'
+import Home from './Home/index'
 import Footer from './Footer/index'
 
 const OverflowDiv = styled.div`
