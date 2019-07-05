@@ -216,6 +216,7 @@ const EditForm = styled.form`
     flex-direction: column;
     justify-content: center;
     height: 50vh;
+    margin-left: 1%;
 `
 
 const FileInput = styled.input`
@@ -226,7 +227,7 @@ const EditInput = styled.input`
   background: none;
     border-bottom: 2px solid rgb(242, 242, 242, 0.6);
     color: #F2F2F2;
-    width: 94%;
+    width: 96%;
     font-size: 0.9em;
     padding: 18px 0px 2px 0px;
     margin-bottom: 18px;
@@ -241,6 +242,28 @@ const EditInput = styled.input`
     } 
 `
 
+const EditTextarea = styled.textarea`
+    background: none;
+    border: 2px solid rgb(242, 242, 242, 0.6);
+    border-radius: 4px;
+    color: #F2F2F2;
+    width: 70%;
+    height: 26vh;
+    font-size: 0.9em;
+    padding: 4px 0px 0px 0px;
+    margin-top: 14px;
+    padding: 2px 0px 4px 0px;
+
+    :focus{
+        border: 2px solid rgb(242, 242, 242, 0.9);
+        outline:  none !important;
+        outline-color: none !important;
+        outline-style: none !important;
+        outline-width: none !important;
+        -webkit-focus-ring-color: none !important;
+    }
+`
+
 const AddLabelFile = styled.div`
     cursor: pointer;
     color: #F2F2F2;
@@ -251,7 +274,7 @@ const AddLabelFile = styled.div`
     font-size: 1em;
     box-shadow: 0px 3px 15px rgba(242, 242, 242, 0.11);
     padding: 4px 0px 2px 8px;
-    margin: 8px 0px 4px 14px;
+    margin: 8px 0px 4px 20px;
 
     :focus{
         border-bottom: 2px solid rgb(242, 242, 242, 0.9);
@@ -279,7 +302,7 @@ const EditBtn = styled.button`
     height: 35px;
     width: 110px;
     font-size: 1.2em;
-    margin: 20px 0px 0px 14px;
+    margin: 20px 0px 0px 20px;
     padding: 2px 0px 4px 0px;
 
     :hover{
@@ -290,13 +313,8 @@ const EditBtn = styled.button`
 `
 
 const SuccessDiv = styled.div`
-  padding-top: 20px;
+  padding: 20px 0px 0px 20px;
   color: #7fe060;
-`
-
-const FileListItem = styled.div`
-    color: #7fe060;
-    padding-top: 20px;
 `
 
 class Products extends Component {
@@ -363,10 +381,17 @@ class Products extends Component {
 
         this.props.editItem(this.props.nail._id, data)
             .then((res) => {
-                this.clearInputs();
+                this.clearInputs()
                 this.setState({
                     edited: true
-                });
+                }, () => {
+                    setTimeout(() => {
+                        this.setState({
+                            edited: false
+                        })
+                    }, 3000)
+                }
+                )
             })
             .catch(err => console.error(err.response.data.message))
     }
@@ -469,7 +494,7 @@ class Products extends Component {
                                     value={this.state.name}
                                     placeholder='Name'
                                     onChange={this.handleChange} />
-                                <EditInput
+                                <EditTextarea
                                     placeholder='Description'
                                     type='text'
                                     name='description'
@@ -499,7 +524,7 @@ class Products extends Component {
                                 </label>
                                 <EditBtn>{this.state.buttonText}</EditBtn>
                                 {this.state.images
-                                    ? <FileListItem>Images Uploaded!</FileListItem>
+                                    ? <SuccessDiv>Images Uploaded!</SuccessDiv>
                                     : <HiddenDiv></HiddenDiv>
                                 }
                                 {this.state.edited
