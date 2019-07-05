@@ -15,15 +15,12 @@ function App() {
                 <Route
                     path='/login'
                     component={Login} />
-                {/* <ProtectedRoute
+                <ProtectedRoute
                     path='/dashboard'
                     component={Dashboard} />
                 <Route
                     exact path='/'
-                    render={() => <Redirect to='/dashboard' />} /> */}
-                <Route
-                    path='/dashboard'
-                    component={Dashboard} />
+                    render={() => <Redirect to='/dashboard' />} />
             </Switch>
         </div>
     )

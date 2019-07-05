@@ -21,16 +21,6 @@ export class AppContextProvider extends Component {
         }
     }
 
-
-    // remove after admin portion is finished
-    componentDidMount() {
-        this.getItems()
-    }
-
-    componentWillUnmount() {
-        this.getItems()
-    }
-
     getItems = () => {
         return itemAxios.get("/api/store")
             .then(response => {
