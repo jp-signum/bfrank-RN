@@ -6,12 +6,13 @@ const CenterDiv = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1.2em;
+  padding-top: 20%;
 `
 
 function Discounts() {
     return(
         <CenterDiv>
-            Coming Soon
+            Coming Soon.
         </CenterDiv>
     )
 }

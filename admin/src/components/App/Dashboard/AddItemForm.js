@@ -10,16 +10,92 @@ const Container = styled.div`
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    height: 66.2vh;
-    overflow-y: scroll;
+    justify-content: center;
+    height: 50vh;
+    margin: 20% 0% 0% 30%;
 `
 
-const AddFormInput = styled.input`
+const AddLabelFile = styled.div`
+    cursor: pointer;
+    color: #F2F2F2;
+    border: 2px solid #F2F2F2;
+    border-radius: 4px;
+    width: 98px;
+    height: 20px;
+    font-size: 1em;
+    box-shadow: 0px 3px 15px rgba(242, 242, 242, 0.11);
+    padding: 4px 0px 2px 8px;
+    margin: 8px 0px 4px 20px;
 
+    :focus{
+        border-bottom: 2px solid rgb(242, 242, 242, 0.9);
+        outline:  none !important;
+        outline-color: none !important;
+        outline-style: none !important;
+        outline-width: none !important;
+        -webkit-focus-ring-color: none !important;
+    } 
+
+    :hover{
+        background: #F2F2F2;
+        color: #0D0D0D;
+        box-shadow: 0px 3px 15px rgba(242, 242, 242, 0);
+    }
 `
 
 const FileInput = styled.input`
+    display: none;
+`
 
+const AddInput = styled.input`
+  background: none;
+    border-bottom: 2px solid rgb(242, 242, 242, 0.6);
+    color: #F2F2F2;
+    width: 60%;
+    font-size: 0.9em;
+    padding: 18px 0px 2px 0px;
+    margin-bottom: 18px;
+
+    :focus{
+        border-bottom: 2px solid rgb(242, 242, 242, 0.9);
+        outline:  none !important;
+        outline-color: none !important;
+        outline-style: none !important;
+        outline-width: none !important;
+        -webkit-focus-ring-color: none !important;
+    } 
+`
+
+const AddBtn = styled.button`
+    cursor: pointer;
+    color: #F2F2F2;
+    border: 2px solid #F2F2F2;
+    background: rgb(13, 13, 13, 0.9);
+    border-radius: 4px;
+    box-shadow: 0px 3px 15px rgba(242, 242, 242, 0.11);
+    height: 35px;
+    width: 110px;
+    font-size: 1.2em;
+    margin: 20px 0px 0px 20px;
+    padding: 2px 0px 4px 0px;
+
+    :hover{
+        background: #F2F2F2;
+        color: #0D0D0D;
+        box-shadow: 0px 3px 15px rgba(242, 242, 242, 0);
+    }
+`
+const HiddenDiv = styled.div`
+  display: none;
+`
+const SuccessDiv = styled.div`
+  padding-top: 20px;
+  color: #7fe060;
+`
+
+const FileListItem = styled.div`
+    color: #7fe060;
+    padding-top: 20px;
 `
 
 class AddItemForm extends Component {
@@ -31,14 +107,16 @@ class AddItemForm extends Component {
             description: '',
             price: '',
             quantity: '',
-            images: [],
+            added: false,
+            images: false,
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({
-            buttonText: '...sending'
+            buttonText: '...sending',
+            added: false
         })
 
         let data = new FormData();
@@ -55,6 +133,9 @@ class AddItemForm extends Component {
         this.props.addItem(data)
             .then((res) => {
                 this.clearInputs()
+                this.setState({
+                    added: true
+                })
             })
             .catch(err => console.error(err.response.data.message))
     }
@@ -68,6 +149,12 @@ class AddItemForm extends Component {
         })
     }
 
+    handleImgUpload = () => {
+        this.setState({
+            images: true
+        })
+    }
+
     clearInputs = () => {
         this.setState({
             name: '',
@@ -75,7 +162,7 @@ class AddItemForm extends Component {
             price: '',
             quantity: '',
             buttonText: 'Add Item',
-            images: []
+            images: false
         })
     }
 
@@ -85,38 +172,49 @@ class AddItemForm extends Component {
                 <Form
                     encType='multipart/form-data'
                     onSubmit={this.handleSubmit}>
-                    <input
+                    <AddInput
                         type='text'
                         name='name'
                         value={this.state.name}
                         placeholder='Name'
-                        onChange={this.handleChange}></input>
-                    <input
+                        onChange={this.handleChange} />
+                    <AddInput
                         placeholder='Description'
                         type='text'
                         name='description'
                         value={this.state.description}
-                        onChange={this.handleChange}></input>
-                    <input
+                        onChange={this.handleChange} />
+                    <AddInput
                         type='text'
                         placeholder='Price'
                         name='price'
                         maxLength={2}
                         value={this.state.price}
-                        onChange={this.handleChange}></input>
-                    <input
+                        onChange={this.handleChange} />
+                    <AddInput
                         placeholder='Quantity'
                         type='text'
                         name='quantity'
                         value={this.state.quantity}
-                        onChange={this.handleChange}></input>
-                    <FileInput
-                        name='file'
-                        multiple
-                        type='file'
-                        ref={(ref) => { this.uploadInput = ref; }}
-                        onChange={this.handleChangeFile} />
-                    <button>{this.state.buttonText}</button>
+                        onChange={this.handleChange} />
+                    <label>
+                        <AddLabelFile><span>Upload Pics</span>
+                            <FileInput
+                                multiple
+                                type='file'
+                                onChange={this.handleImgUpload}
+                                ref={(ref) => { this.uploadInput = ref; }} />
+                        </AddLabelFile>
+                    </label>
+                    <AddBtn>{this.state.buttonText}</AddBtn>
+                    {this.state.images
+                        ? <FileListItem>Images Uploaded!</FileListItem>
+                        : <HiddenDiv></HiddenDiv> 
+                    }
+                    {this.state.added
+                        ? <SuccessDiv>Item Sucessfully Added!</SuccessDiv>
+                        : <HiddenDiv></HiddenDiv>
+                    }
                 </Form>
             </Container>
         )

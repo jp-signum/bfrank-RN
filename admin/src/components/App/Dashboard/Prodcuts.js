@@ -34,8 +34,7 @@ const ListTitle = styled.div`
 
 const AddTitle = styled.div`
     grid-column: 8 / 13;
-    margin-right: 128px;
-    margin-left: -60px;
+    margin-left: -170px;
     text-align: center;
     color: #0D0D0D;
 `

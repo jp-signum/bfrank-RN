@@ -56,7 +56,7 @@ class Menu extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            renderComponent: 'products',
+            renderComponent: 'main',
             dashboardSrc: DashboardWhite,
             dashboardOpacity: '1.0',
             dashboardColor: '#fffcfc',

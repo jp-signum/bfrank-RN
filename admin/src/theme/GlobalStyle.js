@@ -89,6 +89,12 @@ button {
   right: 15.5px;
 }
 
+
+/*file list styles */
+#fileList{
+  color: #c7c7c7 ;
+}
+
 `
 
 export default GlobStyle

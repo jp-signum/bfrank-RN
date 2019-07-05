@@ -95,7 +95,7 @@ const ModalCloseBtn = styled.button`
     right: 30px;
     top: 30px;
     background: none;
-    color: #fffdfd;
+    color: #F2F2F2;
     height: 30px;
     width: 30px;
     font-size: 2em;
@@ -130,7 +130,7 @@ const ModalContainer = styled.div`
     height: 100%;
     width: 100%;
     background: none;
-    color: #fffdfd;
+    color: #F2F2F2;
     display: grid;
     grid-template-columns: 54vw 46vw;
     grid-gap: 10px;
@@ -146,7 +146,7 @@ const CurrentTitle = styled.div`
 
 const EditTitle = styled.div`
     font-size: 1.2em;
-    padding-bottom: 100px;
+    padding-bottom: 30px;
     text-decoration: underline;
 `
 
@@ -184,7 +184,7 @@ const AnswerDiv = styled.div`
 `
 
 const YesSpan = styled.span`
-  color: #0D0D0D;
+    color: #0D0D0D;
     cursor: pointer;
 
   :hover {
@@ -214,13 +214,90 @@ const HiddenDiv = styled.div`
 const EditForm = styled.form`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 50vh;
 `
 
 const FileInput = styled.input`
-
+  display: none;
 `
 
+const EditInput = styled.input`
+  background: none;
+    border-bottom: 2px solid rgb(242, 242, 242, 0.6);
+    color: #F2F2F2;
+    width: 94%;
+    font-size: 0.9em;
+    padding: 18px 0px 2px 0px;
+    margin-bottom: 18px;
+
+    :focus{
+        border-bottom: 2px solid rgb(242, 242, 242, 0.9);
+        outline:  none !important;
+        outline-color: none !important;
+        outline-style: none !important;
+        outline-width: none !important;
+        -webkit-focus-ring-color: none !important;
+    } 
+`
+
+const AddLabelFile = styled.div`
+    cursor: pointer;
+    color: #F2F2F2;
+    border: 2px solid #F2F2F2;
+    border-radius: 4px;
+    width: 98px;
+    height: 20px;
+    font-size: 1em;
+    box-shadow: 0px 3px 15px rgba(242, 242, 242, 0.11);
+    padding: 4px 0px 2px 8px;
+    margin: 8px 0px 4px 14px;
+
+    :focus{
+        border-bottom: 2px solid rgb(242, 242, 242, 0.9);
+        outline:  none !important;
+        outline-color: none !important;
+        outline-style: none !important;
+        outline-width: none !important;
+        -webkit-focus-ring-color: none !important;
+    } 
+
+    :hover{
+        background: #F2F2F2;
+        color: #0D0D0D;
+        box-shadow: 0px 3px 15px rgba(242, 242, 242, 0);
+    }
+`
+
+const EditBtn = styled.button`
+    cursor: pointer;
+    color: #F2F2F2;
+    border: 2px solid #F2F2F2;
+    background: rgb(13, 13, 13, 0.9);
+    border-radius: 4px;
+    box-shadow: 0px 3px 15px rgba(242, 242, 242, 0.11);
+    height: 35px;
+    width: 110px;
+    font-size: 1.2em;
+    margin: 20px 0px 0px 14px;
+    padding: 2px 0px 4px 0px;
+
+    :hover{
+        background: #F2F2F2;
+        color: #0D0D0D;
+        box-shadow: 0px 3px 15px rgba(242, 242, 242, 0);
+    }
+`
+
+const SuccessDiv = styled.div`
+  padding-top: 20px;
+  color: #7fe060;
+`
+
+const FileListItem = styled.div`
+    color: #7fe060;
+    padding-top: 20px;
+`
 
 class Products extends Component {
     constructor(props) {
@@ -234,7 +311,8 @@ class Products extends Component {
             price: '',
             quantity: '',
             id: '',
-            images: [],
+            images: false,
+            edited: false
         };
     }
 
@@ -268,7 +346,8 @@ class Products extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({
-            buttonText: '...sending'
+            buttonText: '...sending',
+            edited: false
         })
 
         let data = new FormData();
@@ -284,7 +363,10 @@ class Products extends Component {
 
         this.props.editItem(this.props.nail._id, data)
             .then((res) => {
-                this.clearInputs()
+                this.clearInputs();
+                this.setState({
+                    edited: true
+                });
             })
             .catch(err => console.error(err.response.data.message))
     }
@@ -298,6 +380,12 @@ class Products extends Component {
         })
     }
 
+    handleImgUpload = () => {
+        this.setState({
+            images: true
+        })
+    }
+
     clearInputs = () => {
         this.setState({
             name: '',
@@ -306,7 +394,7 @@ class Products extends Component {
             quantity: '',
             id: '',
             buttonText: 'Edit Item',
-            images: []
+            images: false
         })
     }
 
@@ -375,38 +463,49 @@ class Products extends Component {
                             <EditForm
                                 encType='multipart/form-data'
                                 onSubmit={this.handleSubmit}>
-                                <input
+                                <EditInput
                                     type='text'
                                     name='name'
                                     value={this.state.name}
-                                    placeholder='&nbsp;'
-                                    onChange={this.handleChange}></input>
-                                <input
-                                    placeholder='&nbsp;'
+                                    placeholder='Name'
+                                    onChange={this.handleChange} />
+                                <EditInput
+                                    placeholder='Description'
                                     type='text'
                                     name='description'
                                     value={this.state.description}
-                                    onChange={this.handleChange}></input>
-                                <input
+                                    onChange={this.handleChange} />
+                                <EditInput
                                     type='text'
-                                    placeholder='&nbsp;'
+                                    placeholder='Price'
                                     name='price'
                                     maxLength={2}
                                     value={this.state.price}
-                                    onChange={this.handleChange}></input>
-                                <input
-                                    placeholder='&nbsp;'
+                                    onChange={this.handleChange} />
+                                <EditInput
+                                    placeholder='Quantity'
                                     type='text'
                                     name='quantity'
                                     value={this.state.quantity}
-                                    onChange={this.handleChange}></input>
-                                <FileInput
-                                    name='file'
-                                    multiple
-                                    type='file'
-                                    ref={(ref) => { this.uploadInput = ref; }}
-                                    onChange={this.handleChangeFile} />
-                                <button>{this.state.buttonText}</button>
+                                    onChange={this.handleChange} />
+                                <label>
+                                    <AddLabelFile><span>Upload Pics</span>
+                                        <FileInput
+                                            multiple
+                                            type='file'
+                                            onChange={this.handleImgUpload}
+                                            ref={(ref) => { this.uploadInput = ref; }} />
+                                    </AddLabelFile>
+                                </label>
+                                <EditBtn>{this.state.buttonText}</EditBtn>
+                                {this.state.images
+                                    ? <FileListItem>Images Uploaded!</FileListItem>
+                                    : <HiddenDiv></HiddenDiv>
+                                }
+                                {this.state.edited
+                                    ? <SuccessDiv>Item Sucessfully Edited!</SuccessDiv>
+                                    : <HiddenDiv></HiddenDiv>
+                                }
                             </EditForm>
                         </EditContainer>
                     </ModalContainer>
