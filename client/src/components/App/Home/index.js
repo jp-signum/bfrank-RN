@@ -8,8 +8,8 @@ import media from '../../../theme/Device'
 import MailChimp from './Mailchimp'
 import OutboundLink from '../../Shared/OutboundLink'
 
-import MainLogoDark from '../../../../assets/icons/main_logo_dark.svg'
-import rSvg from '../../../../assets/icons/R_white.svg'
+import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
+import rSvg from '../../../assets/icons/R_white.svg'
 
 const LandingContainer = styled.div`
     background: #100606;
