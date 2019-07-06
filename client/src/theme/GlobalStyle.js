@@ -34,7 +34,7 @@ html, body {
 body {
   padding: 0;
   margin: 0;
-  font-family: 'AceSans', sans-serif;
+  font-family: 'Privity', sans-serif;
 }
 
 input {
@@ -54,49 +54,47 @@ button {
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 44px;
-  height: 40px;
-  top: 20px;
-  right: 26px;
+  width: 30px;
+  height: 30px;
+  top: 17px;
+  left: 24px;
   z-index: 10 !important;
   transition: ease 0.5s;
     -o-transition: all 0.5s ease;
 
   :hover > span span {
-    background: #D63C4F !important; 
+    background: rgb(13, 13, 13, 0.3) !important; 
     opacity: 1 !important;
   }
 
   ${media.tablet`
-    width: 50px;
-    height: 46px;
-    top: 24px;
-    right: 34px;    
+    width: 34px;
+    height: 34px;
+    top: 20px;
+    left: 27px;    
   `}
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #F4FAFF;
-  border-radius: 3px;
-  height: 10% !important;
+  height: 6% !important;
   transition: all ease 0.5s;
   -o-transition: all .5s ease;
 
   ${media.tablet`
-    height: 12% !important;
+    height: 8% !important;
   `}
 }
 
 .bm-burger-bars-DARK {
-  background: #090404;
-  border-radius: 3px;
-  height: 10% !important;
+  background: #0D0D0D;
+  height: 6% !important;
   transition: all ease 0.5s;
   -o-transition: all .5s ease;
 
   ${media.tablet`
-    height: 12% !important;
+    height: 8% !important;
   `}
 }
 
@@ -104,41 +102,28 @@ button {
 .bm-cross-button {
   height: 30px !important;
   width: 30px !important;
-  right: 36px !important;
-  top: -31px !important;
+  right: 12px !important;
+  top: 14px !important;
+  border-radius: none !important;
   
   :hover > span span {
-    background: #D63C4F !important;
+    background: rgb(242, 242, 242, 0.3) !important;
   }
-
-  ${media.phoneS`
-    height: 31px !important;
-    width: 31px !important;
-    right: 34px !important;
-    top: -31px !important;
-  `}
-
-  ${media.phoneM`
-    height: 34px !important;
-    width: 34px !important;
-    right: 34px !important;
-    top: -31px !important;
-  `}
 
   ${media.tablet`
     height: 34px !important;
     width: 34px !important;
-    right: 47px !important;
-    top: -36px !important;
+    right: 30px !important;
+    top: 23px !important;
   `}
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #fffdfd;
+  background: #fffcfc;
   height: 25px !important;
   width: 2px !important;
-  border-radius: 4px;
+
 
   ${media.tablet`
     height: 30px !important;
@@ -151,10 +136,9 @@ button {
   width: 3px; 
   height: 14px; 
   transform: rotate(-45deg);
-  background: #fffdfd;
+  background: #F2F2F2;
   height: 25px ;
   width: 2px ;
-  border-radius: 4px;
   top: -6px;
   right: 15.5px;
   
@@ -169,10 +153,9 @@ button {
   width: 3px; 
   height: 14px; 
   transform: rotate(45deg);
-  background: #fffdfd;
+  background: #F2F2F2;
   height: 25px ;
   width: 2px ;
-  border-radius: 4px;
   top: -6px;
   right: 15.5px;
 
@@ -202,12 +185,12 @@ button {
 /* Individual item */
 .bm-item {
   display: inline-block;
-  text-align: right;
+  text-align: left;
 }
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgb(9, 4, 4, 0.9) !important;
+  background: rgb(4, 4, 4, 0.9) !important;
   top: 0 !important;
   left: 0 !important;
   overflow: hidden !important; 
@@ -216,22 +199,21 @@ button {
 /* styling for the menu items */
 .menu-item {
   text-decoration: none;
-  color: #fffdfd;
+  letter-spacing: 0.05em;
+  color: #fffcfc;
+  font-size: 1.2em;
+  padding-bottom: 20px;
+  margin-top: 20px;
   transition: transform 0.875s cubic-bezier(0.7, 0, 0.3, 1)  !important ;
   -o-transition: transform 0.875s cubic-bezier(0.7, 0, 0.3, 1)  !important ;
 
 
   :hover {
-    color: #D63C4F;
+    color: rgb(242, 242, 242, 0.3);
   }
 
-    ${media.phoneS`
-      padding-bottom: 20px;
-      font-size: 1.2em;
-    `}
       
     ${media.phoneM`
-      padding-bottom: 30px;
       font-size: 1.4em;
     `}
 }

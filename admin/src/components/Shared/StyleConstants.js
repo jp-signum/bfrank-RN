@@ -9,6 +9,6 @@ export const customModalStyles = {
     },
     overlay: {
         zIndex: 20,
-        background: 'rgb(9, 4, 4, 0.9)',
+        background: 'rgb(4, 4, 4, 0.9)',
     }
 }

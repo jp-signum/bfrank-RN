@@ -1,32 +1,33 @@
 export const NavDivLanding = {
-    height: '90px',
+    height: '70px',
     width: '100%',
-    backgroundColor: 'rgba(13, 13, 13, 0)',
+    backgroundColor: 'rgba(13, 13, 13, 1)',
     position: 'fixed',
     top: 0,
     zIndex: 10,
 }, NavDivLight = {
-    height: '80px',
+    height: '60px',
     width: '100%',
-    backgroundColor: 'rgba(242, 242, 242, .92)',
+    backgroundColor: 'rgba(242, 242, 242)',
     position: 'fixed',
     top: 0,
     zIndex: 10,
 }, NavDivLightLap = {
-    height: '90px',
+    height: '70px',
     width: '100%',
-    backgroundColor: 'rgba(242, 242, 242, .92)',
+    backgroundColor: 'rgba(242, 242, 242)',
     position: 'fixed',
     top: 0,
     zIndex: 10,
 }, NavDivTrans = {
-    height: '80px',
+    height: '60px',
     width: '100%',
-    backgroundColor: 'rgba(242, 242, 242, .0)',
+    backgroundColor: 'rgba(242, 242, 242, 0)',
     position: 'fixed',
     top: 0,
     zIndex: 10,
-}, 
+}
+
 // customModalStyles = {
 //     content: {
 //         top: 0,

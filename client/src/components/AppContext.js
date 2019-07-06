@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-// const itemAxios = axios.create({
-//     transformRequest: [data => {
-//         const formData = new FormData();
-//         for (let key in data) {
-//             formData.append(key, data[key])
-//         }
-//         return formData
-//     }]
-// });
-
 const itemAxios = axios.create();
 
 itemAxios.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
@@ -26,9 +16,18 @@ export class AppContextProvider extends Component {
         super()
         this.state = {
             cart: [],
+            nails: [],
             user: JSON.parse(localStorage.getItem('user')) || {},
             token: localStorage.getItem('token') || ''
         }
+    }
+
+    getItems = () => {
+        return itemAxios.get('/api/store')
+            .then(response => {
+                this.setState({ nails: response.data });
+                return response;
+            })
     }
 
     login = (credentials) => {
@@ -53,6 +52,14 @@ export class AppContextProvider extends Component {
             user: {},
             token: ''
         })
+    }
+
+    componentDidMount() {
+        this.getItems();
+    }
+
+    componentWillUnmount() {
+        this.getItems();
     }
 
     render() {

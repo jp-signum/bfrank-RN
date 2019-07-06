@@ -17,7 +17,7 @@ const SocialDiv = styled.div`
   position: fixed;
   bottom: 12px;
     right: 12px;
-    color: rgba(255, 252, 252, 0.3);
+    color: rgba(252, 252, 252, 0.3);
     font-size: 0.6em;
 `
 
@@ -58,8 +58,7 @@ class NavMenu extends Component {
             <Menu
                 isOpen={this.state.menuOpen}
                 onStateChange={(state) => this.handleStateChange(state)}
-                burgerBarClassName={this.props.burgerBarClassName}
-                right>
+                burgerBarClassName={this.props.burgerBarClassName}>
                 <Link onClick={() => this.closeMenu()} to='/' id='home' className='menu-item'>Home</Link>
                 <Link onClick={() => this.closeMenu()} to='/store/productsList' id='storeProductsList' className='menu-item'>Store</Link>
                 <Link onClick={() => this.closeMenu()} to='/about' id='about' className='menu-item'>About</Link>
