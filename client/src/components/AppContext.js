@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 const itemAxios = axios.create();
-
 itemAxios.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
+
+const getAxios = axios.create();
 
 const AppContext = React.createContext();
 
@@ -22,16 +23,20 @@ export class AppContextProvider extends Component {
         }
     }
 
-    getItems = () => {
-        return itemAxios.get('/api/store')
+    getItems = async () => {
+        try {
+            return getAxios.get('/api/store/')
             .then(response => {
                 this.setState({ nails: response.data });
                 return response;
             })
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     login = (credentials) => {
-        return axios.post('/auth/login', credentials)
+        return itemAxios.post('/auth/login', credentials)
             .then(response => {
                 const { token, user } = response.data;
                 localStorage.setItem('token', token)

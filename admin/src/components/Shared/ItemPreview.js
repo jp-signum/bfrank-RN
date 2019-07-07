@@ -78,7 +78,7 @@ const Quantity = styled.div`
 
 const CurrentQuantity = styled.div`
     font-size: 0.9em;
-    padding-bottom: 10px;
+    padding: 10px 0px 10px 0px;
 `
 
 const RelativeDiv1 = styled.div`

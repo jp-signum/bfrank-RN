@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const cloudinary = require('cloudinary')
 const morgan = require('morgan')
 const expressJwt = require('express-jwt')
-const cors = require('cors');
+const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
 const unless = require('express-unless')
@@ -47,8 +47,8 @@ mongoose.connect(url,
     }
 );
 
-//decode jwt and add a req.body on all request sent to /api
-app.use('/api', expressJwt({ secret: process.env.SECRET }));
+// //decode jwt and add a req.body on all request sent to /api
+app.use('/api/store', expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET'}));
 
 //routes
 app.use('/auth', require('./routes/auth'));

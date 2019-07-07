@@ -167,12 +167,11 @@ button {
 
 /* General sidebar styles */
 .bm-menu {
-  margin-top: 80px;
-  padding: 0px 31px 0px 0px;
+  margin: 140px 0px 0px 30px;
   font-size: 1.3em;
 
   ${media.tablet`
-    margin-top: 120px;
+    margin: 130px 0px 0px 40px;
     font-size: 1.8em;
   `}
 }
@@ -186,6 +185,7 @@ button {
 .bm-item {
   display: inline-block;
   text-align: left;
+  margin-top: 10px
 }
 
 /* Styling of overlay */
@@ -202,19 +202,16 @@ button {
   letter-spacing: 0.05em;
   color: #fffcfc;
   font-size: 1.2em;
-  padding-bottom: 20px;
-  margin-top: 20px;
+  padding-bottom: 14px;
   transition: transform 0.875s cubic-bezier(0.7, 0, 0.3, 1)  !important ;
   -o-transition: transform 0.875s cubic-bezier(0.7, 0, 0.3, 1)  !important ;
-
 
   :hover {
     color: rgb(242, 242, 242, 0.3);
   }
 
-      
     ${media.phoneM`
-      font-size: 1.4em;
+      font-size: 1.3em;
     `}
 }
 

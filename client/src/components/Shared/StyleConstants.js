@@ -27,18 +27,3 @@ export const NavDivLanding = {
     top: 0,
     zIndex: 10,
 }
-
-// customModalStyles = {
-//     content: {
-//         top: 0,
-//         left: 0,
-//         right: 0,
-//         bottom: 0,
-//         position: 'fixed',
-//         background: 'none',
-//     },
-//     overlay: {
-//         zIndex: 20,
-//         background: 'rgb(9, 4, 4, 0.9)',
-//     }
-// }

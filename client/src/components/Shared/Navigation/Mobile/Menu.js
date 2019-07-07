@@ -3,22 +3,34 @@ import { stack as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import OutboundLink from '../../OutboundLink'
+
 const PositionDiv = styled.div`
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
 `
 
-const SocialDiv = styled.div`
-  position: fixed;
-  bottom: 12px;
-    right: 12px;
-    color: rgba(252, 252, 252, 0.3);
-    font-size: 0.6em;
+const SocialContainer = styled.div`
+    position: absolute;
+    bottom: 4%;
+    left: 24%;
+    letter-spacing: .04em;
+    font-size: 1.1em;
+`
+
+const SociallinkDiv = styled.div`
+    display: inline;
+    padding-right: 6px;
+`
+const SociallinkDivD = styled(SociallinkDiv)`
+   position: relative;
+   top: 3.5px;
+   color: rgba(242, 242, 242, 0.4);
 `
 
 class NavMenu extends Component {
@@ -66,9 +78,21 @@ class NavMenu extends Component {
 
 
                 <PositionDiv>
-                    <SocialDiv>
-                        Test
-                    </SocialDiv>
+                    <SocialContainer>
+                        <SociallinkDiv>
+                            <OutboundLink spanText='Instagram'
+                                eventLabel='toInstagram'
+                                to='//www.instagram.com/rave_nailz/'
+                                shop='false' />
+                        </SociallinkDiv>
+                        <SociallinkDivD>&#8226;</SociallinkDivD>
+                        <SociallinkDiv>
+                            <OutboundLink spanText='Facebook'
+                                eventLabel='toFacebook'
+                                to='//www.facebook.com/RaveNailz/'
+                                shop='false' />
+                        </SociallinkDiv>
+                    </SocialContainer>
                 </PositionDiv>
             </Menu>
         )

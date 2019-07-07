@@ -1,18 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import SingluarItem from './SingularItem'
 
 const Container = styled.div`
 
 `
 
-function SingularItem() {
+function SingularItemView(props) {
     
     return (
         <Container>
-            
+            <SingluarItem id={props.match.params.id} />
         </Container>
     )
 }
 
-export default SingularItem;
+export default SingularItemView;
