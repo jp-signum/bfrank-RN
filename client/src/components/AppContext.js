@@ -23,7 +23,7 @@ export class AppContextProvider extends Component {
         }
     }
 
-    getItems = async () => {
+    getItems = () => {
         try {
             return getAxios.get('/api/store/')
             .then(response => {
