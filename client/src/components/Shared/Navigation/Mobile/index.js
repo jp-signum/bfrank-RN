@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { withBps } from 'react-bps'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import Modal from 'react-modal'
 
 import NavMenu from './Menu'
 

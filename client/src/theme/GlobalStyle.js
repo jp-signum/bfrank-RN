@@ -77,7 +77,7 @@ button {
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #F4FAFF;
+  background: #fdfdfd;
   height: 6% !important;
   transition: all ease 0.5s;
   -o-transition: all .5s ease;
@@ -107,7 +107,7 @@ button {
   border-radius: none !important;
   
   :hover > span span {
-    background: rgb(242, 242, 242, 0.3) !important;
+    background: rgb(243, 243, 243, 0.3) !important;
   }
 
   ${media.tablet`
@@ -120,7 +120,7 @@ button {
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #fffcfc;
+  background: #fdfdfd;
   height: 25px !important;
   width: 2px !important;
 
@@ -136,7 +136,7 @@ button {
   width: 3px; 
   height: 14px; 
   transform: rotate(-45deg);
-  background: #F2F2F2;
+  background: #fdfdfd;
   height: 25px ;
   width: 2px ;
   top: -6px;
@@ -153,7 +153,7 @@ button {
   width: 3px; 
   height: 14px; 
   transform: rotate(45deg);
-  background: #F2F2F2;
+  background: #fdfdfd;
   height: 25px ;
   width: 2px ;
   top: -6px;
@@ -200,14 +200,14 @@ button {
 .menu-item {
   text-decoration: none;
   letter-spacing: 0.05em;
-  color: #fffcfc;
+  color: #fdfdfd;
   font-size: 1.2em;
   padding-bottom: 14px;
   transition: transform 0.875s cubic-bezier(0.7, 0, 0.3, 1)  !important ;
   -o-transition: transform 0.875s cubic-bezier(0.7, 0, 0.3, 1)  !important ;
 
   :hover {
-    color: rgb(242, 242, 242, 0.3);
+    color: rgb(243, 243, 243, 0.3);
   }
 
     ${media.phoneM`

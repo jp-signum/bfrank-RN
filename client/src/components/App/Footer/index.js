@@ -7,7 +7,7 @@ const FixedContainer = styled.div`
     position: fixed;
     bottom: 12px;
     right: 12px;
-    color: rgba(255, 252, 252, 0.3);
+    color: rgba(253, 253, 253, 0.3);
     font-size: 0.6em;
 `
 

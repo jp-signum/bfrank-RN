@@ -7,7 +7,8 @@ const Container = styled.div`
 
 `
 const Img = styled.img`
-    width: 50%;
+    width: 96%;
+    padding: 2%;
 `
 
 const Name = styled.div`
