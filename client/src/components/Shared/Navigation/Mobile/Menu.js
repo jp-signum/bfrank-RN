@@ -8,8 +8,7 @@ import OutboundLink from '../../OutboundLink'
 const PositionDiv = styled.div`
     position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
+    height: 20%;
     bottom: 0;
     right: 0;
     left: 0;
@@ -21,16 +20,19 @@ const SocialContainer = styled.div`
     left: 24%;
     letter-spacing: .04em;
     font-size: 1.1em;
+    z-index: 2000;
 `
 
 const SociallinkDiv = styled.div`
     display: inline;
     padding-right: 6px;
+    z-index: 2000;
 `
 const SociallinkDivD = styled(SociallinkDiv)`
+   font-size: .6em;
    position: relative;
-   top: 3.5px;
-   color: rgba(242, 242, 242, 0.4);
+   bottom: 2px;
+   color: rgb(214, 60, 79, 0.8);
 `
 
 class NavMenu extends Component {
@@ -72,7 +74,7 @@ class NavMenu extends Component {
                 onStateChange={(state) => this.handleStateChange(state)}
                 burgerBarClassName={this.props.burgerBarClassName}>
                 <Link onClick={() => this.closeMenu()} to='/' id='home' className='menu-item'>Home</Link>
-                <Link onClick={() => this.closeMenu()} to='/store/productsList' id='storeProductsList' className='menu-item'>Store</Link>
+                <Link onClick={() => this.closeMenu()} to='/store/productlist' id='storeProductsList' className='menu-item'>Store</Link>
                 <Link onClick={() => this.closeMenu()} to='/about' id='about' className='menu-item'>About</Link>
                 <Link onClick={() => this.closeMenu()} to='/contact' id='contact' className='menu-item'>Contact</Link>
 
@@ -82,15 +84,13 @@ class NavMenu extends Component {
                         <SociallinkDiv>
                             <OutboundLink spanText='Instagram'
                                 eventLabel='toInstagram'
-                                to='//www.instagram.com/rave_nailz/'
-                                shop='false' />
+                                to='//www.instagram.com/rave_nailz/' />
                         </SociallinkDiv>
-                        <SociallinkDivD>&#8226;</SociallinkDivD>
+                        <SociallinkDivD>&#x2662;</SociallinkDivD>
                         <SociallinkDiv>
                             <OutboundLink spanText='Facebook'
                                 eventLabel='toFacebook'
-                                to='//www.facebook.com/RaveNailz/'
-                                shop='false' />
+                                to='//www.facebook.com/RaveNailz/' />
                         </SociallinkDiv>
                     </SocialContainer>
                 </PositionDiv>

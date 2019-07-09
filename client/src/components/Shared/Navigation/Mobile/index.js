@@ -42,10 +42,10 @@ const RelativeContainer = styled.div`
 `
 
 const CartCount = styled.sup`
-    /* color: rgba(13, 13, 13, 0.4); */
-    color: rgb(69, 80, 89, 0.9);
+    color: rgb(214, 60, 79, 0.8);
     position: relative;
-    bottom: 6px;
+    bottom: 7px;
+    right: 2px;
     font-size: 0.6em;
 `
 
@@ -110,7 +110,12 @@ class NavigationMobile extends Component {
                     : <RelativeContainer>
                         <NavMenu burgerBarClassName={this.props.burgerBarClassName} />
                         <Link to='/cart/:id' style={{ textDecoration: 'none' }} >
-                            <MobileName color={this.props.color}><CartCount>{this.props.cartCount}</CartCount>Cart</MobileName></Link>
+                            <MobileName color={this.props.color}>
+                                <CartCount>
+                                {this.props.cartCount >= 1 &&
+                                    <span>({this.props.cartCount})</span>
+                                }
+                                </CartCount>Cart</MobileName></Link>
                     </RelativeContainer>
                 }
             </div>

@@ -5,9 +5,9 @@ import ReactGA from 'react-ga'
 import media from '../../theme/Device'
 
 const StyledSpan = styled.span`
-    color: rgba(253, 253, 253, 0.4);
-    font-size: 0.8em;
-    transition: ease 0.5s;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+    color: rgba(253, 253, 253, 0.45);
 
     :hover {
         color: rgba(253, 253, 253, 1);
