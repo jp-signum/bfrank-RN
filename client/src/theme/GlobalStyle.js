@@ -102,13 +102,17 @@ button {
 .bm-cross-button {
   height: 30px !important;
   width: 30px !important;
-  right: 12px !important;
+  left: 24px !important;
   top: 14px !important;
   border-radius: none !important;
   
   :hover > span span {
-    background: rgb(243, 243, 243, 0.3) !important;
+    background: rgb(191, 69, 91,  0.3) !important;
   }
+
+  ${media.phoneM`
+    left: 24px !important;
+  `}
 
   ${media.tablet`
     height: 34px !important;
@@ -169,6 +173,7 @@ button {
 .bm-menu {
   margin: 140px 0px 0px 30px;
   font-size: 1.3em;
+  width: 100vw;
 
   ${media.tablet`
     margin: 130px 0px 0px 40px;
@@ -185,7 +190,12 @@ button {
 .bm-item {
   display: inline-block;
   text-align: left;
-  margin-top: 10px
+  margin-top: 10px;
+  outline:  none !important;
+    outline-color: none !important;
+    outline-style: none !important;
+    outline-width: none !important;
+    -webkit-focus-ring-color: none !important;
 }
 
 /* Styling of overlay */
@@ -193,6 +203,7 @@ button {
   background: rgb(4, 4, 4, 0.9) !important;
   top: 0 !important;
   left: 0 !important;
+  right: 0 !important;
   overflow: hidden !important; 
 }
 
@@ -214,6 +225,7 @@ button {
       font-size: 1.3em;
     `}
 }
+
 
 /* strange menu link gold ring focus fix */
 

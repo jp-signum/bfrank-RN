@@ -4,12 +4,20 @@ import styled from 'styled-components'
 
 import { Meta } from '../../../Shared/Meta'
 import { NavDivDark, NavDivDarkLap } from '../../../Shared/StyleConstants'
+import { withContext } from '../../../AppContext'
 
+import media from '../../../../theme/Device'
 import ProductList from './ProductList'
 import Navigation from '../../../Shared/Navigation/Mobile/index'
 
 const Container = styled.div`
     margin-top: 20%;
+     transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+     ${media.tablet`
+        margin-top: 6%;
+    `}
 `
 
 function Store() {
@@ -31,4 +39,4 @@ function Store() {
     )
 }
 
-export default Store;
+export default withContext(Store);

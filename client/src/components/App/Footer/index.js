@@ -17,6 +17,12 @@ const Container = styled.div`
     padding: 4%;
     display: flex;
     flex-direction: column;
+    z-index: -2;
+
+    ${media.tablet`
+        flex-direction: row;
+        justify-content: space-between;
+    `}
 `
 
 const FlexContainer = styled.div`
@@ -25,7 +31,7 @@ const FlexContainer = styled.div`
 
     ${media.tablet`
         text-align: right;
-        padding: 0px 20px 10px 0px;
+        padding-right: 9%;
     `}
 
     ${media.laptop`
@@ -53,7 +59,6 @@ const FeatureDiv = styled.div`
 
     ${media.tablet`
         max-width: 54%;
-        padding-left: 20px;
     `}
 
     ${media.laptop`
@@ -71,28 +76,23 @@ const FeatureDiv = styled.div`
 `
 
 const FeatureDescriptionDiv = styled.div`
-    font-family: 'BwNistaGrot', sans-serif;
+    width: 94%;
     position: relative;
     font-weight: 540;
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
     font-size: 1.3em;
-
-    ${media.phoneS`
-        font-size: 1.4em;
-        line-height: 1.2em;
-    `}
+    line-height: 1.2em;
       
     ${media.phoneM`
-        font-size: 1.6em;
+        font-size: 1.4em;
     `}
           
     ${media.phoneL`
-        font-size: 1.8em;
+        font-size: 1.5em;
     `}
           
     ${media.tablet`
-        padding-top: 0px;
         padding: 0px 0px 0px 0px; 
     `}
 
@@ -110,6 +110,12 @@ const SocialContainer = styled.div`
 const SociallinkDiv = styled.div`
     display: inline;
     padding-right: 6px;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+     ${media.tablet`
+        padding: 0px 0px 0px 0px; 
+    `}
 `
 const SociallinkDivD = styled(SociallinkDiv)`
    font-size: 0.6em;
@@ -122,11 +128,8 @@ const FooterInfoDiv1 = styled.div`
     font-size: 1.1em;
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
+    padding: 2px 0px 10px 0px;
 
-    ${media.phoneS`
-        padding: 0px 0px 10px 20px;
-    `}
-          
     ${media.tablet`
         font-size: 1.2em;    
     `}
@@ -139,8 +142,7 @@ const FooterInfoDiv1 = styled.div`
 const FooterInfoDiv2 = styled.div`
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
-    padding: 10px 0px 10px 0px;
-
+    padding: 10px 0px 2px 0px;
     transition:all ease 0.5s;
         -o-transition: all .5s ease;
           
@@ -171,6 +173,23 @@ const EmailSpace = styled.div`
     letter-spacing: 0.12em;
 `
 
+const ModalCloseBtn = styled.button`
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    background: none;
+    color: #fffdfd;
+    height: 30px;
+    width: 30px;
+    font-size: 2em;
+    transition: ease 0.5s;
+
+    :hover {
+        color: #D63C4F;
+    }
+`
+
 class Footer extends Component {
     constructor(props) {
         super(props);
@@ -183,6 +202,12 @@ class Footer extends Component {
         this.setState({
             showModal: true
         });
+    }
+
+    closeModal = () => {
+        this.setState({
+
+        })
     }
 
     componentDidUpdate() {
@@ -223,9 +248,14 @@ class Footer extends Component {
                 </FlexContainer>
                 <Modal
                     isOpen={this.state.showModal}
-                    contentLabel='List of available position modal'
+                    contentLabel='Mailchimp signup modal'
                     onRequestClose={this.closeModal}
                     style={customModalStyles}>
+
+                    <ModalCloseBtn onClick={this.closeModal}>
+                        <span className="bm-cross2"></span>
+                        <span className="bm-cross3"></span>
+                    </ModalCloseBtn>
                 </Modal>
             </Container>
         )

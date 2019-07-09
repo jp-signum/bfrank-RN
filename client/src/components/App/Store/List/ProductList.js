@@ -3,17 +3,30 @@ import styled from 'styled-components'
 
 import { withContext } from '../../../AppContext'
 
-import ItemPreview from './ItemPreview';
+import media from '../../../../theme/Device'
+
+import ItemPreview from './ItemPreview'
 
 const Container = styled.div`
     width: 100%;
     height: 100%;
     background: #fdfdfd;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+     ${media.tablet`
+        display: grid;
+        grid-template-columns: 28.5vw 28.5vw 28.5vw;
+        grid-gap: 20px;
+        padding: 4%;
+    `}
+
+    ${media.laptop`
+        grid-template-columns: auto auto auto auto;
+    `}
 `
 
-const List = styled.div`
-   
-`
+
 
 function ProductList(props) {
     const rawItems = props.nails
@@ -29,9 +42,7 @@ function ProductList(props) {
     })
     return (
         <Container>
-            <List>
-                {AllItems}
-            </List>
+            {AllItems}
         </Container>
     )
 }

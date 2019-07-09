@@ -1,5 +1,5 @@
 export const NavDivLanding = {
-    height: '70px',
+    height: '80px',
     width: '100%',
     backgroundColor: 'rgba(13, 13, 13, 1)',
     position: 'fixed',
@@ -13,7 +13,7 @@ export const NavDivLanding = {
     top: 0,
     zIndex: 10,
 }, NavDivLightLap = {
-    height: '70px',
+    height: '80px',
     width: '100%',
     backgroundColor: 'rgba(243, 243, 243)',
     position: 'fixed',
@@ -27,14 +27,14 @@ export const NavDivLanding = {
     top: 0,
     zIndex: 10,
 }, NavDivDarkLap = {
-    height: '70px',
+    height: '80px',
     width: '100%',
     backgroundColor: 'rgba(13, 13, 13)',
     position: 'fixed',
     top: 0,
     zIndex: 10,
 }, NavDivTrans = {
-    height: '60px',
+    height: '0px',
     width: '100%',
     backgroundColor: 'rgba(243, 243, 243, 0)',
     position: 'fixed',

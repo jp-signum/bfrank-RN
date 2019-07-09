@@ -3,8 +3,11 @@ import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import ReactGA from 'react-ga'
 
+import { withContext } from '../../AppContext'
 import { Meta } from '../../Shared/Meta'
+
 import media from '../../../theme/Device'
+
 import MailChimp from './Mailchimp'
 import OutboundLink from '../../Shared/OutboundLink'
 
@@ -273,4 +276,4 @@ function Home() {
     )
 }
 
-export default Home
+export default withContext(Home);

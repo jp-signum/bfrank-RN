@@ -3,11 +3,25 @@ import styled from 'styled-components'
 import Currency from 'react-currency-formatter'
 import { Link } from 'react-router-dom'
 
+import media from '../../../../theme/Device'
+
 const Container = styled.div`
     padding: 4%;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+     ${media.tablet`
+        padding: 0px;
+    `}
 `
 const Img = styled.img`
     width: 100%;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+     /* ${media.tablet`
+        width: 92%;
+    `} */
 `
 
 const Name = styled.div`
@@ -48,7 +62,6 @@ function ItemPreview(props) {
             </Quantity>
             <Name>{itemName}</Name>
             <Price><Currency quantity={itemPrice} symbol="$" locale="en" /></Price>
-
         </Container>
     )
 }

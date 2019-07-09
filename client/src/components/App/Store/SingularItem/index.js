@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { withContext } from '../../../AppContext'
+
 import SingluarItem from './SingularItem'
 
 const Container = styled.div`
@@ -16,4 +18,4 @@ function SingularItemView(props) {
     )
 }
 
-export default SingularItemView;
+export default withContext(SingularItemView);

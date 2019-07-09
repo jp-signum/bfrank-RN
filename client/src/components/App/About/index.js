@@ -2,8 +2,7 @@ import React from 'react'
 
 import { withContext } from '../../AppContext'
 
-
-function Cart() {
+function About() {
     
     return (
         <div>
@@ -12,4 +11,4 @@ function Cart() {
     )
 }
 
-export default withContext(Cart);
+export default withContext(About);
