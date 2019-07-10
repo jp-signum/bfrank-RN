@@ -12,6 +12,7 @@ const StyledSpan = styled.span`
     color: ${props => props.color};
     transition: all 0.25s ease-in;
     -o-transition: all 0.25s ease-in;
+    cursor: pointer;
 
     :hover{
         background-size: 100% 88%;

@@ -171,9 +171,8 @@ button {
 
 /* General sidebar styles */
 .bm-menu {
-  margin: 140px 0px 0px 30px;
+  margin: 140px 100px 0px 30px;
   font-size: 1.3em;
-  width: 100vw;
 
   ${media.tablet`
     margin: 130px 0px 0px 40px;

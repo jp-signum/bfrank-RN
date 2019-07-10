@@ -17,7 +17,6 @@ const Container = styled.div`
     padding: 4%;
     display: flex;
     flex-direction: column;
-    z-index: -2;
 
     ${media.tablet`
         flex-direction: row;
@@ -205,8 +204,9 @@ class Footer extends Component {
     }
 
     closeModal = () => {
+        document.body.style.overflow = 'unset';
         this.setState({
-
+            showModal: false
         })
     }
 
@@ -221,7 +221,7 @@ class Footer extends Component {
             <Container>
                 <FeatureDiv>
                     <FeatureDescriptionDiv>
-                        <span>Need help applying your nails — check out our <LinkSpan to='/about' spanText='instruction' color='#fdfdfd' /> page. Don't forget to <ModalSpan>sign up</ModalSpan> for our newsletter to recieve <span>exclusive</span> product drops, discounts, and more.</span>
+                        <span>Need help applying your nails — check out our <LinkSpan to='/about' spanText='instruction' color='#fdfdfd' /> page. Don't forget to <ModalSpan onClick={this.openModal}>sign up</ModalSpan> for our newsletter to recieve <span>exclusive</span> product drops, discounts, and more.</span>
                     </FeatureDescriptionDiv>
                 </FeatureDiv>
                 <FlexContainer>
@@ -251,7 +251,7 @@ class Footer extends Component {
                     contentLabel='Mailchimp signup modal'
                     onRequestClose={this.closeModal}
                     style={customModalStyles}>
-
+                    <div>test</div>
                     <ModalCloseBtn onClick={this.closeModal}>
                         <span className="bm-cross2"></span>
                         <span className="bm-cross3"></span>
