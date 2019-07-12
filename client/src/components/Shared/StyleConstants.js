@@ -27,7 +27,7 @@ export const NavDivLanding = {
     top: 0,
     zIndex: 10,
 }, NavDivDarkLap = {
-    height: '80px',
+    height: '100px',
     width: '100%',
     backgroundColor: 'rgba(13, 13, 13)',
     position: 'fixed',

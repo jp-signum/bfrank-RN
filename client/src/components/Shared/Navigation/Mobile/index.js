@@ -1,48 +1,61 @@
 import React, { Component } from 'react'
-import { withBps } from 'react-bps'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import NavMenu from './Menu'
 
-const LaptopMenu = styled.div`
-    z-index: 10;
+import MainLogoWhite from '../../../../assets/icons/main_logo_white.svg'
+import MainLogoRed from '../../../../assets/icons/main_logo_red.svg'
+
+const RelativeContainerLap = styled.div`
     position: relative;
     display: flex;
-    margin-top: ${props => props.marginTop};
-`
-
-const LaptopMenuRight = styled(LaptopMenu)`
-    justify-content: flex-end;
-`
-
-const Name = styled.div`
-    text-transform: uppercase;
-    letter-spacing: .016em;
-    font-weight: 500;
-    position: relative;
-    right: 35px;
-    font-size: 1.7em;
-    top: -22px;
-    padding-left: 32px;
-    color: ${props => props.color};
-`
-
-const MobileName = styled.div`
-    color: ${props => props.color};
-    position: absolute;
-    right: 24px;
-    top: 16px;
-    font-size: 1.5em;
-    letter-spacing: .05em;
+    justify-content: space-between;
+    margin-top: 40px;
 `
 
 const RelativeContainer = styled.div`
     position: relative;
 `
 
+const LaptopMenu = styled.div`
+
+`
+
+const LaptopMenuRight = styled.div`
+`
+
+const NavLogo = styled.img`
+    width: 60px;
+    margin-bottom: 40px;
+`
+
+const Name = styled.div`
+    letter-spacing: .016em;
+    font-weight: 400;
+    position: relative;
+    right: 35px;
+    font-size: 1.2em;
+    padding-left: 32px;
+    color: #fdfdfd;
+`
+
+const MobileName = styled.div`
+    color: #fdfdfd ;
+    position: absolute;
+    right: 24px;
+    top: 16px;
+    font-size: 1.1em;
+    letter-spacing: .05em;
+    cursor: pointer;
+
+    :hover{
+        color: rgb(253,  253,  253, 0.6)
+    }
+`
+
 const CartCount = styled.sup`
-    color: rgb(214, 60, 79, 0.8);
+    color: rgb(214, 60, 79, 0.8) !important;
     position: relative;
     bottom: 7px;
     right: 2px;
@@ -53,7 +66,10 @@ class NavigationMobile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLaptop: false
+            isLaptop: false,
+            isStore: false,
+            isAbout: false,
+            isAccount: false
         }
     }
 
@@ -61,6 +77,22 @@ class NavigationMobile extends Component {
         if (window.innerWidth > 1000) {
             this.setState({
                 isLaptop: true
+            })
+        }
+    }
+
+    setLocation = () => {
+        if (this.props.location === 'store') {
+            this.setState({
+                isStore: true
+            })
+        } else if (this.props.location === 'about') {
+            this.setState({
+                isAbout: true
+            })
+        } else if (this.props.location === 'account') {
+            this.setState({
+                isAccount: true
             })
         }
     }
@@ -82,6 +114,7 @@ class NavigationMobile extends Component {
 
     componentDidMount() {
         this.setWindow()
+        this.setLocation()
         window.addEventListener('resize', this.onResize)
     }
 
@@ -93,34 +126,49 @@ class NavigationMobile extends Component {
         return (
             <div style={this.state.isLaptop ? this.props.navStyleLap : this.props.navStyle}>
                 {this.state.isLaptop
-                    ? <RelativeContainer>
-                        <LaptopMenu marginTop={this.props.marginTop}>
-                            <Link to='/store/productsList' style={{ textDecoration: 'none' }} >
-                                <Name color={this.props.color}><span className='menuHover1'>Shop</span></Name></Link>
-                            <Link to='/about' id='about' style={{ textDecoration: 'none' }} >
-                                <Name color={this.props.color}><span className='menuHover2'>About</span></Name></Link>
+                    ? <RelativeContainerLap>
+                        <LaptopMenu>
+                            <Name>
+                                <Link to='/store/productsList'>
+                                    <span className={this.state.isStore ? this.props.storeYes : this.props.storeNo}>Shop</span>
+                                </Link>
+                            </Name>
+                            <Name>
+                                <Link to='/about'>
+                                    <span className={this.state.isAbout ? this.props.storeYes : this.props.storeNo}>About</span>
+                                </Link>
+                            </Name>
                         </LaptopMenu>
+                        <Link to='/'>
+                            <NavLogo
+                                src={MainLogoWhite}
+                                onMouseOver={e => (e.currentTarget.src = MainLogoRed)}
+                                onMouseOut={e => (e.currentTarget.src = MainLogoWhite)}
+                                alt='Rave Nailz main logo' />
+                        </Link>
                         <LaptopMenuRight>
-                            <Link to='/Account' style={{ textDecoration: 'none' }} >
-                                <Name color={this.props.color}><span className='menuHover3'>Account</span></Name></Link>
-                            <Link to='/cart/:id' style={{ textDecoration: 'none' }} >
-                                <Name color={this.props.color}><span className='menuHover4'>Cart</span></Name></Link>
+                        <Name>
+                            <span>Account</span>
+                        </Name>
+                        <Name><span className='menuHover4'>Cart</span></Name>
                         </LaptopMenuRight>
-                    </RelativeContainer>
+                    </RelativeContainerLap>
                     : <RelativeContainer>
-                        <NavMenu burgerBarClassName={this.props.burgerBarClassName} />
-                        <Link to='/cart/:id' style={{ textDecoration: 'none' }} >
-                            <MobileName color={this.props.color}>
-                                <CartCount>
+                    <NavMenu burgerBarClassName={this.props.burgerBarClassName} />
+                    <Link to='/cart/:id' style={{ textDecoration: 'none' }} >
+                        <MobileName>
+                            <CartCount>
                                 {this.props.cartCount >= 1 &&
                                     <span>({this.props.cartCount})</span>
                                 }
-                                </CartCount>Cart</MobileName></Link>
-                    </RelativeContainer>
+                            </CartCount><span>Cart</span>
+                        </MobileName>
+                    </Link>
+                </RelativeContainer>
                 }
             </div>
         )
     }
 }
 
-export default withBps({ mobileFirst: true, propName: 'breakpoints' })(NavigationMobile);
+export default NavigationMobile;

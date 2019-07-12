@@ -6,7 +6,10 @@ import GlobalStyle from '../../theme/GlobalStyle'
 import Home from './Home/index'
 import ProductList from './Store/List/index'
 import SingularItem from './Store/SingularItem/index'
-import Cart from './Cart/index'
+import Account from './Account/index'
+import Checkout from './Checkout/index'
+import Terms from './Terms/index'
+import Privacy from './Privacy/index'
 import Footer from './Footer/index'
 
 const OverflowDiv = styled.div`
@@ -29,8 +32,17 @@ function App() {
                     path='/store/:id'
                     component={SingularItem} />
                 <Route
-                    path='/cart/:id'
-                    component={Cart} />
+                    path='/account/:id'
+                    component={Account} />
+                <Route
+                    path='/checkout'
+                    component={Checkout} />
+                <Route
+                    path='/terms'
+                    component={Terms} />
+                <Route
+                    path='/privacy'
+                    component={Privacy} />
             </Switch>
             <Footer />
         </OverflowDiv>

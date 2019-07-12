@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { withBps } from 'react-bps'
 
 const StyledSpan = styled.span`
     background-image: linear-gradient(120deg, #090404 10%, #D63C4F 100%);
@@ -13,6 +12,7 @@ const StyledSpan = styled.span`
     transition: all 0.25s ease-in;
     -o-transition: all 0.25s ease-in;
     cursor: pointer;
+    cursor: hand;
 
     :hover{
         background-size: 100% 88%;
@@ -25,7 +25,7 @@ function LinkSpan(props) {
         <Link
             to={props.to}
             id={props.id}
-            style={{ textDecoration: 'none', position: 'relative' }}
+            style={{ textDecoration: 'none', position: 'relative', cursor: 'pointer' }}
             className={props.className}>
             <StyledSpan
                 fontSize={props.fontSize}
@@ -34,4 +34,4 @@ function LinkSpan(props) {
     )
 }
 
-export default withBps({ mobileFirst: true, propName: 'breakpoints' })(LinkSpan);
+export default LinkSpan;

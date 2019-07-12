@@ -143,7 +143,7 @@ button {
   background: #fdfdfd;
   height: 25px ;
   width: 2px ;
-  top: -6px;
+  top: -10px;
   right: 15.5px;
   
   ${media.tablet`
@@ -160,7 +160,7 @@ button {
   background: #fdfdfd;
   height: 25px ;
   width: 2px ;
-  top: -6px;
+  top: -10px;
   right: 15.5px;
 
   ${media.tablet`
@@ -243,6 +243,84 @@ a {
 button {
   outline: none;
 }
+
+/* menu location underline */
+
+.storeUnderline {
+  text-decoration: none;
+  border-bottom: 1px solid #fdfdfd;
+  padding-bottom: 3px;
+  transition: ease 0.3s;
+    -o-transition: all 0.3s ease;
+  
+  color: #fdfdfd;
+  cursor: pointer;
+
+  :hover{
+    color: rgb(253,  253,  253, 0.6)
+  }
+}
+
+.storePlain {
+  text-decoration: none;
+  color: #fdfdfd;
+  cursor: pointer;
+
+  :hover{
+    color: rgb(253,  253,  253, 0.6)
+  }
+}
+
+.aboutUnderline {
+  text-decoration: none;
+  border-bottom: 1px solid #fdfdfd;
+  padding-bottom: 3px;
+  transition: ease 0.3s;
+    -o-transition: all 0.3s ease;
+  
+  color: #fdfdfd;
+  cursor: pointer;
+
+  :hover{
+    color: rgb(253,  253,  253, 0.6)
+  }
+}
+
+.aboutPlain {
+  text-decoration: none;
+  color: #fdfdfd;
+  cursor: pointer;
+
+  :hover{
+    color: rgb(253,  253,  253, 0.6)
+  }
+}
+
+.accountUnderline {
+  text-decoration: none;
+  border-bottom: 1px solid #fdfdfd;
+  padding-bottom: 3px;
+  transition: ease 0.3s;
+    -o-transition: all 0.3s ease;
+  
+  color: #fdfdfd;
+  cursor: pointer;
+
+  :hover{
+    color: rgb(253,  253,  253, 0.6)
+  }
+}
+
+.accountPlain {
+  text-decoration: none;
+  color: #fdfdfd;
+  cursor: pointer;
+
+  :hover{
+    color: rgb(253,  253,  253, 0.6)
+  }
+}
+
 
 
 `

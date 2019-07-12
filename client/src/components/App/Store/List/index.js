@@ -20,7 +20,10 @@ const Container = styled.div`
     `}
 `
 
-function Store() {
+function Store(props) {
+    const path = props.location.pathname
+    let locationMatch = path.match(/store/g);
+
     return (
         <Container>
             <Helmet titleTemplate="%s | Rave Nailz">
@@ -29,10 +32,11 @@ function Store() {
                 <meta name='keywords' content={Meta.keywords}></meta>
             </Helmet>
             <Navigation
-                color='#fdfdfd'
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap}
-                breakpoints=''
+                storeYes='storeUnderline'
+                storeNo='storePlain'
+                location={locationMatch[0]}
                 cartCount=''/>
             <ProductList />
         </Container>

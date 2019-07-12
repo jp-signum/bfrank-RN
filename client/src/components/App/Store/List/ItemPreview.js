@@ -19,9 +19,7 @@ const Img = styled.img`
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
 
-     /* ${media.tablet`
-        width: 92%;
-    `} */
+    
 `
 
 const Name = styled.div`
@@ -40,7 +38,7 @@ const Quantity = styled.div`
 `
 
 function ItemPreview(props) {
-
+    
     const itemPrice = (props.nail.price / 100),
         itemName = props.nail.name,
         itemPicArr = props.nail.pictures,

@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { withContext } from '../../../AppContext'
 import Currency from 'react-currency-formatter'
+import Helmet from 'react-helmet'
 
+import { Meta } from '../../../Shared/Meta'
 import { filterById, getNested } from '../../../Shared/HelperFunctions'
 
 import PicSwitchMain from './PicSwitchMain'
@@ -46,7 +48,7 @@ class SingularItem extends Component {
 
         const name = getNested(['name'], filteredPostObj),
             description = getNested(['description'], filteredPostObj),
-            price = (getNested(['price'], filteredPostObj)/ 100),
+            price = (getNested(['price'], filteredPostObj) / 100),
             picturesArr = getNested(['pictures'], filteredPostObj),
             mainPicUrl = picturesArr[0],
             secondPicUrl = picturesArr[1],
@@ -55,10 +57,14 @@ class SingularItem extends Component {
             fithPicUrl = picturesArr[4],
             quantity = getNested(['quantity'], filteredPostObj);
 
-     
+
         return (
             <Container>
-                {/* <Helmet></Helmet> */}
+                <Helmet titleTemplate="%s | Rave Nailz">
+                    <title>{Meta.title}</title>
+                    <meta name='description' content={Meta.description}></meta>
+                    <meta name='keywords' content={Meta.keywords}></meta>
+                </Helmet>
                 <PicSwitchMain
                     forward={this.changeMainPicForward}
                     mainPic={this.state.mainPic}

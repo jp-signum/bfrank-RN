@@ -8,7 +8,7 @@ import { Meta } from '../../Shared/Meta'
 
 import media from '../../../theme/Device'
 
-import MailChimp from './Mailchimp'
+import MailChimp from '../../Shared/Mailchimp'
 import OutboundLink from '../../Shared/OutboundLink'
 
 import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
@@ -182,10 +182,6 @@ const ListDescriptionDiv = styled.div`
     `}
     
     ${media.phoneM`
-        padding: 10px 0px 10px 0px;
-    `}
-
-    ${media.phoneL`
         padding: 10px 10px 10px 10px;
     `}
 
@@ -252,7 +248,7 @@ function Home() {
                 <MailDiv>
                     <SubscribeDiv>join the crew</SubscribeDiv>
                     <WhiteContainer>
-                        <ListDescriptionDiv >Subcribe to our email newsletter to recieve <span style={{ fontWeight: 'bold' }}>exclusive</span> product drops, discounts, giveaways, and more.</ListDescriptionDiv>
+                        <ListDescriptionDiv>Subcribe to our email newsletter to recieve <span style={{ fontWeight: 'bold' }}>exclusive</span> product drops, discounts, giveaways, and more.</ListDescriptionDiv>
                         <Rsvg src={MainLogoDark} alt='mainLogoDark' />
                         <MailChimp />
                     </WhiteContainer>

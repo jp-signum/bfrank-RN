@@ -1,107 +1,52 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Modal from 'react-modal'
+import { Link } from 'react-router-dom'
 
 import { ContactInfo } from '../../Shared/ParagraphStrings'
 import { customModalStyles } from '../../Shared/StyleConstants'
+
+import MailChimp from '../../Shared/Mailchimp'
 import OutboundLink from '../../Shared/OutboundLink'
 import Copyright from './Copyright'
 import media from '../../../theme/Device'
 import LinkSpan from '../../Shared/LinkSpan'
+
+import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
 
 const Container = styled.div`
     position: relative;
     width: 100%;
     background: #0D0D0D;
     color: #fdfdfd;
-    padding: 4%;
-    display: flex;
-    flex-direction: column;
 
-    ${media.tablet`
-        flex-direction: row;
-        justify-content: space-between;
-    `}
 `
 
 const FlexContainer = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-
-    ${media.tablet`
-        text-align: right;
-        padding-right: 9%;
-    `}
-
-    ${media.laptop`
-        white-space: nowrap;
-        padding: 0px 30px 10px 130px;
-    `}
-
-    ${media.laptopL`
-        padding: 0px 30px 10px 220px;
-    `}
-
-    ${media.laptopLM`
-        padding: 0px 30px 10px 400px;
-    `}
-
-    ${media.laptopLL`
-        padding: 0px 30px 10px 470px;
-    `}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
 
 const FeatureDiv = styled.div`
-    position: relative;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
-    ${media.tablet`
-        max-width: 54%;
-    `}
-
-    ${media.laptop`
-        padding-left: 30px;
-        max-width: 50%;
-    `}
-
-    ${media.laptopL`
-        max-width: 44%;
-    `}   
-
-    ${media.laptopLM`
-        max-width: 38%;
-    `}          
 `
 
-const FeatureDescriptionDiv = styled.div`
-    width: 94%;
-    position: relative;
-    font-weight: 540;
-    transition:all ease 0.5s;
+const InstructionSpan = styled.div`
+    letter-spacing: .04em;
+    font-size: 1.2em;
+     transition:all ease 0.5s;
     -o-transition: all .5s ease;
-    font-size: 1.3em;
-    line-height: 1.2em;
-      
-    ${media.phoneM`
-        font-size: 1.4em;
-    `}
-          
-    ${media.phoneL`
-        font-size: 1.5em;
-    `}
-          
-    ${media.tablet`
-        padding: 0px 0px 0px 0px; 
-    `}
+    color: rgba(253, 253, 253, 0.45);
+    cursor: pointer;
 
-    ${media.laptop`
-        font-size: 2em;    
-    `}
+    :hover {
+        color: rgba(253, 253, 253, 1);
+    }
 `
 
 const SocialContainer = styled.div`
-    padding: 10px 0px 12px 0px;
     letter-spacing: .04em;
     font-size: 1.1em;
 `
@@ -113,9 +58,18 @@ const SociallinkDiv = styled.div`
     -o-transition: all .5s ease;
 
      ${media.tablet`
-        padding: 0px 0px 0px 0px; 
+        padding: 0px 0px 0px 8px; 
     `}
 `
+
+const SociallinkDivD1 = styled(SociallinkDiv)`
+   font-size: 0.6em;
+   position: relative;
+   bottom: 2px;
+   color: rgb(214, 60, 79, 0.8);
+   padding-left: 6px;
+`
+
 const SociallinkDivD = styled(SociallinkDiv)`
    font-size: 0.6em;
    position: relative;
@@ -124,52 +78,27 @@ const SociallinkDivD = styled(SociallinkDiv)`
 `
 
 const FooterInfoDiv1 = styled.div`
-    font-size: 1.1em;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-    padding: 2px 0px 10px 0px;
-
-    ${media.tablet`
-        font-size: 1.2em;    
-    `}
-
-    ${media.laptop`
-        font-size: 1.3em;    
-    `}    
+    font-size: 0.9em;
 `
 
-const FooterInfoDiv2 = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-    padding: 10px 0px 2px 0px;
-    transition:all ease 0.5s;
-        -o-transition: all .5s ease;
-          
-    ${media.tablet`
-        font-size: 1em;    
-    `}
-
-    ${media.laptop`
-        font-size: 1em;    
-    `}
+const TermsDiv = styled.div`
+    font-size: 0.6em;
 `
 
 const ModalSpan = styled.span`
-    background-image: linear-gradient(120deg, #090404 10%, #D63C4F 100%);
-    background-repeat: no-repeat;
-    background-size: 100% 0.2em;
-    background-position: 0 88%;
-    transition: all 0.25s ease-in;
-    -o-transition: all 0.25s ease-in;
+     transition:all ease 0.5s;
+    -o-transition: all .5s ease;
     cursor: pointer;
+    color: rgba(253, 253, 253, 0.45);
 
     :hover {
-        background-size: 100% 88%;
+        color: rgba(253, 253, 253, 1);
     }
 `
 
 const EmailSpace = styled.div`
     letter-spacing: 0.12em;
+    font-size: 0.9em;
 `
 
 const ModalCloseBtn = styled.button`
@@ -182,11 +111,104 @@ const ModalCloseBtn = styled.button`
     height: 30px;
     width: 30px;
     font-size: 2em;
-    transition: ease 0.5s;
 
     :hover {
         color: #D63C4F;
     }
+`
+
+const CenterContainer = styled.div`
+     transition:all ease 0.5s;
+    -o-transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+
+const MailDiv = styled.div`
+    margin-top: 34%;
+    transition:all ease 0.5s;
+    -o-transition: all 0.5s ease;
+    width: 260px;
+
+    ${media.phoneM`
+        width: 290px;
+    `}
+
+    ${media.phoneLL`
+        width: 350px;
+    `}
+
+    ${media.tablet`
+        width: 400px;
+    `}
+`
+
+const SubscribeDiv = styled.div`
+    text-transform: uppercase;
+    background:  rgb(0, 0, 0, 0);
+    color: #fdfdfd;
+    letter-spacing: 1.8px;
+    border-top: #fdfdfd 2px solid;
+    border-left: #fdfdfd 2px solid;
+    border-right: #fdfdfd 2px solid;
+    border-radius: 4px 4px 0px 0px;
+    font-size: 1.3em;
+    padding: 7px 0px 7px 0px;
+    transition:all ease 0.5s;
+    -o-transition: all 0.5s ease;
+    text-align: center;
+    
+
+    ${media.phoneM`
+        font-size: 1.4em;
+        padding: 8px 0px 8px 0px;
+    `}
+`
+
+const ListDescriptionDiv = styled.div`
+    text-align: center;
+    transition:all ease 0.5s;
+    -o-transition: all 0.5s ease;
+    color: #0D0D0D;
+    padding: 9px 9px 9px 9px;
+    
+    ${media.phoneM`
+        padding: 10px 10px 10px 10px;
+    `}
+
+    ${media.tablet`
+        padding: 10px 40px 12px 40px;
+    `}
+
+    ${media.laptop`
+        padding: 12px 40px 12px 40px;
+    `}
+`
+
+const WhiteContainer = styled.div`
+    background: rgb(253,  253,  253, 1);
+    border-radius: 0px 0px 4px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
+const Rsvg = styled.img`
+    height: 130px;
+    transition: ease 0.5s;
+    padding: 8px 8px 8px 8px;
+
+    ${media.phoneS`
+        padding: 9px 9px 9px 9px;
+        height: 134px;
+    `}
+    
+    ${media.phoneM`
+        padding: 10px 0px 10px 0px;
+        height: 136px;
+    `}
 `
 
 class Footer extends Component {
@@ -219,12 +241,14 @@ class Footer extends Component {
     render() {
         return (
             <Container>
-                <FeatureDiv>
-                    <FeatureDescriptionDiv>
-                        <span>Need help applying your nails — check out our <LinkSpan to='/about' spanText='instruction' color='#fdfdfd' /> page. Don't forget to <ModalSpan onClick={this.openModal}>sign up</ModalSpan> for our newsletter to recieve <span>exclusive</span> product drops, discounts, and more.</span>
-                    </FeatureDescriptionDiv>
-                </FeatureDiv>
                 <FlexContainer>
+                    <FooterInfoDiv1>{ContactInfo.ContactPhone}</FooterInfoDiv1>
+                    <EmailSpace>{ContactInfo.ContactEmail}</EmailSpace>
+                    <FeatureDiv>
+                        <Link style={{ display: 'inline-block' }} to='/about'><InstructionSpan>Instructions</InstructionSpan></Link>
+                        <SociallinkDivD1>&#x2662;</SociallinkDivD1>
+                        <Link style={{ display: 'inline-block' }} to='/store/productList'><InstructionSpan>Nails</InstructionSpan></Link>
+                    </FeatureDiv>
                     <SocialContainer>
                         <SociallinkDiv>
                             <OutboundLink spanText='Instagram'
@@ -237,21 +261,30 @@ class Footer extends Component {
                                 eventLabel='toFacebook'
                                 to='//www.facebook.com/RaveNailz/' />
                         </SociallinkDiv>
+                        <SociallinkDivD>&#x2662;</SociallinkDivD>
+                        <ModalSpan onClick={this.openModal}>Newsletter</ModalSpan>
                     </SocialContainer>
-                    <FooterInfoDiv1>
-                        <div>{ContactInfo.ContactPhone}</div>
-                        <EmailSpace>{ContactInfo.ContactEmail}</EmailSpace>
-                    </FooterInfoDiv1>
-                    <FooterInfoDiv2>
+                    <TermsDiv>
                         <Copyright />
-                    </FooterInfoDiv2>
+                         <span><Link to='/terms'></Link></span>
+                         <span><Link to='/privacy'></Link></span>
+                    </TermsDiv>
                 </FlexContainer>
                 <Modal
                     isOpen={this.state.showModal}
                     contentLabel='Mailchimp signup modal'
                     onRequestClose={this.closeModal}
                     style={customModalStyles}>
-                    <div>test</div>
+                    <CenterContainer>
+                        <MailDiv>
+                            <SubscribeDiv>join the crew</SubscribeDiv>
+                            <WhiteContainer>
+                                <ListDescriptionDiv>Subcribe to our email newsletter to recieve <span style={{ fontWeight: 'bold' }}>exclusive</span> product drops, discounts, giveaways, and more.</ListDescriptionDiv>
+                                <Rsvg src={MainLogoDark} alt='mainLogoDark' />
+                                <MailChimp />
+                            </WhiteContainer>
+                        </MailDiv>
+                    </CenterContainer>
                     <ModalCloseBtn onClick={this.closeModal}>
                         <span className="bm-cross2"></span>
                         <span className="bm-cross3"></span>
