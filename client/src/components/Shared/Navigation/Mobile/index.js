@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import NavMenu from './Menu'
+import media from '../../../../theme/Device'
 
 import MainLogoWhite from '../../../../assets/icons/main_logo_white.svg'
 import MainLogoRed from '../../../../assets/icons/main_logo_red.svg'
@@ -19,10 +20,11 @@ const RelativeContainer = styled.div`
 `
 
 const LaptopMenu = styled.div`
-
+    
 `
 
 const LaptopMenuRight = styled.div`
+
 `
 
 const NavLogo = styled.img`
@@ -43,23 +45,29 @@ const Name = styled.div`
 const MobileName = styled.div`
     color: #fdfdfd ;
     position: absolute;
-    right: 24px;
-    top: 16px;
-    font-size: 1.1em;
+    right: 26px;
+    top: 20px;
+    font-size: 1.2em;
     letter-spacing: .05em;
     cursor: pointer;
 
     :hover{
         color: rgb(253,  253,  253, 0.6)
     }
+
+    ${media.phoneM`
+        font-size: 1.3em;
+        top: 18px;
+        right: 28px;
+    `}
 `
 
 const CartCount = styled.sup`
     color: rgb(214, 60, 79, 0.8) !important;
     position: relative;
-    bottom: 7px;
-    right: 2px;
-    font-size: 0.6em;
+    bottom: 8px;
+    right: 1px;
+    font-size: 0.7em;
 `
 
 class NavigationMobile extends Component {
@@ -147,15 +155,20 @@ class NavigationMobile extends Component {
                                 alt='Rave Nailz main logo' />
                         </Link>
                         <LaptopMenuRight>
-                        <Name>
-                            <span>Account</span>
-                        </Name>
-                        <Name><span className='menuHover4'>Cart</span></Name>
+                            <Name>
+                                <span>Account</span>
+                            </Name>
+                            <Name>
+                                <CartCount>
+                                    {this.props.cartCount >= 1 &&
+                                        <span>({this.props.cartCount})</span>
+                                    }
+                                </CartCount><span>Cart</span>
+                            </Name>
                         </LaptopMenuRight>
                     </RelativeContainerLap>
                     : <RelativeContainer>
-                    <NavMenu burgerBarClassName={this.props.burgerBarClassName} />
-                    <Link to='/cart/:id' style={{ textDecoration: 'none' }} >
+                        <NavMenu burgerBarClassName={this.props.burgerBarClassName} />
                         <MobileName>
                             <CartCount>
                                 {this.props.cartCount >= 1 &&
@@ -163,8 +176,7 @@ class NavigationMobile extends Component {
                                 }
                             </CartCount><span>Cart</span>
                         </MobileName>
-                    </Link>
-                </RelativeContainer>
+                    </RelativeContainer>
                 }
             </div>
         )

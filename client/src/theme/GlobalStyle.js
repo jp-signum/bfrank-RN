@@ -54,10 +54,10 @@ button {
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 30px;
-  height: 30px;
-  top: 17px;
-  left: 24px;
+  width: 26px;
+  height: 28px;
+  top: 18px;
+  left: 26px;
   z-index: 10 !important;
   transition: ease 0.5s;
     -o-transition: all 0.5s ease;

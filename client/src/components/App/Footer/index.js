@@ -10,16 +10,15 @@ import MailChimp from '../../Shared/Mailchimp'
 import OutboundLink from '../../Shared/OutboundLink'
 import Copyright from './Copyright'
 import media from '../../../theme/Device'
-import LinkSpan from '../../Shared/LinkSpan'
 
 import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
+import R
 
 const Container = styled.div`
     position: relative;
     width: 100%;
     background: #0D0D0D;
     color: #fdfdfd;
-
 `
 
 const FlexContainer = styled.div`
@@ -30,12 +29,12 @@ const FlexContainer = styled.div`
 `
 
 const FeatureDiv = styled.div`
-
+    padding: 20px 0px 0px 0px;
 `
 
 const InstructionSpan = styled.div`
-    letter-spacing: .04em;
-    font-size: 1.2em;
+    letter-spacing: .08em;
+    font-size: 1.1em;
      transition:all ease 0.5s;
     -o-transition: all .5s ease;
     color: rgba(253, 253, 253, 0.45);
@@ -44,11 +43,19 @@ const InstructionSpan = styled.div`
     :hover {
         color: rgba(253, 253, 253, 1);
     }
+
+    ${media.phoneM`
+        font-size: 1.2em;
+    `}
 `
 
 const SocialContainer = styled.div`
     letter-spacing: .04em;
     font-size: 1.1em;
+
+    ${media.phoneM`
+        font-size: 1.2em;
+    `}
 `
 
 const SociallinkDiv = styled.div`
@@ -79,10 +86,40 @@ const SociallinkDivD = styled(SociallinkDiv)`
 
 const FooterInfoDiv1 = styled.div`
     font-size: 0.9em;
+    padding: 12px 0px 0px 0px; 
+
+
+    ${media.phoneM`
+        font-size: 1.0em;
+        padding: 16px 0px 0px 0px; 
+    `}
 `
 
 const TermsDiv = styled.div`
-    font-size: 0.6em;
+    font-size: 0.65em;
+    padding: 12px 0px 12px 0px;
+
+    ${media.phoneM`
+        font-size: 0.75em;
+        padding: 16px 0px 14px 0px;
+    `}
+
+    ${media.phoneL`
+        font-size: 0.8em;
+        padding: 16px 0px 16px 0px;
+    `}
+`
+
+const TermsSpan = styled.span`
+     transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+    color: rgba(253, 253, 253, 0.45);
+    padding: 0px 0px 0px 8px;
+    cursor: pointer;
+
+    :hover {
+        color: rgba(253, 253, 253, 1);
+    }
 `
 
 const ModalSpan = styled.span`
@@ -215,7 +252,8 @@ class Footer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false
+            showModal: false,
+            isLaptop: false
         };
     }
 
@@ -232,15 +270,50 @@ class Footer extends Component {
         })
     }
 
+    setWindow = () => {
+        if (window.innerWidth > 1000) {
+            this.setState({
+                isLaptop: true
+            })
+        }
+    }
+
+    //  perhaps need to throttle this for performance, import throttle from 'lodash.throttle'; but also nobody should actually be resizing this unless your a dev checking on things
+    handleWindowResize = (y) => {
+        this.setState({
+            isLaptop: y
+        })
+    }
+
+    onResize = () => {
+        if (window.innerWidth > 1000) {
+            this.handleWindowResize(true)
+        } else {
+            this.handleWindowResize(false)
+        }
+    }
+
+    componentDidMount() {
+        this.setWindow()
+        window.addEventListener('resize', this.onResize)
+    }
+
     componentDidUpdate() {
         if (this.state.showModal) {
             document.body.style.overflow = 'hidden';
         }
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.onResize)
+    }
+
     render() {
         return (
             <Container>
+                {this.state.isLaptop && 
+                    <img src={}>test</div>
+                }
                 <FlexContainer>
                     <FooterInfoDiv1>{ContactInfo.ContactPhone}</FooterInfoDiv1>
                     <EmailSpace>{ContactInfo.ContactEmail}</EmailSpace>
@@ -266,8 +339,8 @@ class Footer extends Component {
                     </SocialContainer>
                     <TermsDiv>
                         <Copyright />
-                         <span><Link to='/terms'></Link></span>
-                         <span><Link to='/privacy'></Link></span>
+                         <Link to='/terms'><TermsSpan>Terms & Conditions</TermsSpan></Link>
+                         <Link to='/privacy'><TermsSpan>Privacy Policy</TermsSpan></Link>
                     </TermsDiv>
                 </FlexContainer>
                 <Modal

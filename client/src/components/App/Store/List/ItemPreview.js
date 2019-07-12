@@ -16,25 +16,31 @@ const Container = styled.div`
 `
 const Img = styled.img`
     width: 100%;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-
-    
 `
 
 const Name = styled.div`
     font-weight: bold;
     font-size: 1.2em;
     padding: 2px 0px 2px 0px;
+
+    ${media.phoneM`
+        font-size: 1.3em;
+    `}
 `
 
 const Price = styled.div`
-
+    ${media.phoneM`
+        font-size: 1.1em;
+    `}
 `
 
 const Quantity = styled.div`
     font-size: 0.9em;
-    color: #BF455B;
+    color: #d63c4f;
+
+    ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
 function ItemPreview(props) {
