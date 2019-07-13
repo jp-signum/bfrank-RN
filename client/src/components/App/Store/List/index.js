@@ -35,7 +35,8 @@ function Store(props) {
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap}
                 storeYes='storeUnderline'
-                storeNo='storePlain'
+                aboutNo='aboutPlain'
+                accountNo='accountPlain'
                 location={locationMatch[0]}
                 cartCount=''/>
             <ProductList />

@@ -6,6 +6,7 @@ import GlobalStyle from '../../theme/GlobalStyle'
 import Home from './Home/index'
 import ProductList from './Store/List/index'
 import SingularItem from './Store/SingularItem/index'
+import About from './About/index'
 import Account from './Account/index'
 import Checkout from './Checkout/index'
 import Terms from './Terms/index'
@@ -31,6 +32,9 @@ function App() {
                 <Route
                     path='/store/:id'
                     component={SingularItem} />
+                <Route
+                    path='/about'
+                    component={About} />
                 <Route
                     path='/account/:id'
                     component={Account} />

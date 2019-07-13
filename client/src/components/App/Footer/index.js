@@ -12,7 +12,8 @@ import Copyright from './Copyright'
 import media from '../../../theme/Device'
 
 import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
-import R
+import RLogoWhite from '../../../assets/icons/R_white.svg'
+import RLogoRed from '../../../assets/icons/R_red.svg'
 
 const Container = styled.div`
     position: relative;
@@ -70,7 +71,7 @@ const SociallinkDiv = styled.div`
 `
 
 const SociallinkDivD1 = styled(SociallinkDiv)`
-   font-size: 0.6em;
+   font-size: 0.7em;
    position: relative;
    bottom: 2px;
    color: rgb(214, 60, 79, 0.8);
@@ -131,6 +132,10 @@ const ModalSpan = styled.span`
     :hover {
         color: rgba(253, 253, 253, 1);
     }
+
+    ${media.laptop`
+        padding: 0px 0px 0px 6px;
+    `}
 `
 
 const EmailSpace = styled.div`
@@ -248,6 +253,14 @@ const Rsvg = styled.img`
     `}
 `
 
+const RFooterImg = styled.img`
+    width: 36px;
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    cursor: pointer;
+`
+
 class Footer extends Component {
     constructor(props) {
         super(props);
@@ -311,8 +324,13 @@ class Footer extends Component {
     render() {
         return (
             <Container>
-                {this.state.isLaptop && 
-                    <img src={}>test</div>
+                {this.state.isLaptop &&
+                    <Link to='/'>
+                        <RFooterImg
+                            src={RLogoWhite}
+                            onMouseOver={e => (e.currentTarget.src = RLogoRed)}
+                            onMouseOut={e => (e.currentTarget.src = RLogoWhite)} />
+                    </Link>
                 }
                 <FlexContainer>
                     <FooterInfoDiv1>{ContactInfo.ContactPhone}</FooterInfoDiv1>
@@ -320,7 +338,7 @@ class Footer extends Component {
                     <FeatureDiv>
                         <Link style={{ display: 'inline-block' }} to='/about'><InstructionSpan>Instructions</InstructionSpan></Link>
                         <SociallinkDivD1>&#x2662;</SociallinkDivD1>
-                        <Link style={{ display: 'inline-block' }} to='/store/productList'><InstructionSpan>Nails</InstructionSpan></Link>
+                        <Link style={{ display: 'inline-block', paddingLeft: '6px' }} to='/store/productList'><InstructionSpan>Nails</InstructionSpan></Link>
                     </FeatureDiv>
                     <SocialContainer>
                         <SociallinkDiv>
@@ -339,8 +357,8 @@ class Footer extends Component {
                     </SocialContainer>
                     <TermsDiv>
                         <Copyright />
-                         <Link to='/terms'><TermsSpan>Terms & Conditions</TermsSpan></Link>
-                         <Link to='/privacy'><TermsSpan>Privacy Policy</TermsSpan></Link>
+                        <Link to='/terms'><TermsSpan>Terms & Conditions</TermsSpan></Link>
+                        <Link to='/privacy'><TermsSpan>Privacy Policy</TermsSpan></Link>
                     </TermsDiv>
                 </FlexContainer>
                 <Modal

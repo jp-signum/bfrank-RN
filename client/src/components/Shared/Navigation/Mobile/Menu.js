@@ -220,9 +220,9 @@ class NavMenu extends Component {
                 isOpen={this.state.menuOpen}
                 onStateChange={(state) => this.handleStateChange(state)}
                 burgerBarClassName={this.props.burgerBarClassName}>
-                <Link onClick={this.closeMenu} to='/' id='home' className='menu-item'>Home</Link>
-                <Link onClick={this.closeMenu} to='/store/productlist' id='storeProductsList' className='menu-item'>Store</Link>
-                <Link onClick={this.closeMenu} to='/about' id='about' className='menu-item'>About</Link>
+                <Link onClick={this.closeMenu} to='/' className='menu-item'>Home</Link>
+                <Link onClick={this.closeMenu} to='/store/productlist' className='menu-item'>Store</Link>
+                <Link onClick={this.closeMenu} to='/about' className='menu-item'>About</Link>
                 <div onClick={this.openModal} className='menu-item'>Newsletter</div>
 
                 <PositionDiv>

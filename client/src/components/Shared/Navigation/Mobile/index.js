@@ -20,16 +20,20 @@ const RelativeContainer = styled.div`
 `
 
 const LaptopMenu = styled.div`
-    
+    padding: 20px 0px 0px 60px;
 `
 
 const LaptopMenuRight = styled.div`
+    padding: 20px 60px 0px 0px;
+`
 
+const ImgDiv = styled.div`
+    position: relative;
+    bottom: 18px;
 `
 
 const NavLogo = styled.img`
-    width: 60px;
-    margin-bottom: 40px;
+    width: 64px;
 `
 
 const Name = styled.div`
@@ -38,8 +42,23 @@ const Name = styled.div`
     position: relative;
     right: 35px;
     font-size: 1.2em;
-    padding-left: 32px;
+    padding-left: 40px;
+    color: #fdfdfd ;
+    display: inline-block;
+`
+
+const NameRight = styled.div`
+    letter-spacing: .016em;
+    font-weight: 400;
+    font-size: 1.2em;
+    padding-left: 40px;
     color: #fdfdfd;
+    display: inline-block;
+    cursor: pointer;
+
+    :hover{
+    color: rgb(253,  253,  253, 0.45)
+}
 `
 
 const MobileName = styled.div`
@@ -52,7 +71,7 @@ const MobileName = styled.div`
     cursor: pointer;
 
     :hover{
-        color: rgb(253,  253,  253, 0.6)
+        color: rgb(253,  253,  253, 0.45)
     }
 
     ${media.phoneM`
@@ -137,34 +156,36 @@ class NavigationMobile extends Component {
                     ? <RelativeContainerLap>
                         <LaptopMenu>
                             <Name>
-                                <Link to='/store/productsList'>
-                                    <span className={this.state.isStore ? this.props.storeYes : this.props.storeNo}>Shop</span>
+                                <Link className={this.state.isStore ? this.props.storeYes : this.props.storeNo} to='/store/productlist'>
+                                    <span>Shop</span>
                                 </Link>
                             </Name>
                             <Name>
-                                <Link to='/about'>
-                                    <span className={this.state.isAbout ? this.props.storeYes : this.props.storeNo}>About</span>
+                                <Link className={this.state.isAbout ? this.props.aboutYes : this.props.aboutNo} to='/about'>
+                                    <span>About</span>
                                 </Link>
                             </Name>
                         </LaptopMenu>
-                        <Link to='/'>
-                            <NavLogo
-                                src={MainLogoWhite}
-                                onMouseOver={e => (e.currentTarget.src = MainLogoRed)}
-                                onMouseOut={e => (e.currentTarget.src = MainLogoWhite)}
-                                alt='Rave Nailz main logo' />
-                        </Link>
+                        <ImgDiv>
+                            <Link to='/'>
+                                <NavLogo
+                                    src={MainLogoWhite}
+                                    onMouseOver={e => (e.currentTarget.src = MainLogoRed)}
+                                    onMouseOut={e => (e.currentTarget.src = MainLogoWhite)}
+                                    alt='Rave Nailz main logo' />
+                            </Link>
+                        </ImgDiv>
                         <LaptopMenuRight>
-                            <Name>
+                            <NameRight>
                                 <span>Account</span>
-                            </Name>
-                            <Name>
+                            </NameRight>
+                            <NameRight>
                                 <CartCount>
                                     {this.props.cartCount >= 1 &&
                                         <span>({this.props.cartCount})</span>
                                     }
                                 </CartCount><span>Cart</span>
-                            </Name>
+                            </NameRight>
                         </LaptopMenuRight>
                     </RelativeContainerLap>
                     : <RelativeContainer>

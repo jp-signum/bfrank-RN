@@ -21,14 +21,15 @@ const Container = styled.div`
 function SingularItemView(props) {
     const path = props.match.path
     let locationMatch = path.match(/store/g);
-    
+
     return (
         <Container>
             <Navigation
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap}
                 storeYes='storeUnderline'
-                storeNo='storePlain'
+                aboutNo='aboutPlain'
+                accountNo='accountPlain'
                 location={locationMatch[0]}
                 cartCount='' />
             <SingluarItem id={props.match.params.id} />
