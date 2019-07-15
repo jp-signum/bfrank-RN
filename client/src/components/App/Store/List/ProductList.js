@@ -10,8 +10,9 @@ import ItemPreview from './ItemPreview'
 const Container = styled.div`
     width: 100%;
     height: 100%;
+    color: #0D0D0D;
     background: #fdfdfd;
-    transition:all ease 0.5s;
+    transition: all ease 0.5s;
     -o-transition: all .5s ease;
 
      ${media.tablet`
@@ -21,8 +22,23 @@ const Container = styled.div`
         padding: 4%;
     `}
 
+
     ${media.laptop`
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: 26.6vw 26.6vw 26.6vw;
+        grid-gap: 51px;
+        padding: 5%;
+        margin-left: 10px;
+    `}
+
+    ${media.laptopL`
+        grid-template-columns: 20vw 20vw 20vw 20vw;
+        grid-gap: 42.5px;
+        margin-left: 2px;
+    `}
+
+    ${media.laptopLM`
+        grid-gap: 49px;
+        margin-left: 0px;
     `}
 `
 

@@ -19,7 +19,8 @@ const Container = styled.div`
     `}
 `
 
-function Terms() {
+function Terms(props) {
+    const cartCount = props.localCart.length
 
     return (
         <Container>
@@ -31,7 +32,7 @@ function Terms() {
             <Navigation
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap}
-                cartCount=''/>
+                cartCount={cartCount}/>
           
         </Container>
     )

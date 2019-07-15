@@ -9,9 +9,7 @@ import SingluarItem from './SingularItem'
 import Navigation from '../../../Shared/Navigation/Mobile/index'
 
 const Container = styled.div`
-    margin-top: 20%;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    margin-top: 18%;
 
      ${media.tablet`
         margin-top: 6%;
@@ -19,9 +17,10 @@ const Container = styled.div`
 `
 
 function SingularItemView(props) {
-    const path = props.match.path
-    let locationMatch = path.match(/store/g);
-
+    const cartCount = props.localCart.length,
+        path = props.match.path,
+        locationMatch = path.match(/store/g);
+    
     return (
         <Container>
             <Navigation
@@ -31,7 +30,7 @@ function SingularItemView(props) {
                 aboutNo='aboutPlain'
                 accountNo='accountPlain'
                 location={locationMatch[0]}
-                cartCount='' />
+                cartCount={cartCount} />
             <SingluarItem id={props.match.params.id} />
         </Container>
     )

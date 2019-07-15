@@ -239,7 +239,9 @@ const Rsvg = styled.img`
 `
 
 
-function Home() {
+function Home(props) {
+    const cartCount = props.localCart.length
+
     return (
         <LandingContainer>
             <Helmet titleTemplate="%s | Rave Nailz">

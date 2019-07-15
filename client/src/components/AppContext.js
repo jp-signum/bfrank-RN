@@ -16,7 +16,7 @@ export class AppContextProvider extends Component {
     constructor() {
         super()
         this.state = {
-            cart: [],
+            localCart: [],
             nails: [],
             user: JSON.parse(localStorage.getItem('user')) || {},
             token: localStorage.getItem('token') || ''
@@ -45,6 +45,9 @@ export class AppContextProvider extends Component {
                     user,
                     token
                 });
+                if (this.state.localCart.length >=1) {
+                    // combine with users cart 
+                }
                 return response;
             })
     }
@@ -53,10 +56,14 @@ export class AppContextProvider extends Component {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         this.setState({
-            cart: [],
+            localCart: [],
             user: {},
             token: ''
         })
+    }
+
+    addToCart = (id) => {
+        this.setState({ localCart: [...this.state.localCart, id] })   
     }
 
     componentDidMount() {
@@ -71,6 +78,7 @@ export class AppContextProvider extends Component {
         return (
             <AppContext.Provider
                 value={{
+                    addToCart: this.addToCart,
                     logout: this.logout,
                     login: this.login,
                     ...this.state

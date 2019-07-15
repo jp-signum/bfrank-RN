@@ -21,8 +21,9 @@ const Container = styled.div`
 `
 
 function Store(props) {
-    const path = props.location.pathname
-    let locationMatch = path.match(/store/g);
+    const cartCount = props.localCart.length,
+        path = props.location.pathname,
+        locationMatch = path.match(/store/g);
 
     return (
         <Container>
@@ -38,7 +39,7 @@ function Store(props) {
                 aboutNo='aboutPlain'
                 accountNo='accountPlain'
                 location={locationMatch[0]}
-                cartCount=''/>
+                cartCount={cartCount}/>
             <ProductList />
         </Container>
     )

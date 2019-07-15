@@ -19,8 +19,9 @@ const Container = styled.div`
     `}
 `
 
-function Privacy() {
-    
+function Privacy(props) {
+    const cartCount = props.localCart.length
+
     return (
         <Container>
             <Helmet titleTemplate="%s | Rave Nailz">
@@ -31,7 +32,7 @@ function Privacy() {
             <Navigation
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap}
-                cartCount=''/>
+                cartCount={cartCount}/>
           
         </Container>
     )
