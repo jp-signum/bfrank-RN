@@ -165,6 +165,8 @@ const Rsvg = styled.img`
     `}
 `
 
+Modal.setAppElement(document.getElementById('root'));
+
 class NavMenu extends Component {
     constructor(props) {
         super(props)

@@ -29,7 +29,7 @@ const EmailInput = styled.input`
 `
 
 const SubscribeBtnDiv = styled.div`
-   padding: 20px 0px 6px 0px;;
+   padding: 20px 0px 6px 0px;
 `
 
 const SubscribeBtn = styled.button`

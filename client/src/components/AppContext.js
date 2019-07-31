@@ -26,10 +26,10 @@ export class AppContextProvider extends Component {
     getItems = () => {
         try {
             return getAxios.get('/api/store/')
-            .then(response => {
-                this.setState({ nails: response.data });
-                return response;
-            })
+                .then(response => {
+                    this.setState({ nails: response.data });
+                    return response;
+                })
         } catch (err) {
             console.error(err)
         }
@@ -45,9 +45,6 @@ export class AppContextProvider extends Component {
                     user,
                     token
                 });
-                if (this.state.localCart.length >=1) {
-                    // combine with users cart 
-                }
                 return response;
             })
     }
@@ -62,8 +59,9 @@ export class AppContextProvider extends Component {
         })
     }
 
+
     addToCart = (id) => {
-        this.setState({ localCart: [...this.state.localCart, id] })   
+        this.setState({ localCart: [...this.state.localCart, id] })
     }
 
     componentDidMount() {

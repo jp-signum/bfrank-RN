@@ -169,6 +169,7 @@ button {
   `}
 }
 
+
 /* General sidebar styles */
 .bm-menu {
   margin: 140px 100px 0px 30px;
@@ -321,7 +322,15 @@ button {
   }
 }
 
+/* share icon styles */
 
+.facebookShare {
+    padding-right: 20px;
+}
+
+.twitterShare {
+    padding-right: 20px;
+}
 
 `
 

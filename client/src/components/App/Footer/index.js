@@ -167,7 +167,6 @@ const CenterContainer = styled.div`
     justify-content: center;
 `
 
-
 const MailDiv = styled.div`
     margin-top: 34%;
     transition:all ease 0.5s;
@@ -260,6 +259,8 @@ const RFooterImg = styled.img`
     left: 60px;
     cursor: pointer;
 `
+
+Modal.setAppElement(document.getElementById('root'));
 
 class Footer extends Component {
     constructor(props) {

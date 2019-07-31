@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Currency from 'react-currency-formatter'
 import { Link } from 'react-router-dom'
+import Fade from 'react-reveal'
 
 import media from '../../../../theme/Device'
 
@@ -98,32 +99,36 @@ function ItemPreview(props) {
 
     return (
         <Container>
-            <Link
-                to={'/store/' + itemID}
-                id={itemID}
-                className='itemPreview-link' >
-                <ImgDiv>
-                    <Img
-                        src={itemPicArr[0]}
-                        onMouseOver={e => (e.currentTarget.src = itemPicArr[1])}
-                        onMouseOut={e => (e.currentTarget.src = itemPicArr[0])}
-                        alt='product picture' />
-                </ImgDiv>
-            </Link>
-            <StuffDiv>
-                <Quantity>
-                    {quantity <= 30 &&
-                        <div>{quantity}<span> remaining</span></div>
-                    }
-                </Quantity>
+            <Fade duration={2000}>
                 <Link
                     to={'/store/' + itemID}
                     id={itemID}
                     className='itemPreview-link' >
-                    <Name>{itemName}</Name>
+                    <ImgDiv>
+                        <Img
+                            src={itemPicArr[0]}
+                            onMouseOver={e => (e.currentTarget.src = itemPicArr[1])}
+                            onMouseOut={e => (e.currentTarget.src = itemPicArr[0])}
+                            alt='product picture' />
+                    </ImgDiv>
                 </Link>
-                <Price><Currency quantity={itemPrice} symbol='$' locale='en' /></Price>
-            </StuffDiv>
+            </Fade>
+            <Fade duration={2000}>
+                <StuffDiv>
+                    <Quantity>
+                        {quantity <= 30 &&
+                            <div>{quantity}<span> remaining</span></div>
+                        }
+                    </Quantity>
+                    <Link
+                        to={'/store/' + itemID}
+                        id={itemID}
+                        className='itemPreview-link' >
+                        <Name>{itemName}</Name>
+                    </Link>
+                    <Price><Currency quantity={itemPrice} symbol='$' locale='en' /></Price>
+                </StuffDiv>
+            </Fade>
         </Container>
     )
 }

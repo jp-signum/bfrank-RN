@@ -38,8 +38,7 @@ function Account(props) {
                 storeNo='storePlain'
                 aboutNo='aboutPlain'
                 location={locationMatch[0]}
-                cartCount={cartCount}/>
-          
+                cartCount={cartCount}/> 
         </Container>
     )
 }
