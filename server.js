@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const cloudinary = require('cloudinary')
 const morgan = require('morgan')
 const expressJwt = require('express-jwt')
-const cors = require('cors');
+const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
 const unless = require('express-unless')
@@ -47,8 +47,8 @@ mongoose.connect(url,
     }
 );
 
-//decode jwt and add a req.body on all request sent to /api
-app.use('/api', expressJwt({ secret: process.env.SECRET }));
+// //decode jwt and add a req.body on all request sent to /api
+app.use('/api/store', expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
 
 //routes
 app.use('/auth', require('./routes/auth'));
@@ -110,34 +110,38 @@ app.post('/api/store/nails', (req, res, next) => {
 
 //editing an item with new shit
 app.put('/api/store/nails/:itemId', (req, res, next) => {
-    editItem = () => {
-        let { name, price, description, quantity } = req.body
-        let itemObj = { name, price, description, quantity }
-        const files = Object.values(req.files)
-        let clouds = files.map(file => cloudinary.uploader.upload(file.tempFilePath))
-        Promise
-            .all(clouds)
-            .then(res => {
+    editItem = async () => {
+        const { name, price, description, quantity } = req.body
+        const updateObj = {}
+        if (name) updateObj.name = name 
+        if (price) updateObj.price = price
+        if (description) updateObj.description = description
+        if (quantity) updateObj.quantity = quantity
+        if (req.files) {
+            try {
+                const files = Object.values(req.files)
+                let clouds = files.map(file => cloudinary.uploader.upload(file.tempFilePath))
+                const res = await Promise.all(clouds)
                 let urls = res.map(cloud => cloud.url)
-                let obj = { ...itemObj, pictures: urls }
-                editItem(obj)
-            })
-            .catch((err) => res.status(400).json(err))
-        function editItem(obj) {
-            Item.findOneAndUpdate(
-                { _id: req.params.itemId },
-                obj,
-                { new: true },
-                (err, item) => {
-                    if (err) {
-                        console.log('Error');
-                        res.status(500);
-                        return next(err);
-                    }
-                    return res.send(item);
-                }
-            )
+                req.body.pictures = urls
+            } catch (e) {
+                res.status(400).json(e)
+            }
         }
+
+        Item.findOneAndUpdate(
+            { _id: req.params.itemId },
+            req.body,
+            { new: true },
+            (err, item) => {
+                if (err) {
+                    console.log('Error');
+                    res.status(500);
+                    return next(err);
+                }
+                return res.send(item);
+            }
+        )
     }
     editItem()
 })

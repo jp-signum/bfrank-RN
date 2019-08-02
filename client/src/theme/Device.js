@@ -8,6 +8,7 @@ const sizes = {
     tablet: 620,
     laptop: 1000,
     laptopL: 1200,
+    laptopLM: 1300,
     laptopLL: 1400,
     desktop: 1800,
     desktopL: 2200

@@ -116,7 +116,7 @@ class LoginForm extends Component {
                             type='password'
                             placeholder='Password' />
                     </label>
-                    <LoginButton type='submit' onClick={this.stopEvent}>Login</LoginButton>
+                    <LoginButton type='submit'>Login</LoginButton>
                     {this.state.errorMessage &&
                         <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
                     }
