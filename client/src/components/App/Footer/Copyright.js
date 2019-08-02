@@ -5,6 +5,7 @@ import mediaMax from '../../../theme/Device-Max'
 
 const MobileFix = styled.div`
     display: contents;
+    color: rgb(253, 253, 253, 0.5);
     
     ${mediaMax.mobile`
         display: none;

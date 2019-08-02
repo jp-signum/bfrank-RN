@@ -2,7 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import MailchimpSubscribe from "react-mailchimp-subscribe"
 
-import media from '../../../theme/Device'
+import media from '../../theme/Device'
+
+const FlexContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
 
 const RelativeContainer = styled.div`
     position: relative;
@@ -23,19 +29,20 @@ const EmailInput = styled.input`
 `
 
 const SubscribeBtnDiv = styled.div`
-   padding: 20px 0px 6px 0px;;
+   padding: 20px 0px 6px 0px;
 `
 
 const SubscribeBtn = styled.button`
    font-size: 1em;
    color: rgba(16, 6, 6, 0.3);
-   border: 2px solid rgba(16, 6, 6, 0.3);
+   border: 2px solid rgba(13, 13, 13, 0.3);
    border-radius: 4px;
 
     :hover {
-        border: 2px solid rgba(16, 6, 6, 1);
+        border: 2px solid rgba(13, 13, 13, 1);
         cursor: pointer;
-        color: rgba(26, 6, 6, 1);
+        color: rgba(13, 13, 13, 1);
+        background: white;
     }
 `
 
@@ -73,17 +80,13 @@ const CustomForm = ({ status, message, onValidated }) => {
             EMAIL: email.value
         });
     return (
-        <div>
-            <div>
-                <EmailInput
-                    ref={node => (email = node)}
-                    type='email'
-                    placeholder='Email' />
-            </div>
+        <FlexContainer>
+            <EmailInput
+                ref={node => (email = node)}
+                type='email'
+                placeholder='Email' />
             <SubscribeBtnDiv>
-                <SubscribeBtn onClick={submit}>
-                    Subscribe
-                </SubscribeBtn>
+                <SubscribeBtn onClick={submit}> Subscribe </SubscribeBtn>
             </SubscribeBtnDiv>
             <ErrorDiv>
                 {status === 'sending' && <div style={{ color: '#1a0606' }}>sending...</div>}
@@ -99,7 +102,7 @@ const CustomForm = ({ status, message, onValidated }) => {
 
                 )}
             </ErrorDiv>
-        </div>
+        </FlexContainer>
     );
 };
 

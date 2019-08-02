@@ -1,23 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-// const itemAxios = axios.create({
-//     transformRequest: [data => {
-//         const formData = new FormData();
-//         for (let key in data) {
-//             formData.append(key, data[key])
-//         }
-//         return formData
-//     }]
-// });
-
 const itemAxios = axios.create();
-
 itemAxios.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
+
+const getAxios = axios.create();
 
 const AppContext = React.createContext();
 
@@ -25,14 +16,27 @@ export class AppContextProvider extends Component {
     constructor() {
         super()
         this.state = {
-            cart: [],
+            localCart: [],
+            nails: [],
             user: JSON.parse(localStorage.getItem('user')) || {},
             token: localStorage.getItem('token') || ''
         }
     }
 
+    getItems = () => {
+        try {
+            return getAxios.get('/api/store/')
+                .then(response => {
+                    this.setState({ nails: response.data });
+                    return response;
+                })
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     login = (credentials) => {
-        return axios.post('/auth/login', credentials)
+        return itemAxios.post('/auth/login', credentials)
             .then(response => {
                 const { token, user } = response.data;
                 localStorage.setItem('token', token)
@@ -49,16 +53,30 @@ export class AppContextProvider extends Component {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         this.setState({
-            cart: [],
+            localCart: [],
             user: {},
             token: ''
         })
+    }
+
+
+    addToCart = (id) => {
+        this.setState({ localCart: [...this.state.localCart, id] })
+    }
+
+    componentDidMount() {
+        this.getItems();
+    }
+
+    componentWillUnmount() {
+        this.getItems();
     }
 
     render() {
         return (
             <AppContext.Provider
                 value={{
+                    addToCart: this.addToCart,
                     logout: this.logout,
                     login: this.login,
                     ...this.state
