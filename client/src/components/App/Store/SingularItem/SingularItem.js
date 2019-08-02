@@ -10,14 +10,20 @@ import { filterById, getNested, filterByNotId } from '../../../Shared/HelperFunc
 import { customModalStyles } from '../../../Shared/StyleConstants'
 
 import media from '../../../../theme/Device'
-import PicSwitchMain from './PicSwitchMain'
 import Copy2Clip from './Copy2Clip'
 import Others from './OtherList'
+import SlideShow from './SlideShow'
 
 import ShareIcon from '../../../../assets/icons/share_black.svg'
 
-const Container = styled.div`
 
+const Container = styled.div`
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+    ${media.laptop`
+        margin-top: 120px;
+    `}
 `
 
 const FlexDiv = styled.div`
@@ -28,58 +34,11 @@ const FlexDiv = styled.div`
         display: grid;
         grid-template-columns: 57vw 43vw;
     `}
-`
 
-const ImgContainer = styled.div`
-    width: 100%;
-    display: relative;
-    height: 400px;
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-
-    ${media.tablet`
-        height: 540px;
-        margin-left: 10px;
+    ${media.laptop`
+        display: grid;
+        grid-template-columns: 65vw 35vw;
     `}
-`
-
-const AddOne = styled.i`
-    position: absolute;
-    top: 200px;
-    right: 10px;
-    border: solid rgb(13, 13, 13, 0.6);
-    border-width: 0 1.5px 1.5px 0;
-    display: inline-block;
-    padding: 12px;
-    transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-
-    ${media.tablet`
-        right: 43%;
-        top: 400px;
-        border-width: 0 2.5px 2.5px 0;
-        padding: 16px;
-    `}  
-`
-
-const SubtractOne = styled.i`
-    position: absolute;
-    top: 200px;
-    left: 10px;
-    border: solid rgb(13, 13, 13, 0.6);
-    border-width: 0 1.5px 1.5px 0;
-    display: inline-block;
-    padding: 12px;
-    transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
-
-    ${media.tablet`
-        left: 24px;
-        top: 400px;
-        border-width: 0 2.5px 2.5px 0;
-        padding: 16px;
-    `}  
 `
 
 const StuffDiv = styled.div`
@@ -89,6 +48,10 @@ const StuffDiv = styled.div`
 
     ${media.tablet`
         padding: 40px 30px 20px 40px;
+    `}  
+
+    ${media.laptop`
+        padding: 30px 30px 20px 20px;
     `}  
 `
 
@@ -197,6 +160,10 @@ const AddCartBtn = styled.div`
 
     ${media.tablet`
         width: 32vw;
+    `}
+
+    ${media.laptop`
+        width: 28vw;
     `}
 `
 
@@ -358,7 +325,7 @@ class SingularItem extends Component {
             showModal: false
         });
     }
-
+    
     componentDidUpdate() {
         if (this.state.showModal) {
             document.body.style.overflow = 'hidden';
@@ -373,13 +340,13 @@ class SingularItem extends Component {
         const name = getNested(['name'], filteredPostObj),
             description = getNested(['description'], filteredPostObj),
             price = (getNested(['price'], filteredPostObj) / 100),
-            picturesArr = getNested(['pictures'], filteredPostObj),
-            mainPicUrl = picturesArr[0],
-            secondPicUrl = picturesArr[1],
-            thirdPicUrl = picturesArr[2],
-            fourthPicUrl = picturesArr[3],
-            fithPicUrl = picturesArr[4],
-            quantity = getNested(['quantity'], filteredPostObj);
+            quantity = getNested(['quantity'], filteredPostObj),
+            picturesObj = getNested(['pictures'], filteredPostObj),
+            mainPicUrl = getNested(['0'], picturesObj),
+            secondPicUrl = getNested(['1'], picturesObj),
+            thirdPicUrl = getNested(['2'], picturesObj),
+            fourthPicUrl = getNested(['3'], picturesObj),
+            fithPicUrl = getNested(['4'], picturesObj);
 
         return (
             <Container>
@@ -389,17 +356,15 @@ class SingularItem extends Component {
                     <meta name='keywords' content={Meta.keywords}></meta>
                 </Helmet>
                 <FlexDiv>
-                    <ImgContainer>
-                        <SubtractOne onClick={this.changeMainPicBackward}></SubtractOne>
-                        <PicSwitchMain
-                            mainPic={this.state.mainPic}
-                            mainPicUrl={mainPicUrl}
-                            secondPicUrl={secondPicUrl}
-                            thirdPicUrl={thirdPicUrl}
-                            fourthPicUrl={fourthPicUrl}
-                            fithPicUrl={fithPicUrl} />
-                        <AddOne onClick={this.changeMainPicForward}></AddOne>
-                    </ImgContainer>
+                    <SlideShow
+                        mainPic={this.state.mainPic}
+                        mainPicUrl={mainPicUrl}
+                        secondPicUrl={secondPicUrl}
+                        thirdPicUrl={thirdPicUrl}
+                        fourthPicUrl={fourthPicUrl}
+                        fithPicUrl={fithPicUrl}
+                        forward={this.changeMainPicForward}
+                        back={this.changeMainPicBackward} />
                     <StuffDiv>
                         <Quantity>
                             {quantity <= 30 &&
