@@ -53,6 +53,18 @@ const StuffDiv = styled.div`
     ${media.laptop`
         padding: 30px 30px 20px 20px;
     `}  
+
+    ${media.laptopL`
+        padding: 30px 60px 20px 10px;
+    `} 
+
+    ${media.laptopLM`
+        padding: 30px 120px 20px 0px;
+    `} 
+
+     ${media.laptopLL`
+        padding: 30px 160px 20px 0px;
+    `} 
 `
 
 const Quantity = styled.div`
@@ -163,7 +175,19 @@ const AddCartBtn = styled.div`
     `}
 
     ${media.laptop`
-        width: 28vw;
+        width: 30vw;
+    `}
+
+    ${media.laptopL`
+        width: 29vw;
+    `}
+
+    ${media.laptopLM`
+        width: 26vw;
+    `}
+
+    ${media.laptopLL`
+        width: 24vw;
     `}
 `
 

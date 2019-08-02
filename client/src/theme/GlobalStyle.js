@@ -325,11 +325,59 @@ button {
 /* share icon styles */
 
 .facebookShare {
-    padding-right: 20px;
+    margin-right: 20px;
+
+    :focus {
+      outline:  none !important;
+      outline-color: none !important;
+      outline-style: none !important;
+      outline-width: none !important;
+      -webkit-focus-ring-color: none !important;
+    } 
 }
 
 .twitterShare {
-    padding-right: 20px;
+    margin-right: 20px;
+
+    :focus {
+      outline:  none !important;
+      outline-color: none !important;
+      outline-style: none !important;
+      outline-width: none !important;
+      -webkit-focus-ring-color: none !important;
+    } 
+}
+
+.pinterestShare {
+
+    :focus {
+      outline:  none !important;
+      outline-color: none !important;
+      outline-style: none !important;
+      outline-width: none !important;
+      -webkit-focus-ring-color: none !important;
+    } 
+}
+
+.otherShopAnimate {
+  animation: osa01 4s infinite;
+    -o-animation: osa01 4s infinite;
+    
+    @keyframes osa01 {
+    0% {
+        opacity: 0;
+        }
+    50% {
+        opacity: 1;
+        }
+    100% {
+        opacity: 0;
+        }
+    }
+}
+
+.otherShopAnimateStop {
+
 }
 
 `

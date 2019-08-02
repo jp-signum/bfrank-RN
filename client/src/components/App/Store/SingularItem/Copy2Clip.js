@@ -30,6 +30,10 @@ const ShareContainer = styled.div`
     ${media.tablet`
         width: 400px;
     `}
+
+    ${media.laptop`
+        margin-top: 200px;
+    `}
 `
 
 const Container = styled.div`
@@ -70,12 +74,20 @@ const TitleDiv = styled.div`
         font-size: 1.6em;
         padding: 10px 0px 10px 0px;
     `}
+
+    ${media.laptop`
+        padding: 12px 0px 12px 0px;
+    `}
 `
 
 const ShareIcons = styled.div`
     display: flex;
     justify-content: center;
     padding-top: 10px;
+
+    ${media.laptop`
+        padding-top: 16px;
+    `}
 `
 
 const UrlDiv = styled.div`

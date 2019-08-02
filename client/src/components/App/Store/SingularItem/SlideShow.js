@@ -72,7 +72,17 @@ const ThumbnailImgContainer = styled.div`
     height: 100px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
     margin: 0px 0px 20px 20px;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
     cursor: pointer;
+
+    ${media.laptopL`
+        margin: 0px 0px 20px 60px;
+    `} 
+
+     ${media.laptopLM`
+        margin: 0px 0px 20px 120px;
+    `} 
 `
 
 const ThumbnailImg = styled.img`
@@ -81,7 +91,13 @@ const ThumbnailImg = styled.img`
 `
 
 const MainContainer = styled.div`
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
     width: 520px;
+
+    ${media.laptopL`
+        width: 500px;
+    `}  
 `
 
 const MainImgContainer = styled.div`
@@ -90,6 +106,21 @@ const MainImgContainer = styled.div`
     height: 520px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
     margin: 36px 20px 0px 20px;
+     transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+
+    ${media.laptopL`
+         margin: 36px 0px 0px 60px;
+    `}  
+
+    ${media.laptopLM`
+         margin: 36px 0px 0px 80px;
+    `} 
+
+    ${media.laptopLL`
+         margin: 36px 0px 0px 100px;
+    `} 
 `
 
 const MainImg = styled.img`
