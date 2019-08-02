@@ -22,7 +22,7 @@ export class AppContextProvider extends Component {
     }
 
     getItems = () => {
-        return itemAxios.get("/api/store")
+        return itemAxios.get('/api/store')
             .then(response => {
                 this.setState({ nails: response.data });
                 return response;
@@ -31,7 +31,7 @@ export class AppContextProvider extends Component {
 
 
     addItem = (newItem) => {
-        return itemAxios.post("/api/store/nails/", newItem)
+        return itemAxios.post('/api/store/nails/', newItem)
             .then(response => {
                 this.setState(prevState => {
                     return { nails: [...prevState.nails, response.data] }
@@ -89,6 +89,14 @@ export class AppContextProvider extends Component {
             user: {},
             token: ''
         })
+    }
+
+    componentDidMount() {
+        this.getItems();
+    }
+
+    componentWillUnmount() {
+        this.getItems();
     }
 
     render() {

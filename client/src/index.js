@@ -16,5 +16,5 @@ ReactDom.render(
             </ScrollToTop>
         </Router>
     </AppContextProvider>,
-    document.getElementById("root")
+    document.getElementById('root')
 )

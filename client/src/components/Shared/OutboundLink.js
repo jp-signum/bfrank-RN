@@ -5,12 +5,12 @@ import ReactGA from 'react-ga'
 import media from '../../theme/Device'
 
 const StyledSpan = styled.span`
-    color: rgba(255, 252, 252, 0.3);
-    font-size: 0.8em;
-    transition: ease 0.5s;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+    color: rgba(253, 253, 253, 0.45);
 
     :hover {
-        color: rgba(255, 255, 255, 1);
+        color: rgba(253, 253, 253, 1);
     }
 
     ${media.phoneS`
@@ -35,4 +35,4 @@ function OutboundLink(props) {
     )
 }
 
-export default OutboundLink
+export default OutboundLink;

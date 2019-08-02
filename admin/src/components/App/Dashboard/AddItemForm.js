@@ -25,7 +25,7 @@ const AddLabelFile = styled.div`
     font-size: 1em;
     box-shadow: 0px 3px 15px rgba(242, 242, 242, 0.11);
     padding: 4px 0px 2px 8px;
-    margin: 8px 0px 4px 20px;
+    margin: 8px 0px 4px 30px;
 
     :focus{
         border-bottom: 2px solid rgb(242, 242, 242, 0.9);
@@ -51,7 +51,7 @@ const AddInput = styled.input`
   background: none;
     border-bottom: 2px solid rgb(242, 242, 242, 0.6);
     color: #F2F2F2;
-    width: 60%;
+    width: 76%;
     font-size: 0.9em;
     padding: 18px 0px 2px 0px;
     margin-bottom: 18px;
@@ -76,7 +76,7 @@ const AddBtn = styled.button`
     height: 35px;
     width: 110px;
     font-size: 1.2em;
-    margin: 20px 0px 0px 20px;
+    margin: 20px 0px 0px 30px;
     padding: 2px 0px 4px 0px;
 
     :hover{
@@ -88,14 +88,32 @@ const AddBtn = styled.button`
 const HiddenDiv = styled.div`
   display: none;
 `
+
 const SuccessDiv = styled.div`
-  padding-top: 20px;
+  padding: 20px 0px 0px 20px;
   color: #7fe060;
 `
 
-const FileListItem = styled.div`
-    color: #7fe060;
-    padding-top: 20px;
+const AddTextarea = styled.textarea`
+    background: none;
+    border: 2px solid rgb(242, 242, 242, 0.6);
+    border-radius: 4px;
+    color: #F2F2F2;
+    width: 76%;
+    height: 26vh;
+    font-size: 0.9em;
+    padding: 4px 0px 0px 0px;
+    margin-top: 14px;
+    padding: 2px 0px 4px 0px;
+
+    :focus{
+        border: 2px solid rgb(242, 242, 242, 0.9);
+        outline:  none !important;
+        outline-color: none !important;
+        outline-style: none !important;
+        outline-width: none !important;
+        -webkit-focus-ring-color: none !important;
+    }
 `
 
 class AddItemForm extends Component {
@@ -135,8 +153,14 @@ class AddItemForm extends Component {
                 this.clearInputs()
                 this.setState({
                     added: true
-                })
-            })
+                }, () => {
+                    setTimeout( () => {
+                        this.setState({
+                            added: false
+                        })
+                    }, 3000)
+                }
+            )})
             .catch(err => console.error(err.response.data.message))
     }
 
@@ -178,7 +202,7 @@ class AddItemForm extends Component {
                         value={this.state.name}
                         placeholder='Name'
                         onChange={this.handleChange} />
-                    <AddInput
+                    <AddTextarea
                         placeholder='Description'
                         type='text'
                         name='description'
@@ -208,7 +232,7 @@ class AddItemForm extends Component {
                     </label>
                     <AddBtn>{this.state.buttonText}</AddBtn>
                     {this.state.images
-                        ? <FileListItem>Images Uploaded!</FileListItem>
+                        ? <SuccessDiv>Images Uploaded!</SuccessDiv>
                         : <HiddenDiv></HiddenDiv> 
                     }
                     {this.state.added
