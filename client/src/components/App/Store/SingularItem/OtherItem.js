@@ -7,13 +7,7 @@ import Fade from 'react-reveal'
 import media from '../../../../theme/Device'
 
 const Container = styled.div`
-    padding: 4%;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-
-    ${media.tablet`
-        padding: 0px;
-    `}
+    padding: 6%;
 `
 
 const ImgDiv = styled.div`
@@ -25,7 +19,12 @@ const ImgDiv = styled.div`
         height: 400px;
     `}
 
-    ${media.laptopL`
+    ${media.laptop`
+        width:100%;
+        height: 400px;
+    `}
+
+    ${media.laptop`
         height: 344px;
     `}
 `
@@ -33,6 +32,8 @@ const ImgDiv = styled.div`
 const Img = styled.img`
     width: 100%;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.laptop`
         height: 100%;
@@ -42,11 +43,13 @@ const Img = styled.img`
 const Name = styled.div`
     color: #0D0D0D;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 2px 0px 2px 0px;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.phoneM`
-        font-size: 1.3em;
+        font-size: 1.1em;
     `}
 
      ${media.laptop`
@@ -57,17 +60,21 @@ const Name = styled.div`
 `
 
 const Price = styled.div`
+    font-size: 0.9em;
+    
     ${media.phoneM`
-        font-size: 1.1em;
+        font-size: 1em;
     `}
 `
 
 const Quantity = styled.div`
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #d63c4f;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.phoneM`
-        font-size: 1em;
+        font-size: 0.9em;
     `}
 
     ${media.laptop`
@@ -84,13 +91,13 @@ const StuffDiv = styled.div`
     `}
 `
 
-function ItemPreview(props) {
+function OtherItem(props) {
 
-    const itemPrice = (props.nail.price / 100),
-        itemName = props.nail.name,
-        itemPicArr = props.nail.pictures,
-        quantity = props.nail.quantity,
-        itemID = props.nail._id;
+    const itemPrice = (props.item.price / 100),
+        itemName = props.item.name,
+        itemPicArr = props.item.pictures,
+        quantity = props.item.quantity,
+        itemID = props.item._id;
 
     return (
         <Container>
@@ -128,5 +135,4 @@ function ItemPreview(props) {
     )
 }
 
-
-export default ItemPreview;
+export default OtherItem;

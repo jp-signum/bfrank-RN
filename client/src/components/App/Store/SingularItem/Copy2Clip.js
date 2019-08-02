@@ -65,6 +65,11 @@ const TitleDiv = styled.div`
         font-size: 1.4em;
         padding: 8px 0px 8px 0px;
     `}
+
+    ${media.tablet`
+        font-size: 1.6em;
+        padding: 10px 0px 10px 0px;
+    `}
 `
 
 const ShareIcons = styled.div`
@@ -80,6 +85,14 @@ const UrlDiv = styled.div`
     text-align: center;
     margin: 12px;
     padding: 4px;
+
+    ${media.phoneM`
+        margin: 14px 20px 14px 20px;
+    `}
+
+    ${media.tablet`
+        margin: 20px 40px 20px 40px;
+    `}
 `
 
 const ShareBtn = styled.button`
@@ -95,6 +108,12 @@ const ShareBtn = styled.button`
         color: rgba(13, 13, 13, 1);
         background: white;
     }
+
+   ${media.tablet`
+        margin: 20px 100px 30px 100px;
+        padding: 6px 0px 6px 0px;
+        font-size: 1.2em;
+    `} 
 `
 
 class Copy2Clip extends Component {
@@ -138,7 +157,7 @@ class Copy2Clip extends Component {
                                     <FacebookIcon
                                         iconBgStyle={{ fill: '#fdfdfd' }}
                                         logoFillColor='#0D0D0D'
-                                        size={48} />
+                                        size={52} />
                                 </FacebookShareButton>
                                 <TwitterShareButton
                                     url={this.state.value}
@@ -147,7 +166,7 @@ class Copy2Clip extends Component {
                                     <TwitterIcon
                                         iconBgStyle={{ fill: '#fdfdfd' }}
                                         logoFillColor='#0D0D0D'
-                                        size={48} />
+                                        size={52} />
                                 </TwitterShareButton>
                                 <PinterestShareButton
                                     url={this.state.value}
@@ -157,7 +176,7 @@ class Copy2Clip extends Component {
                                     <PinterestIcon
                                         iconBgStyle={{ fill: '#fdfdfd' }}
                                         logoFillColor='#0D0D0D'
-                                        size={48} />
+                                        size={52} />
                                 </PinterestShareButton>
                             </ShareIcons>
                             <UrlDiv>{'https://www.ravenailz.com' + this.props.location}</UrlDiv>

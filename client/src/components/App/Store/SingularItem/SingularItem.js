@@ -12,6 +12,7 @@ import { customModalStyles } from '../../../Shared/StyleConstants'
 import media from '../../../../theme/Device'
 import PicSwitchMain from './PicSwitchMain'
 import Copy2Clip from './Copy2Clip'
+import Others from './OtherList'
 
 import ShareIcon from '../../../../assets/icons/share_black.svg'
 
@@ -19,15 +20,26 @@ const Container = styled.div`
 
 `
 
+const FlexDiv = styled.div`
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+    ${media.tablet`
+        display: grid;
+        grid-template-columns: 57vw 43vw;
+    `}
+`
+
 const ImgContainer = styled.div`
     width: 100%;
     display: relative;
     height: 400px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.tablet`
-        width: 57.5%;
-        height: 620px;
+        height: 540px;
         margin-left: 10px;
     `}
 `
@@ -71,18 +83,26 @@ const SubtractOne = styled.i`
 `
 
 const StuffDiv = styled.div`
-    padding: 20px 26px 20px 26px; 
+    padding: 20px 26px 20px 26px;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease; 
+
+    ${media.tablet`
+        padding: 40px 30px 20px 40px;
+    `}  
 `
 
 const Quantity = styled.div`
     font-size: 0.9em;
     color: #d63c4f;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.phoneM`
         font-size: 1em;
     `}
 
-    ${media.laptop`
+    ${media.tablet`
         font-size: 1.1em;
     `}
 `
@@ -90,6 +110,12 @@ const Quantity = styled.div`
 const PositionDiv = styled.div`
     position: relative;
     padding: 4px 0px 4px 0px;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+    ${media.tablet`
+        padding: 6px 0px 20px 0px;
+    `}
 `
 
 const Name = styled.div`
@@ -97,10 +123,16 @@ const Name = styled.div`
     font-weight: bold;
     font-size: 1.2em;
     display: inline-block;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.phoneM`
         font-size: 1.3em;
         font-weight: 900;
+    `}
+
+    ${media.tablet`
+        font-size: 1.5em;
     `}
 `
 
@@ -108,7 +140,8 @@ const Price = styled.div`
     display: inline-block;
     position: absolute;
     right: 0px;
-
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.phoneM`
         font-size: 1.2em;
@@ -117,11 +150,24 @@ const Price = styled.div`
     ${media.phoneL`
         right: 6px;
     `}
+
+    ${media.tablet`
+        font-size: 1.5em;
+        font-weight: bold;
+    `}
 `
 
 const Description = styled.div`
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
     ${media.phoneM`
         font-size: 1.1em;
+    `}
+
+    ${media.tablet`
+        font-size: 1.2em;
+        padding: 0px 0px 20px 0px;
     `}
 `
 
@@ -148,6 +194,10 @@ const AddCartBtn = styled.div`
     ${media.phoneM`
         width: 85vw;
     `}
+
+    ${media.tablet`
+        width: 32vw;
+    `}
 `
 
 const AddSpan = styled.span`
@@ -161,28 +211,58 @@ const ConstantDiv = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.phoneM`
         font-size: 1.1em;
+    `}
+
+    ${media.tablet`
+        font-size: 1.2em;
     `}
 `
 
 const Include = styled.div`
     padding: 4px 0px 4px 0px;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+    ${media.tablet`
+        font-size: 1.1em;
+    `}
 `
 
-const FlexDiv = styled.div`
+const Ready = styled.div`
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
+    ${media.tablet`
+        font-size: 1.1em;
+    `}
+`
+
+const File = styled.div`
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+    
+    ${media.tablet`
+        font-size: 1.1em;
+    `}
 `
 
 const ShareDiv = styled.div`
     position: relative;
-    padding-bottom: 4px;
+    padding: 10px 0px 10px 0px;
     cursor: pointer;
 
     :hover span{
         text-decoration: underline;
     }
+
+    ${media.tablet`
+        padding: 30px 0px 30px 0px;
+    `}
 `
 
 const ShareImg = styled.img`
@@ -197,20 +277,30 @@ const ShareSpan = styled.span`
 `
 
 const ModalCloseBtn = styled.button`
-position: absolute;
-right: 30px;
-top: 30px;
-cursor: pointer;
-background: none;
-color: #fffdfd;
-height: 30px;
-width: 30px;
-font-size: 2em;
-transition: ease 0.5s;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    background: none;
+    color: #fffdfd;
+    height: 30px;
+    width: 30px;
+    font-size: 2em;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
-:hover {
-    color: #D63C4F;
-}
+    :hover {
+        color: #D63C4F;
+    }
+`
+
+const OtherDiv = styled.div`
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+    ${media.tablet`
+        padding: 40px 0px 0px 0px;
+    `}
 `
 
 Modal.setAppElement(document.getElementById('root'));
@@ -223,14 +313,6 @@ class SingularItem extends Component {
             showModal: false,
         }
     }
-
-    // setWindow = () => {
-    //     if (window.innerWidth > 760) {
-    //         this.setState({
-    //             isTablet: true
-    //         })
-    //     }
-    // }
 
     changeMainPicForward = () => {
         if (this.state.mainPic <= 4) {
@@ -277,36 +359,11 @@ class SingularItem extends Component {
         });
     }
 
-
-    // //  perhaps need to throttle this for performance, import throttle from 'lodash.throttle'; but also nobody should actually be resizing this unless your a dev checking on things
-    // handleWindowResize = (y) => {
-    //     this.setState({
-    //         isLaptop: y
-    //     })
-    // }
-
-    // onResize = () => {
-    //     if (window.innerWidth > 760) {
-    //         this.handleWindowResize(true)
-    //     } else {
-    //         this.handleWindowResize(false)
-    //     }
-    // }
-
     componentDidUpdate() {
         if (this.state.showModal) {
             document.body.style.overflow = 'hidden';
         }
     }
-
-    // componentDidMount() {
-    //     this.setWindow()
-    //     window.addEventListener('resize', this.onResize)
-    // }
-
-    // componentWillUnmount() {
-    //     window.removeEventListener('resize', this.onResize)
-    // }
 
     render() {
         const filteredPostArr = filterById(this.props.nails, this.props.id),
@@ -362,21 +419,24 @@ class SingularItem extends Component {
                                 <ShareSpan>Share this look  </ShareSpan>
                                 <ShareImg src={ShareIcon} alt='share this look' />
                             </ShareDiv>
-                            <div>Ready to ship in 3-5 days.</div>
+                            <Ready>Ready to ship in 3-5 days.</Ready>
                             <Include>All sets include:</Include>
-                            <div>Nail Glue + Nail File</div>
+                            <File>Nail Glue + Nail File</File>
                         </ConstantDiv>
                     </StuffDiv>
                 </FlexDiv>
+                <OtherDiv>
+                    <Others notIncluded={filterNotIncludedArr} />
+                </OtherDiv>
                 <Modal
                     isOpen={this.state.showModal}
                     contentLabel='Sharing to different social platforms modal'
                     onRequestClose={this.closeModal}
                     style={customModalStyles}>
-                    <Copy2Clip 
+                    <Copy2Clip
                         img={mainPicUrl}
                         description={description}
-                        location={this.props.location}/>     
+                        location={this.props.location} />
                     <ModalCloseBtn onClick={this.closeModal}>
                         <span className="bm-cross2"></span>
                         <span className="bm-cross3"></span>
