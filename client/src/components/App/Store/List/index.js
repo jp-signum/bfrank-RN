@@ -8,7 +8,7 @@ import { withContext } from '../../../AppContext'
 
 import media from '../../../../theme/Device'
 import ProductList from './ProductList'
-import Navigation from '../../../Shared/Navigation/Mobile/index'
+import Navigation from '../../../Shared/Navigation/index'
 
 const Container = styled.div`
     margin-top: 20%;

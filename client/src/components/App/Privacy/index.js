@@ -7,7 +7,7 @@ import { NavDivDark, NavDivDarkLap } from '../../Shared/StyleConstants'
 import { withContext } from '../../AppContext'
 
 import media from '../../../theme/Device'
-import Navigation from '../../Shared/Navigation/Mobile/index'
+import Navigation from '../../Shared/Navigation/index'
 import Policy from './Policy'
 
 const Container = styled.div`

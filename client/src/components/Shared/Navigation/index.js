@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import NavMenu from './Menu'
-import media from '../../../../theme/Device'
+import media from '../../../theme/Device'
 
-import MainLogoWhite from '../../../../assets/icons/main_logo_white.svg'
-import MainLogoRed from '../../../../assets/icons/main_logo_red.svg'
+import MainLogoWhite from '../../../assets/icons/main_logo_white.svg'
+import MainLogoRed from '../../../assets/icons/main_logo_red.svg'
 
 const RelativeContainerLap = styled.div`
     position: relative;
@@ -181,7 +181,9 @@ class NavigationMobile extends Component {
                             </NameRight>
                             <NameRight>
                                 <CartCount>
-                                    <span></span>
+                                    {this.props.cartCount >= 1 &&
+                                        <span>({this.props.cartCount})</span>
+                                    }
                                 </CartCount><span>Cart</span>
                             </NameRight>
                         </LaptopMenuRight>
