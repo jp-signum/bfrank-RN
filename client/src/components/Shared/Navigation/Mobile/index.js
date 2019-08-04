@@ -181,9 +181,7 @@ class NavigationMobile extends Component {
                             </NameRight>
                             <NameRight>
                                 <CartCount>
-                                    {this.props.cartCount >= 1 &&
-                                        <span>({this.props.cartCount})</span>
-                                    }
+                                    <span></span>
                                 </CartCount><span>Cart</span>
                             </NameRight>
                         </LaptopMenuRight>

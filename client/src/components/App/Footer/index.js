@@ -184,6 +184,10 @@ const MailDiv = styled.div`
     ${media.tablet`
         width: 400px;
     `}
+
+    ${media.laptop`
+        margin-top: 130px;
+    `}
 `
 
 const SubscribeDiv = styled.div`
@@ -358,8 +362,8 @@ class Footer extends Component {
                     </SocialContainer>
                     <TermsDiv>
                         <Copyright />
-                        <Link to='/terms'><TermsSpan>Terms & Conditions</TermsSpan></Link>
-                        <Link to='/privacy'><TermsSpan>Privacy Policy</TermsSpan></Link>
+                        <Link to='/terms-conditions'><TermsSpan>Terms & Conditions</TermsSpan></Link>
+                        <Link to='/privacy-policy'><TermsSpan>Privacy Policy</TermsSpan></Link>
                     </TermsDiv>
                 </FlexContainer>
                 <Modal

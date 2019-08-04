@@ -8,6 +8,7 @@ import { withContext } from '../../AppContext'
 
 import media from '../../../theme/Device'
 import Navigation from '../../Shared/Navigation/Mobile/index'
+import Conditions from './Conditions'
 
 const Container = styled.div`
     margin-top: 20%;
@@ -19,21 +20,21 @@ const Container = styled.div`
     `}
 `
 
-function Terms(props) {
-    const cartCount = props.localCart.length
-
+function Terms() {
     return (
         <Container>
             <Helmet titleTemplate="%s | Rave Nailz">
-                <title>{Meta.title}</title>
+                <title>{Meta.terms}</title>
                 <meta name='description' content={Meta.description}></meta>
                 <meta name='keywords' content={Meta.keywords}></meta>
             </Helmet>
             <Navigation
+                storeNo='storePlain'
+                aboutNo='aboutPlain'
+                accountNo='accountPlain'
                 navStyle={NavDivDark}
-                navStyleLap={NavDivDarkLap}
-                cartCount={cartCount}/>
-          
+                navStyleLap={NavDivDarkLap} />
+            <Conditions />
         </Container>
     )
 }

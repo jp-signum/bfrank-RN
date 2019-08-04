@@ -42,10 +42,10 @@ function App() {
                     path='/checkout'
                     component={Checkout} />
                 <Route
-                    path='/terms'
+                    path='/terms-conditions'
                     component={Terms} />
                 <Route
-                    path='/privacy'
+                    path='/privacy-policy'
                     component={Privacy} />
             </Switch>
             <Footer />
