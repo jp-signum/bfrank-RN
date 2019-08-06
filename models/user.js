@@ -4,14 +4,6 @@ const bcrypt = require('bcrypt')
 const uniqueValidator = require('mongoose-unique-validator');
 
 const UserSchema = new Schema({
-    username: {
-        type: String,
-        lowercase: true,
-        required: [true, "can't be blank"],
-        match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
-        unique: true,
-        index: true
-    }, 
     password: {
         type: String,
         required: true
@@ -28,7 +20,13 @@ const UserSchema = new Schema({
         unique: true,
         index: true
     },
-    cart: [String]
+    cart: {
+        cart_id: {
+            type: String,
+            unique: true
+        },
+        nails: [String]
+    }
 }, {timestamps: true});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});

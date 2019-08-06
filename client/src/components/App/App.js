@@ -3,7 +3,7 @@ import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 
 import GlobalStyle from '../../theme/GlobalStyle'
-import ProtectedRoute from '../Shared/Authentication/ProtectedRoute'
+import ProtectedRoute from './Authentication/ProtectedRoute'
 
 import Home from './Home/index'
 import ProductList from './Store/List/index'
@@ -11,6 +11,7 @@ import SingularItem from './Store/SingularItem/index'
 import About from './About/index'
 import Account from './Account/index'
 import Checkout from './Checkout/index'
+import Authentication from './Authentication/index'
 import Terms from './Terms/index'
 import Privacy from './Privacy/index'
 import Footer from './Footer/index'
@@ -37,14 +38,14 @@ function App() {
                 <Route
                     path='/about'
                     component={About} />
+                <Route
+                    path='/authentication'
+                    component={Authentication} />    
                 <ProtectedRoute
                     path='/account/:id'
                     component={Account} />
-                <Route
-                    path='/account'
-                    render={() => <Redirect to='/account/:id' />} />
-                <Route
-                    path='/checkout'
+                <ProtectedRoute
+                    path='/checkout/:id'
                     component={Checkout} />
                 <Route
                     path='/terms-conditions'

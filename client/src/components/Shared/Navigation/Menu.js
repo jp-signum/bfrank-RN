@@ -101,7 +101,7 @@ class NavMenu extends Component {
                 <Link onClick={this.closeMenu} to='/' className='menu-item'>Home</Link>
                 <Link onClick={this.closeMenu} to='/store/productlist' className='menu-item'>Store</Link>
                 <Link onClick={this.closeMenu} to='/about' className='menu-item'>About</Link>
-                <Link onClick={this.closeMenu} to='/about' className='menu-item'>About</Link>
+                <Link onClick={this.closeMenu} to='/account/:id' className='menu-item'>Account</Link>
                 <div onClick={this.handleOpenModal} className='menu-item'>Newsletter</div>
                 <PositionDiv>
                     <SocialContainer>

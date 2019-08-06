@@ -23,7 +23,7 @@ const Container = styled.div`
 function Terms() {
     return (
         <Container>
-            <Helmet titleTemplate="%s | Rave Nailz">
+            <Helmet titleTemplate='%s | Rave Nailz'>
                 <title>{Meta.terms}</title>
                 <meta name='description' content={Meta.description}></meta>
                 <meta name='keywords' content={Meta.keywords}></meta>

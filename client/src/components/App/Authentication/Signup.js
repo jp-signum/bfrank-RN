@@ -1,24 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+
 import { withContext } from '../../AppContext'
+import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
+import { validateForm } from '../../Shared/HelperFunctions'
 
 const LoginContainer = styled.div`
-    background: #F2F2F2;
-    color: #0D0D0D;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
+ 
 
-const LoginHeader = styled.div`
-    font-size: 2em;
-    text-align: center;
-    padding-bottom: 20px;
 `
 
 const StyledLoginForm = styled.form`
@@ -60,20 +49,55 @@ const LoginErrorDiv = styled.div`
     color: #BF455B;
 `
 
+const Recovery = styled.div`
+   
+`
+
 class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
             password: '',
-            errorMessage: ''
+            firstName: '',
+            lastName: '',
+            errorMessage: '',
+            formError: '',
+            errors: {
+                phoneNumber: '',
+                emailAddress: '',
+                dob: '',
+            }
         }
     }
 
     handleChange = (e) => {
+        e.preventDefault();
+
         const { name, value } = e.target
+
+        let errors = this.state.errors;
+
+        switch (name) {
+            case 'emailAddress':
+                errors.emailAddress =
+                    validEmailRegex.test(value)
+                        ? ''
+                        : 'Email is not valid!';
+                break;
+            case 'password':
+                errors.password =
+                    strongPasswordRegex.test(value)
+                        ? ''
+                        : 'Password is not valid!';
+                break;
+            default:
+        }
+
         this.setState({
-            [name]: value
+            errors,
+            [name]: value,
+            formError: ''
         })
     }
 
@@ -87,26 +111,47 @@ class LoginForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.login(this.state)
-            .then(() => this.props.history.push('/dashboard'))
+        
+        if (validateForm(this.state.errors)) {
+            this.props.login(this.state)
+            .then(() => this.props.history.push('/account/:id'))
             .catch(err => {
                 this.setState({ errorMessage: err.message })
             })
+        } else {
+            this.setState({
+                formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
+            })
+        }
     }
-
 
     render() {
         return (
             <LoginContainer>
                 <StyledLoginForm onSubmit={this.handleSubmit}>
-                    <LoginHeader>Admin</LoginHeader>
+                    <label htmlFor="unInp">
+                        <LoginPasswordInput
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                            name='firstName'
+                            type='text'
+                            placeholder='First Name' />
+                    </label>
+                    <label htmlFor="unInp">
+                        <LoginPasswordInput
+                            onChange={this.handleChange}
+                            value={this.state.password}
+                            name='lastName'
+                            type='text'
+                            placeholder='Last Name' />
+                    </label>
                     <label htmlFor="unInp">
                         <LoginUsernameInput
                             onChange={this.handleChange}
                             value={this.state.username}
-                            name='username'
+                            name='email'
                             type='text'
-                            placeholder='Username' />
+                            placeholder='Email' />
                     </label>
                     <label htmlFor="unInp">
                         <LoginPasswordInput
@@ -117,6 +162,7 @@ class LoginForm extends Component {
                             placeholder='Password' />
                     </label>
                     <LoginButton type='submit'>Login</LoginButton>
+                    <Recovery>Forgot your password?</Recovery>
                     {this.state.errorMessage &&
                         <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
                     }

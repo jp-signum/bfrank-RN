@@ -76,6 +76,7 @@ export class AppContextProvider extends Component {
         return (
             <AppContext.Provider
                 value={{
+                    getItems: this.getItems,
                     addToCart: this.addToCart,
                     logout: this.logout,
                     login: this.login,

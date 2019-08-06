@@ -6,43 +6,31 @@ import { Meta } from '../../Shared/Meta'
 import { NavDivDark, NavDivDarkLap } from '../../Shared/StyleConstants'
 import { withContext } from '../../AppContext'
 
-import ComingSoon from './ComingSoon'
 import media from '../../../theme/Device'
 import Navigation from '../../Shared/Navigation/index'
+import Auth from './Auth'
 
 const Container = styled.div`
-    margin-top: 20%;
-     transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-
-     ${media.tablet`
-        margin-top: 6%;
-    `}
+    
 `
 
-function About(props) {
-    const cartCount = props.localCart.length,
-        path = props.location.pathname,
-        locationMatch = path.match(/about/g);
-    
+function AuthenticationComponent() {
     return (
         <Container>
             <Helmet titleTemplate='%s | Rave Nailz'>
-                <title>{Meta.title}</title>
+                <title>{Meta.terms}</title>
                 <meta name='description' content={Meta.description}></meta>
                 <meta name='keywords' content={Meta.keywords}></meta>
             </Helmet>
             <Navigation
-                navStyle={NavDivDark}
-                navStyleLap={NavDivDarkLap}
-                aboutYes='aboutUnderline'
                 storeNo='storePlain'
+                aboutNo='aboutPlain'
                 accountNo='accountPlain'
-                location={locationMatch[0]}
-                cartCount={cartCount}/>
-            <ComingSoon />
+                navStyle={NavDivDark}
+                navStyleLap={NavDivDarkLap} />
+            <Auth />
         </Container>
     )
 }
 
-export default withContext(About);
+export default withContext(AuthenticationComponent);
