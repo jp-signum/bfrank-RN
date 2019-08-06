@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import media from '../../../theme/Device'
 import Login from './Login'
 import Signup from './Signup'
+import Forgot from './Forgot'
 
 const Container = styled.div`
     background: #0D0D0D;
@@ -16,7 +17,7 @@ const Container = styled.div`
 `
 
 const AuthToggle = styled.div`
-    padding: 160px 0px 20px 0px;
+    padding: 50px 0px 20px 0px;
     font-size: 1.6em;
     letter-spacing: 0.1em;
 `
@@ -33,13 +34,15 @@ class Auth extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            login: 'true'
+            login: true,
+            forgot: false
         }
     }
 
     handleLoginSwitch = () => {
         this.setState({
-            login: true
+            login: true,
+            forgot: false
         })
     }
 
@@ -49,23 +52,33 @@ class Auth extends Component {
         })
     }
 
+    handleForgotSwitch = () => {
+        this.setState({
+            forgot: true
+        })
+    }
+
     render() {
-        console.log(this.state.login)
         return (
             <Container>
                 <AuthToggle>
-                    <LoginSpan 
+                    <LoginSpan
                         className={this.state.login ? 'loginHighlight' : 'loginNotHL'}
                         onClick={this.handleLoginSwitch}>Login</LoginSpan>
                     <span>  / </span>
-                    <SignupSpan 
+                    <SignupSpan
                         className={this.state.login ? 'loginNotHL' : 'loginHighlight'}
                         onClick={this.handleSignupSwitch}>Signup</SignupSpan>
                 </AuthToggle>
-                    {this.state.login
-                        ? <Login />
-                        : <Signup />
-                    }
+                {this.state.forgot
+                    ? <Forgot back={this.handleLoginSwitch}/>
+                    : <div>
+                            {this.state.login
+                                ? <Login switch={this.handleForgotSwitch}/>
+                                : <Signup />
+                            }
+                        </div>
+                }
             </Container>
         )
     }

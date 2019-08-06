@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import { withContext } from '../../AppContext'
 import { validateForm } from '../../Shared/HelperFunctions'
-import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
+import { validEmailRegex } from '../../Shared/Regex'
 
-const LoginContainer = styled.div`
+const Container = styled.div`
  
 `
 
-const StyledLoginForm = styled.form`
+const ForgotForm = styled.form`
     display: flex;
     flex-direction: column;
 `
@@ -32,11 +31,7 @@ const EmailInput = styled.input`
     }
 `
 
-const PasswordInput = styled(EmailInput)`
-    margin: 8px 0px 20px 0px; 
-`
-
-const LoginBtn = styled.button`
+const SubmitBtn = styled.button`
    background: #fdfdfd;
    color: #060606;
    cursor: pointer;
@@ -55,7 +50,7 @@ const LoginErrorDiv = styled.div`
     color: #BF455B;
 `
 
-const Recovery = styled.div`
+const Back = styled.div`
     padding: 5px 0px 0px 0px;
     font-size: 0.8em;
 `
@@ -66,7 +61,7 @@ const CenterDiv = styled.div`
    flex-direction: column;
 `
 
-const RecSpan = styled.div`
+const BackSpan = styled.div`
     color: rgb(253,  253,  253, 0.5);
     cursor: pointer;
 
@@ -75,17 +70,16 @@ const RecSpan = styled.div`
     }
 `
 
-class LoginForm extends Component {
+class Forgot extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: '',
             errorMessage: '',
             formError: '',
             errors: {
                 emailAddress: '',
-                password: ''
+                dob: '',
             }
         }
     }
@@ -104,12 +98,6 @@ class LoginForm extends Component {
                         ? ''
                         : 'Email is not valid!';
                 break;
-            case 'password':
-                errors.password =
-                    strongPasswordRegex.test(value)
-                        ? ''
-                        : 'Password is not valid!';
-                break;
             default:
         }
 
@@ -123,12 +111,11 @@ class LoginForm extends Component {
     clearInputs = () => {
         this.setState({
             email: '',
-            password: '',
             errorMessage: '',
             formError: '',
             errors: {
                 emailAddress: '',
-                password: ''
+                dob: '',
             }
         })
     }
@@ -136,23 +123,23 @@ class LoginForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        if (validateForm(this.state.errors)) {
-            this.props.login(this.state)
-                .then(() => this.props.history.push('/account/:id'))
-                .catch(err => {
-                    this.setState({ errorMessage: err.message })
-                })
-        } else {
-            this.setState({
-                formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
-            })
-        }
+        // if (validateForm(this.state.errors)) {
+        //     this.props.login(this.state)
+        //         .then(() => this.props.history.push('/account/:id'))
+        //         .catch(err => {
+        //             this.setState({ errorMessage: err.message })
+        //         })
+        // } else {
+        //     this.setState({
+        //         formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
+        //     })
+        // }
     }
 
     render() {
         return (
-            <LoginContainer>
-                <StyledLoginForm onSubmit={this.handleSubmit}>
+            <Container>
+                <ForgotForm onSubmit={this.handleSubmit}>
                     <EmailInput
                         onChange={this.handleChange}
                         value={this.state.username}
@@ -160,24 +147,17 @@ class LoginForm extends Component {
                         type='text'
                         autocomplete='username'
                         placeholder='Email' />
-                    <PasswordInput
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                        name='password'
-                        type='password'
-                        autocomplete='current-password'
-                        placeholder='Password' />
-                    <LoginBtn type='submit'>Login</LoginBtn>
+                    <SubmitBtn type='submit'>Submit</SubmitBtn>
                     {this.state.errorMessage &&
                         <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
                     }
-                </StyledLoginForm>
+                </ForgotForm>
                 <CenterDiv>
-                    <Recovery><RecSpan onClick={() => this.props.switch()}>Forgot your password?</RecSpan></Recovery>
+                    <Back><BackSpan onClick={() => this.props.back()}>Login</BackSpan></Back>
                 </CenterDiv>
-            </LoginContainer>
+            </Container>
         )
     }
 }
 
-export default withContext(LoginForm);
+export default Forgot;

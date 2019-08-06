@@ -111,13 +111,13 @@ class LoginForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        
+
         if (validateForm(this.state.errors)) {
             this.props.login(this.state)
-            .then(() => this.props.history.push('/account/:id'))
-            .catch(err => {
-                this.setState({ errorMessage: err.message })
-            })
+                .then(() => this.props.history.push('/account/:id'))
+                .catch(err => {
+                    this.setState({ errorMessage: err.message })
+                })
         } else {
             this.setState({
                 formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
@@ -129,38 +129,33 @@ class LoginForm extends Component {
         return (
             <LoginContainer>
                 <StyledLoginForm onSubmit={this.handleSubmit}>
-                    <label htmlFor="unInp">
-                        <LoginPasswordInput
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                            name='firstName'
-                            type='text'
-                            placeholder='First Name' />
-                    </label>
-                    <label htmlFor="unInp">
-                        <LoginPasswordInput
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                            name='lastName'
-                            type='text'
-                            placeholder='Last Name' />
-                    </label>
-                    <label htmlFor="unInp">
-                        <LoginUsernameInput
-                            onChange={this.handleChange}
-                            value={this.state.username}
-                            name='email'
-                            type='text'
-                            placeholder='Email' />
-                    </label>
-                    <label htmlFor="unInp">
-                        <LoginPasswordInput
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                            name='password'
-                            type='password'
-                            placeholder='Password' />
-                    </label>
+                    <LoginPasswordInput
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        name='firstName'
+                        type='text'
+                        placeholder='First Name' />
+                    <div>?</div>
+                    <LoginPasswordInput
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        name='lastName'
+                        type='text'
+                        placeholder='Last Name' />
+                    <LoginUsernameInput
+                        onChange={this.handleChange}
+                        value={this.state.username}
+                        name='email'
+                        type='text'
+                        autocomplete='username'
+                        placeholder='Email' />
+                    <LoginPasswordInput
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        name='password'
+                        type='password'
+                        autocomplete='new-password'
+                        placeholder='Password' />
                     <LoginButton type='submit'>Login</LoginButton>
                     <Recovery>Forgot your password?</Recovery>
                     {this.state.errorMessage &&
