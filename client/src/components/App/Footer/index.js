@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Modal from 'react-modal'
 import { Link } from 'react-router-dom'
 
 import { ContactInfo } from '../../Shared/ParagraphStrings'
-import { customModalStyles } from '../../Shared/StyleConstants'
 
-import MailChimp from '../../Shared/Mailchimp'
 import OutboundLink from '../../Shared/OutboundLink'
 import Copyright from './Copyright'
 import media from '../../../theme/Device'
 import NewsletterModal from '../../Shared/NewsletterModal'
 
-import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
 import RLogoWhite from '../../../assets/icons/R_white.svg'
 import RLogoRed from '../../../assets/icons/R_red.svg'
 

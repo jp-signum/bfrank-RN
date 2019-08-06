@@ -1,8 +1,10 @@
 import React from 'react'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 
 import GlobalStyle from '../../theme/GlobalStyle'
+import ProtectedRoute from '../Shared/Authentication/ProtectedRoute'
+
 import Home from './Home/index'
 import ProductList from './Store/List/index'
 import SingularItem from './Store/SingularItem/index'
@@ -35,9 +37,12 @@ function App() {
                 <Route
                     path='/about'
                     component={About} />
-                <Route
+                <ProtectedRoute
                     path='/account/:id'
                     component={Account} />
+                <Route
+                    path='/account'
+                    render={() => <Redirect to='/account/:id' />} />
                 <Route
                     path='/checkout'
                     component={Checkout} />

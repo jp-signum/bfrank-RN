@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import { stack as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Modal from 'react-modal'
-
 
 import OutboundLink from '../OutboundLink'
 import media from '../../../theme/Device'
 import NewsletterModal from '../NewsletterModal'
-
 
 const PositionDiv = styled.div`
     position: absolute;
@@ -103,6 +100,7 @@ class NavMenu extends Component {
                 burgerBarClassName={this.props.burgerBarClassName}>
                 <Link onClick={this.closeMenu} to='/' className='menu-item'>Home</Link>
                 <Link onClick={this.closeMenu} to='/store/productlist' className='menu-item'>Store</Link>
+                <Link onClick={this.closeMenu} to='/about' className='menu-item'>About</Link>
                 <Link onClick={this.closeMenu} to='/about' className='menu-item'>About</Link>
                 <div onClick={this.handleOpenModal} className='menu-item'>Newsletter</div>
                 <PositionDiv>

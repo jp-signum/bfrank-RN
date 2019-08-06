@@ -199,7 +199,7 @@ function Conditions() {
                 <Content>1. Governing Law.</Content>
                 <Content>{Terms.GL}</Content>
                 <ol>
-                    <li>{Terms.A1}</li>
+                    <li>{Terms.AC1}</li>
                 </ol>
                 <ol>
                     <li>{Terms.AL1}</li>

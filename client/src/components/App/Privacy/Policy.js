@@ -142,8 +142,8 @@ function PolicyComponent() {
                 <Content>{Policy.P1}</Content>
                 <Content>{Policy.P2}</Content>
                 <Content>What Information Do We Collect</Content>
-                <Content>{Policy.C1}</Content>
-                <Content>{Policy.C2}</Content>
+                <Content>{Policy.CAA1}</Content>
+                <Content>{Policy.CAA2}</Content>
                 <Content>Information you give us:</Content>
                 <ul>
                     <li>{Policy.IL1}</li>
