@@ -48,4 +48,30 @@ authRouter.post('/login', (req, res, next) => {
     });
 });
 
+//(login)
+authRouter.post('/login/admin', (req, res, next) => {
+    // Try to find the user with the submitted username (lowercased)
+    User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
+        if (err) {
+            res.status(500)
+            return next(err);
+        } // If that user isn't in the database OR the password is wrong:
+        else if (!user) {
+           res.status(403);
+           return next(new Error('Username or password are incorrect'));
+        }
+        if (user.isAdmin === false) {
+            return res.status(403).send('Access denied.')     
+        } 
+        user.checkPassword(req.body.password, (err, match) => {
+            if (err) return res.status(500).send(err)
+            if (!match) res.status(401).send({ message: 'Username or password are incorrect'})
+            // If username and password both match an entry in the database, create a JWT. Then add the user object as the payload and pass in the secret.
+            const token = jwt.sign(user.withoutPassword(), process.env.SECRET);
+            // Send the token back to the client app.
+            return res.send({ user: user.withoutPassword(), token })
+        })
+    });
+});
+
 module.exports = authRouter;
