@@ -156,7 +156,7 @@ class LoginForm extends Component {
                         type='password'
                         autocomplete='new-password'
                         placeholder='Password' />
-                    <LoginButton type='submit'>Login</LoginButton>
+                    <LoginButton type='submit'>Submit</LoginButton>
                     <Recovery>Forgot your password?</Recovery>
                     {this.state.errorMessage &&
                         <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>

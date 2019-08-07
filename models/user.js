@@ -1,35 +1,25 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const bcrypt = require('bcrypt')
-const uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
-const UserSchema = new Schema({
-    password: {
-        type: String,
-        required: true
-    },
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
-    email: {
-        type: String,
-        lowercase: true,
-        required: [true, "can't be blank"], 
-        match: [/\S+@\S+\.\S+/, 'is invalid'],
-        unique: true,
-        index: true
-    },
-    cart: {
-        cart_id: {
+const UserSchema = new Schema(
+    {
+        password: {
             type: String,
-            unique: true
+            required: true
         },
-        nails: [String]
+        isAdmin: {
+            type: Boolean,
+            default: false
+        },
+        username: {
+            type: String,
+            lowercase: true,
+        }
     }
-}, {timestamps: true});
+);
 
-UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
+
 
 UserSchema.pre('save', function (next) {
     const user = this;
