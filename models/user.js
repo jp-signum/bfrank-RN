@@ -15,6 +15,9 @@ const UserSchema = new Schema(
         username: {
             type: String,
             lowercase: true,
+        },
+        rpt: {
+            type: String
         }
     }
 );

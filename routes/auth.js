@@ -48,7 +48,7 @@ authRouter.post('/login', (req, res, next) => {
     });
 });
 
-//(login)
+//(login -> admin)
 authRouter.post('/login/admin', (req, res, next) => {
     // Try to find the user with the submitted username (lowercased)
     User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {

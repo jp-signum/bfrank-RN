@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 import { validateForm } from '../../Shared/HelperFunctions'
 import { validEmailRegex } from '../../Shared/Regex'
@@ -46,8 +47,13 @@ const SubmitBtn = styled.button`
    }
 `
 
-const LoginErrorDiv = styled.div`
+const ErrorDiv = styled.div`
+    padding: 10px 0px 0px 0px;
     color: #BF455B;
+`
+
+const SucessDiv = styled(ErrorDiv)`
+    color: #7fe060;
 `
 
 const Back = styled.div`
@@ -74,12 +80,13 @@ class Forgot extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
+            username: '',
             errorMessage: '',
             formError: '',
+            buttonText: 'Submit',
+            sucessMessage: '',
             errors: {
-                emailAddress: '',
-                dob: '',
+                emailAddress: ''
             }
         }
     }
@@ -110,12 +117,12 @@ class Forgot extends Component {
 
     clearInputs = () => {
         this.setState({
-            email: '',
+            username: '',
             errorMessage: '',
             formError: '',
+            sucessMessage: '',
             errors: {
                 emailAddress: '',
-                dob: '',
             }
         })
     }
@@ -123,17 +130,30 @@ class Forgot extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        // if (validateForm(this.state.errors)) {
-        //     this.props.login(this.state)
-        //         .then(() => this.props.history.push('/account/:id'))
-        //         .catch(err => {
-        //             this.setState({ errorMessage: err.message })
-        //         })
-        // } else {
-        //     this.setState({
-        //         formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
-        //     })
-        // }
+        this.setState({
+            buttonText: '...sending'
+        })
+
+        
+        if (validateForm(this.state.errors)) {
+            axios.post('/api/email/forgot', this.state)
+                .then((res) => {
+                    console.log(res)
+                    this.clearInputs()
+                    this.setState({ 
+                        sucessMessage: 'Recovery email sent!',
+                        buttonText: 'Submit'
+                    })
+                })
+                .catch(err => {
+                    this.setState({ errorMessage: err.message })
+                })
+        } else {
+            this.setState({
+                buttonText: 'Submit Application',
+                formError: 'The application contains formatting errors please check your phone #, email, and dob before re-submitting.'
+            })
+        }
     }
 
     render() {
@@ -143,13 +163,19 @@ class Forgot extends Component {
                     <EmailInput
                         onChange={this.handleChange}
                         value={this.state.username}
-                        name='email'
+                        name='username'
                         type='text'
                         autocomplete='username'
                         placeholder='Email' />
-                    <SubmitBtn type='submit'>Submit</SubmitBtn>
+                    <SubmitBtn type='submit'>{this.state.buttonText}</SubmitBtn>
                     {this.state.errorMessage &&
-                        <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
+                        <ErrorDiv>
+                            <div>No account with this username was found</div>
+                            <div>{this.state.errorMessage}</div>
+                        </ErrorDiv>
+                    }
+                    {this.state.sucessMessage &&
+                        <SucessDiv>{this.state.sucessMessage}</SucessDiv>
                     }
                 </ForgotForm>
                 <CenterDiv>

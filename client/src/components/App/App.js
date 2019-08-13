@@ -15,6 +15,7 @@ import Authentication from './Authentication/index'
 import Terms from './Terms/index'
 import Privacy from './Privacy/index'
 import Footer from './Footer/index'
+import Reset from './Reset/index'
 
 const OverflowDiv = styled.div`
     overflow: hidden;
@@ -47,6 +48,9 @@ function App() {
                 <ProtectedRoute
                     path='/checkout/:id'
                     component={Checkout} />
+                <Route
+                    path='/reset/:id'
+                    component={Reset} />    
                 <Route
                     path='/terms-conditions'
                     component={Terms} />
