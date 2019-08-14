@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import media from '../../../theme/Device'
 import Login from './Login'
 import Signup from './Signup'
-import Forgot from './Forgot'
+import ForgotForm from './ForgotForm'
 
 const Container = styled.div`
     background: #0D0D0D;
@@ -71,7 +71,7 @@ class Auth extends Component {
                         onClick={this.handleSignupSwitch}>Signup</SignupSpan>
                 </AuthToggle>
                 {this.state.forgot
-                    ? <Forgot back={this.handleLoginSwitch}/>
+                    ? <ForgotForm back={this.handleLoginSwitch}/>
                     : <div>
                             {this.state.login
                                 ? <Login switch={this.handleForgotSwitch}/>

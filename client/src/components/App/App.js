@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 import GlobalStyle from '../../theme/GlobalStyle'
@@ -14,8 +14,9 @@ import Checkout from './Checkout/index'
 import Authentication from './Authentication/index'
 import Terms from './Terms/index'
 import Privacy from './Privacy/index'
-import Footer from './Footer/index'
+import Forgot from './Forgot/index'
 import Reset from './Reset/index'
+import Footer from './Footer/index'
 
 const OverflowDiv = styled.div`
     overflow: hidden;
@@ -49,6 +50,9 @@ function App() {
                     path='/checkout/:id'
                     component={Checkout} />
                 <Route
+                    path='/forgot/:id'
+                    component={Forgot} />
+                <ProtectedRoute
                     path='/reset/:id'
                     component={Reset} />    
                 <Route

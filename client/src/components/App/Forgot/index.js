@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { NavDivDark, NavDivDarkLap } from '../../Shared/StyleConstants'
 import { withContext } from '../../AppContext'
 
 import Navigation from '../../Shared/Navigation'
-import ResetForm from './ResetForm'
+import LogicSwitch from './LogicSwitch'
 
-function Reset(props) {
+function Forgot(props) {
     return (
         <div>
             <Navigation
@@ -15,9 +15,11 @@ function Reset(props) {
                 accountNo='accountPlain'
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap} />
-            <ResetForm id={props.match.params.id}/>
+            <LogicSwitch 
+                history={props.history}
+                id={props.match.params.id} />
         </div>
     )
 }
 
-export default withContext(Reset);
+export default withContext(Forgot);
