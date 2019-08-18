@@ -67,7 +67,7 @@ export class AppContextProvider extends Component {
     }
 
     login = (credentials) => {
-        return itemAxios.post('/auth/login', credentials)
+        return itemAxios.post('/auth/login/admin', credentials)
             .then(response => {
                 const { token, user } = response.data;
                 localStorage.setItem('token', token)

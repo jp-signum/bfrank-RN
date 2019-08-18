@@ -359,6 +359,8 @@ button {
     } 
 }
 
+/* continue scrolling animations */
+
 .otherShopAnimate {
   animation: osa01 4s infinite;
     -o-animation: osa01 4s infinite;
@@ -378,6 +380,22 @@ button {
 
 .otherShopAnimateStop {
 
+}
+
+/* authentication toggle class switches */
+
+.loginHighlight {
+    color: #fdfdfd;
+}
+
+.loginNotHL {
+  transition: all ease 0.5s;
+  -o-transition: all 0.5s ease;
+  color: rgb(253,  253,  253, 0.5);
+
+  :hover {
+      color: rgb(253,  253,  253, 1);
+  }
 }
 
 `

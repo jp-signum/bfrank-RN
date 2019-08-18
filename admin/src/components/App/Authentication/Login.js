@@ -100,22 +100,18 @@ class LoginForm extends Component {
             <LoginContainer>
                 <StyledLoginForm onSubmit={this.handleSubmit}>
                     <LoginHeader>Admin</LoginHeader>
-                    <label htmlFor="unInp">
-                        <LoginUsernameInput
-                            onChange={this.handleChange}
-                            value={this.state.username}
-                            name='username'
-                            type='text'
-                            placeholder='Username' />
-                    </label>
-                    <label htmlFor="unInp">
-                        <LoginPasswordInput
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                            name='password'
-                            type='password'
-                            placeholder='Password' />
-                    </label>
+                    <LoginUsernameInput
+                        onChange={this.handleChange}
+                        value={this.state.username}
+                        name='username'
+                        type='text'
+                        placeholder='Username' />
+                    <LoginPasswordInput
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        name='password'
+                        type='password'
+                        placeholder='Password' />
                     <LoginButton type='submit'>Login</LoginButton>
                     {this.state.errorMessage &&
                         <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
