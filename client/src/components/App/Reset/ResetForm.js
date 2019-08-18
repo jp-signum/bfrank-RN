@@ -6,9 +6,8 @@ import axios from 'axios'
 import { validateForm } from '../../Shared/HelperFunctions'
 import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
 
-const Container = styled.div`
- 
-`
+import media from '../../../theme/Device'
+
 
 const Form = styled.form`
     display: flex;
@@ -70,6 +69,10 @@ const ErrorMessageDiv = styled.div`
     font-size: 0.8em;
     padding-bottom: 10px;
     margin-top: -10px;
+
+     ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
 const HiddenDiv = styled.div`
@@ -178,7 +181,7 @@ class ResetForm extends Component {
 
     render() {
         return (
-            <Container>
+            <div>
                 {this.state.reset
                     ? <HiddenDiv></HiddenDiv>
                     : <Form onSubmit={this.handleSubmit}>
@@ -219,7 +222,7 @@ class ResetForm extends Component {
 
                     </SucessDiv>
                 }
-            </Container>
+            </div>
         )
     }
 }
