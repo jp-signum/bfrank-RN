@@ -56,6 +56,7 @@ const SubmitBtn = styled.button`
 
 const ErrorDiv = styled.div`
     padding: 10px 0px 0px 0px;
+    text-align: center;
     color: #BF455B;
 `
 
@@ -92,6 +93,10 @@ const ErrorMessageDiv = styled.div`
     font-size: 0.8em;
     padding-bottom: 10px;
     margin-top: -10px;
+
+     ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
 class Forgot extends Component {

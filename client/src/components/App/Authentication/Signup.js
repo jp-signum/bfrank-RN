@@ -68,6 +68,10 @@ const ErrorMessageDiv = styled.div`
     font-size: 0.8em;
     padding-bottom: 10px;
     margin-top: -10px;
+
+     ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
 class LoginForm extends Component {
