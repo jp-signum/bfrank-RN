@@ -8,7 +8,7 @@ import { withContext } from '../../AppContext'
 
 import ComingSoon from './ComingSoon'
 import media from '../../../theme/Device'
-import Navigation from '../../Shared/Navigation/Mobile/index'
+import Navigation from '../../Shared/Navigation/index'
 
 const Container = styled.div`
     margin-top: 20%;
@@ -27,7 +27,7 @@ function About(props) {
     
     return (
         <Container>
-            <Helmet titleTemplate="%s | Rave Nailz">
+            <Helmet titleTemplate='%s | Rave Nailz'>
                 <title>{Meta.title}</title>
                 <meta name='description' content={Meta.description}></meta>
                 <meta name='keywords' content={Meta.keywords}></meta>

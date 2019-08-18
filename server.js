@@ -10,7 +10,6 @@ const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
 const unless = require('express-unless')
-const Item = require('./models/item');
 
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/raveNailz'
 const path = require('path')
@@ -54,6 +53,7 @@ app.use('/api/store', expressJwt({ secret: process.env.SECRET }).unless({ method
 app.use('/auth', require('./routes/auth'));
 app.use('/api/store', require('./routes/store'));
 app.use('/api/store/nails', require('./routes/store'));
+app.use('/api/email', require('./routes/email'));
 app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
 
 app.use((err, req, res, next) => {
@@ -76,76 +76,6 @@ app.get('/admin/*', (req, res) => {
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
-
-//uploading multiple files with express-fileupload
-app.post('/api/store/nails', (req, res, next) => {
-    addItem = () => {
-        let { name, price, description, quantity } = req.body
-        let itemObj = { name, price, description, quantity }
-        const files = Object.values(req.files)
-        let clouds = files.map(file => cloudinary.uploader.upload(file.tempFilePath))
-        Promise
-            .all(clouds)
-            .then(res => {
-                let urls = res.map(cloud => cloud.url)
-                let obj = { ...itemObj, pictures: urls }
-                saveItem(obj)
-            })
-            .catch((err) => res.status(400).json(err))
-        function saveItem(obj) {
-            new Item(obj).save((err, item) => {
-                if (err)
-                    res.send(err)
-                else if (!item)
-                    res.send(400)
-                else {
-                    return res.status(200).send(item)
-                }
-                next()
-            })
-        }
-    }
-    addItem()
-})
-
-//editing an item with new shit
-app.put('/api/store/nails/:itemId', (req, res, next) => {
-    editItem = async () => {
-        const { name, price, description, quantity } = req.body
-        const updateObj = {}
-        if (name) updateObj.name = name 
-        if (price) updateObj.price = price
-        if (description) updateObj.description = description
-        if (quantity) updateObj.quantity = quantity
-        if (req.files) {
-            try {
-                const files = Object.values(req.files)
-                let clouds = files.map(file => cloudinary.uploader.upload(file.tempFilePath))
-                const res = await Promise.all(clouds)
-                let urls = res.map(cloud => cloud.url)
-                req.body.pictures = urls
-            } catch (e) {
-                res.status(400).json(e)
-            }
-        }
-
-        Item.findOneAndUpdate(
-            { _id: req.params.itemId },
-            req.body,
-            { new: true },
-            (err, item) => {
-                if (err) {
-                    console.log('Error');
-                    res.status(500);
-                    return next(err);
-                }
-                return res.send(item);
-            }
-        )
-    }
-    editItem()
-})
-
 
 //start server
 app.listen(PORT, () => {

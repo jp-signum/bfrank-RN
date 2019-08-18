@@ -59,6 +59,19 @@ export class AppContextProvider extends Component {
         })
     }
 
+    signup = (userInfo) => {
+        return itemAxios.post('/auth/signup', userInfo)
+            .then(response => {
+                const { user, token } = response.data
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
+                this.setState({
+                    user,
+                    token
+                });
+                return response;
+            })
+    }
 
     addToCart = (id) => {
         this.setState({ localCart: [...this.state.localCart, id] })
@@ -76,9 +89,11 @@ export class AppContextProvider extends Component {
         return (
             <AppContext.Provider
                 value={{
+                    getItems: this.getItems,
                     addToCart: this.addToCart,
                     logout: this.logout,
                     login: this.login,
+                    signup: this.signup,
                     ...this.state
                 }}
             >

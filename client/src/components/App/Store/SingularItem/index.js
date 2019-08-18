@@ -6,7 +6,7 @@ import { withContext } from '../../../AppContext'
 
 import media from '../../../../theme/Device'
 import SingluarItem from './SingularItem'
-import Navigation from '../../../Shared/Navigation/Mobile/index'
+import Navigation from '../../../Shared/Navigation/index'
 
 const Container = styled.div`
     margin-top: 16%;

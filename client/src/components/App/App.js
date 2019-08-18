@@ -3,14 +3,19 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 import GlobalStyle from '../../theme/GlobalStyle'
+import ProtectedRoute from './Authentication/ProtectedRoute'
+
 import Home from './Home/index'
 import ProductList from './Store/List/index'
 import SingularItem from './Store/SingularItem/index'
 import About from './About/index'
 import Account from './Account/index'
 import Checkout from './Checkout/index'
+import Authentication from './Authentication/index'
 import Terms from './Terms/index'
 import Privacy from './Privacy/index'
+import Forgot from './Forgot/index'
+import Reset from './Reset/index'
 import Footer from './Footer/index'
 
 const OverflowDiv = styled.div`
@@ -36,16 +41,25 @@ function App() {
                     path='/about'
                     component={About} />
                 <Route
+                    path='/authentication'
+                    component={Authentication} />    
+                <ProtectedRoute
                     path='/account/:id'
                     component={Account} />
-                <Route
-                    path='/checkout'
+                <ProtectedRoute
+                    path='/checkout/:id'
                     component={Checkout} />
                 <Route
-                    path='/terms'
+                    path='/forgot/:id'
+                    component={Forgot} />
+                <ProtectedRoute
+                    path='/reset/:id'
+                    component={Reset} />    
+                <Route
+                    path='/terms-conditions'
                     component={Terms} />
                 <Route
-                    path='/privacy'
+                    path='/privacy-policy'
                     component={Privacy} />
             </Switch>
             <Footer />
