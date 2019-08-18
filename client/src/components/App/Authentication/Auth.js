@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import media from '../../../theme/Device'
 import Login from './Login'
 import Signup from './Signup'
 import ForgotForm from './ForgotForm'
+import media from '../../../theme/Device'
 
 const Container = styled.div`
     background: #0D0D0D;
@@ -14,12 +14,32 @@ const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     color: #fdfdfd;
+
+    ${media.phoneM`
+        height: 78vh;
+    `}
+
+    ${media.tablet`
+        height: 84vh;
+    `}
+
+    ${media.laptop`
+        height: 79vh;
+    `}
 `
 
 const AuthToggle = styled.div`
     padding: 50px 0px 20px 0px;
     font-size: 1.6em;
     letter-spacing: 0.1em;
+
+     ${media.phoneM`
+        font-size: 2em;
+    `}
+
+    ${media.laptop`
+        margin-top: 40px;
+    `}
 `
 
 const LoginSpan = styled.span`
@@ -71,15 +91,15 @@ class Auth extends Component {
                         onClick={this.handleSignupSwitch}>Signup</SignupSpan>
                 </AuthToggle>
                 {this.state.forgot
-                    ? <ForgotForm back={this.handleLoginSwitch}/>
+                    ? <ForgotForm back={this.handleLoginSwitch} />
                     : <div>
-                            {this.state.login
-                                ? <Login
-                                    history={this.props.history} 
-                                    switch={this.handleForgotSwitch}/>
-                                : <Signup />
-                            }
-                        </div>
+                        {this.state.login
+                            ? <Login
+                                history={this.props.history}
+                                switch={this.handleForgotSwitch} />
+                            : <Signup history={this.props.history} />
+                        }
+                    </div>
                 }
             </Container>
         )

@@ -3,11 +3,9 @@ import styled from 'styled-components'
 
 import { withContext } from '../../AppContext'
 import { validateForm } from '../../Shared/HelperFunctions'
-import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
+import { validEmailRegex } from '../../Shared/Regex'
 
-const LoginContainer = styled.div`
- 
-`
+import media from '../../../theme/Device'
 
 const StyledLoginForm = styled.form`
     display: flex;
@@ -30,6 +28,10 @@ const EmailInput = styled.input`
         -webkit-focus-ring-color: none !important;
         border-bottom: solid 2px rgb(253,  253,  253, 1); 
     }
+
+    ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
 const PasswordInput = styled(EmailInput)`
@@ -49,6 +51,11 @@ const LoginBtn = styled.button`
         background: #060606;
         color: #fdfdfd;
    }
+
+   ${media.phoneM`
+        font-size: 1.2em;
+        margin: 10px 0px 8px 0px;
+    `}
 `
 
 const LoginErrorDiv = styled.div`
@@ -58,6 +65,10 @@ const LoginErrorDiv = styled.div`
 const Recovery = styled.div`
     padding: 5px 0px 0px 0px;
     font-size: 0.8em;
+
+     ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
 const CenterDiv = styled.div`
@@ -75,6 +86,13 @@ const RecSpan = styled.div`
     }
 `
 
+const ErrorMessageDiv = styled.div`
+    color: rgb(214, 60, 79, 0.85);
+    font-size: 0.8em;
+    padding-bottom: 10px;
+    margin-top: -10px;
+`
+
 class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -82,10 +100,10 @@ class LoginForm extends Component {
             username: '',
             password: '',
             errorMessage: '',
+            buttonText: 'Login',
             formError: '',
             errors: {
-                emailAddress: '',
-                password: ''
+                username: '',
             }
         }
     }
@@ -94,21 +112,14 @@ class LoginForm extends Component {
         e.preventDefault();
 
         const { name, value } = e.target
-
         let errors = this.state.errors;
 
         switch (name) {
-            case 'emailAddress':
-                errors.emailAddress =
+            case 'username':
+                errors.username =
                     validEmailRegex.test(value)
                         ? ''
                         : 'Email is not valid!';
-                break;
-            case 'password':
-                errors.password =
-                    strongPasswordRegex.test(value)
-                        ? ''
-                        : 'Password is not valid!';
                 break;
             default:
         }
@@ -127,14 +138,17 @@ class LoginForm extends Component {
             errorMessage: '',
             formError: '',
             errors: {
-                emailAddress: '',
-                password: ''
+                username: ''
             }
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
+
+        this.setState({
+            buttonText: '...sending'
+        })
 
         if (validateForm(this.state.errors)) {
             this.props.login(this.state)
@@ -144,14 +158,15 @@ class LoginForm extends Component {
                 })
         } else {
             this.setState({
-                formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
+                formError: 'The form contains formatting errors please check that your email and password match the required criteria before re-submitting (foo@example.com).',
+                buttonText: 'Login'
             })
         }
     }
 
     render() {
         return (
-            <LoginContainer>
+            <div>
                 <StyledLoginForm onSubmit={this.handleSubmit}>
                     <EmailInput
                         onChange={this.handleChange}
@@ -160,6 +175,7 @@ class LoginForm extends Component {
                         type='text'
                         autocomplete='username'
                         placeholder='Email' />
+                    <ErrorMessageDiv>{this.state.errors.username}</ErrorMessageDiv>
                     <PasswordInput
                         onChange={this.handleChange}
                         value={this.state.password}
@@ -167,7 +183,7 @@ class LoginForm extends Component {
                         type='password'
                         autocomplete='current-password'
                         placeholder='Password' />
-                    <LoginBtn type='submit'>Login</LoginBtn>
+                    <LoginBtn type='submit'>{this.state.buttonText}</LoginBtn>
                     {this.state.errorMessage &&
                         <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
                     }
@@ -175,7 +191,7 @@ class LoginForm extends Component {
                 <CenterDiv>
                     <Recovery><RecSpan onClick={() => this.props.switch()}>Forgot your password?</RecSpan></Recovery>
                 </CenterDiv>
-            </LoginContainer>
+            </div>
         )
     }
 }

@@ -6,8 +6,6 @@ import axios from 'axios'
 import { validateForm } from '../../Shared/HelperFunctions'
 import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
 
-import Login from '../Authentication/Login'
-
 const Container = styled.div`
  
 `
@@ -61,14 +59,31 @@ const ErrorDiv = styled.div`
 
 const SucessDiv = styled(ErrorDiv)`
     color: #7fe060;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 `
 
 const ErrorMessageDiv = styled.div`
     color: rgb(214, 60, 79, 0.85);
     font-size: 0.8em;
-    padding-top: 6px;
+    padding-bottom: 10px;
+    margin-top: -10px;
 `
 
+const HiddenDiv = styled.div`
+   display: hidden;
+`
+
+const StyledSpan = styled.span`
+   cursor: pointer;
+   color: #fdfdfd;
+
+   :hover{
+       text-decoration: underline;
+   }
+`
 
 class ResetForm extends Component {
     constructor(props) {
@@ -105,7 +120,7 @@ class ResetForm extends Component {
                 errors.password =
                     strongPasswordRegex.test(value)
                         ? ''
-                        : 'PW must be at least 8 charecters in length and contain 1 number, capital letter, & sybol';
+                        : 'Must contain at least 1 number, capital letter, & symbol';
                 break;
             default:
         }
@@ -144,17 +159,19 @@ class ResetForm extends Component {
                     console.log(res)
                     this.clearInputs()
                     this.setState({
-                        sucessMessage: 'Password scuessfully reset, please log in.',
+                        sucessMessage: 'Password scuessfully reset, please log in below.',
                         buttonText: 'Reset',
                         reset: true,
                     })
+                    this.props.resetText()
+                    localStorage.removeItem('token');
                 })
                 .catch(err => {
                     this.setState({ errorMessage: err.message })
                 })
         } else {
             this.setState({
-                formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
+                formError: 'The form contains formatting errors please check that your email and password match the required criteria before re-submitting (foo@example.com).'
             })
         }
     }
@@ -163,7 +180,7 @@ class ResetForm extends Component {
         return (
             <Container>
                 {this.state.reset
-                    ? <div>test</div>
+                    ? <HiddenDiv></HiddenDiv>
                     : <Form onSubmit={this.handleSubmit}>
                         <EmailInput
                             onChange={this.handleChange}
@@ -172,7 +189,7 @@ class ResetForm extends Component {
                             type='text'
                             autocomplete='username'
                             placeholder='Email' />
-                        <ErrorMessageDiv>{this.state.errors.emailAddress}</ErrorMessageDiv>
+                        <ErrorMessageDiv>{this.state.errors.username}</ErrorMessageDiv>
                         <PasswordInput
                             onChange={this.handleChange}
                             value={this.state.password}
@@ -193,7 +210,13 @@ class ResetForm extends Component {
                 {this.state.sucessMessage &&
                     <SucessDiv>
                         <p>{this.state.sucessMessage}</p>
-                        <p><Link to='/authentication' /></p>
+
+                        <Link
+                            to='/authentication'
+                            style={{ textDecoration: 'none', position: 'relative' }}>
+                            <StyledSpan>Login</StyledSpan>
+                        </Link>
+
                     </SucessDiv>
                 }
             </Container>

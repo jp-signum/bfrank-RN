@@ -92,8 +92,6 @@ authRouter.post('/reset', (req, res, next) => {
             if (err) return next(err);
             req.body.password = hash;
 
-            console.log(req.body.password)
-
             User.findOneAndUpdate(
                 { _id: user._id },
                 { $set: { password: req.body.password } },
@@ -112,11 +110,7 @@ authRouter.post('/reset', (req, res, next) => {
             )
         });
 
-
-
-
-
-        // res.send('{"message": "Password sucessfully updated!"}')
+        res.send('{"message": "Password sucessfully updated!"}')
     });
 });
 

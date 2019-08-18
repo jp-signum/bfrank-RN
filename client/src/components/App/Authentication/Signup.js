@@ -5,54 +5,69 @@ import { withContext } from '../../AppContext'
 import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
 import { validateForm } from '../../Shared/HelperFunctions'
 
-//this whole thing has to be redone -> add password rules also
+import media from '../../../theme/Device'
 
-const LoginContainer = styled.div`
- 
-
-`
-
-const StyledLoginForm = styled.form`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
 `
 
-const LoginUsernameInput = styled.input`
-    margin-bottom: 16px;
+const UsernameInput = styled.input`
+   padding: 0px 0px 4px 0px;
+    margin: 20px 0px 20px 0px; 
     width: 100%;
-    background: #F2F2F2;
-    border-bottom: solid 2px rgb(13, 13, 13, 1.0);
+    background: #0D0D0D ;
+    color: #fdfdfd;
+    border-bottom: solid 2px rgb(253,  253,  253, 0.5);
+
+    :focus {
+        outline:  none !important;
+        outline-color: none !important;
+        outline-style: none !important;
+        outline-width: none !important;
+        -webkit-focus-ring-color: none !important;
+        border-bottom: solid 2px rgb(253,  253,  253, 1); 
+    }
+
+    ${media.phoneM`
+        font-size: 1em;
+    `}
 `
 
-const LoginPasswordInput = styled.input`
-    width: 100%;
-    margin-bottom: 20px;
-    background: #F2F2F2;
-    border-bottom: solid 2px rgb(13, 13, 13, 1.0);
+const PasswordInput = styled(UsernameInput)`
+   margin: 8px 0px 20px 0px; 
 `
 
-const LoginButton = styled.button`
-   background: #F2F2F2;
-   color: rgb(13, 13, 13, 0.4);
+const SignupBtn = styled.button`
+   background: #fdfdfd;
+   color: #060606;
    cursor: pointer;
     border-radius: 4px;
-    border: solid 2px rgb(13, 13, 13, 0.4);
-    font-size: 1.4em;
-    padding: 4px 0px 4px 0px;
+    border: solid 2px #fdfdfd;
+    font-size: 1.1em;
+    padding: 2px 0px 2px 0px;
    
    :hover {
-        border: solid 2px rgb(13, 13, 13, 1.0);
-        color: rgb(13, 13, 13, 1.0);
+        background: #060606;
+        color: #fdfdfd;
    }
+
+   ${media.phoneM`
+        font-size: 1.2em;
+        margin: 10px 0px 8px 0px;
+    `}
 `
 
-const LoginErrorDiv = styled.div`
+const ErrorDiv = styled.div`
     color: #BF455B;
 `
 
-const Recovery = styled.div`
-   
+const ErrorMessageDiv = styled.div`
+    color: rgb(214, 60, 79, 0.85);
+    font-size: 0.8em;
+    padding-bottom: 10px;
+    margin-top: -10px;
 `
 
 class LoginForm extends Component {
@@ -61,14 +76,12 @@ class LoginForm extends Component {
         this.state = {
             username: '',
             password: '',
-            firstName: '',
-            lastName: '',
             errorMessage: '',
             formError: '',
+            buttonText: 'Signup',
             errors: {
-                phoneNumber: '',
-                emailAddress: '',
-                dob: '',
+                username: '',
+                password: ''
             }
         }
     }
@@ -77,12 +90,11 @@ class LoginForm extends Component {
         e.preventDefault();
 
         const { name, value } = e.target
-
         let errors = this.state.errors;
 
         switch (name) {
-            case 'emailAddress':
-                errors.emailAddress =
+            case 'username':
+                errors.username =
                     validEmailRegex.test(value)
                         ? ''
                         : 'Email is not valid!';
@@ -91,7 +103,7 @@ class LoginForm extends Component {
                 errors.password =
                     strongPasswordRegex.test(value)
                         ? ''
-                        : 'Password is not valid!';
+                        : 'Must contain at least 1 number, capital letter, & symbol';
                 break;
             default:
         }
@@ -107,64 +119,62 @@ class LoginForm extends Component {
         this.setState({
             username: '',
             password: '',
-            errorMessage: ''
+            errorMessage: '',
+            formError: '',
+            errors: {
+                username: '',
+                password: ''
+            }
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
 
+        this.setState({
+            buttonText: '...sending'
+        })
+
         if (validateForm(this.state.errors)) {
-            this.props.login(this.state)
+            this.props.signup(this.state)
                 .then(() => this.props.history.push('/account/:id'))
                 .catch(err => {
                     this.setState({ errorMessage: err.message })
                 })
         } else {
             this.setState({
-                formError: 'The application contains formatting errors please check that your email and password match the required criteria before re-submitting.'
+                buttonText: 'Signup',
+                formError: 'The form contains formatting errors please check that your email and password match the required criteria before re-submitting (foo@example.com).'
             })
         }
     }
 
     render() {
         return (
-            <LoginContainer>
-                <StyledLoginForm onSubmit={this.handleSubmit}>
-                    <LoginPasswordInput
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                        name='firstName'
-                        type='text'
-                        placeholder='First Name' />
-                    <div>?</div>
-                    <LoginPasswordInput
-                        onChange={this.handleChange}
-                        value={this.state.password}
-                        name='lastName'
-                        type='text'
-                        placeholder='Last Name' />
-                    <LoginUsernameInput
+            <div>
+                <Form onSubmit={this.handleSubmit}>
+                    <UsernameInput
                         onChange={this.handleChange}
                         value={this.state.username}
-                        name='email'
+                        name='username'
                         type='text'
                         autocomplete='username'
                         placeholder='Email' />
-                    <LoginPasswordInput
+                    <ErrorMessageDiv>{this.state.errors.username}</ErrorMessageDiv>
+                    <PasswordInput
                         onChange={this.handleChange}
                         value={this.state.password}
                         name='password'
                         type='password'
                         autocomplete='new-password'
                         placeholder='Password' />
-                    <LoginButton type='submit'>Submit</LoginButton>
-                    <Recovery>Forgot your password?</Recovery>
+                    <ErrorMessageDiv>{this.state.errors.password}</ErrorMessageDiv>
+                    <SignupBtn type='submit'>{this.state.buttonText}</SignupBtn>
                     {this.state.errorMessage &&
-                        <LoginErrorDiv>{this.state.errorMessage}</LoginErrorDiv>
+                        <ErrorDiv>{this.state.errorMessage}</ErrorDiv>
                     }
-                </StyledLoginForm>
-            </LoginContainer>
+                </Form>
+            </div>
         )
     }
 }

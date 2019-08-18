@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import ResetForm from './ResetForm'
-import media from '../../../theme/Device'
 
 const Container = styled.div`
     background: #0D0D0D;
@@ -20,13 +19,30 @@ const Title = styled.div`
     font-size: 1.2em;
 `
 
-function Instructions(props) {
-    return (
-        <Container>
-            <Title>Please enter your email and new password below.</Title>
-            <ResetForm id={props.id}/>
-        </Container>
-    )
+class Instructions extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            titleText: 'Please enter your email and new password below.'
+            }
+        }
+    
+    resetText = () => {
+        this.setState({
+            titleText: ''
+        })
+    }
+
+    render() {
+        return (
+            <Container>
+                <Title>{this.state.titleText}</Title>
+                <ResetForm 
+                    resetText={this.resetText}
+                    id={this.props.id} />
+            </Container>
+        )
+    }
 }
 
 export default Instructions;

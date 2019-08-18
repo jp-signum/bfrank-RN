@@ -32,26 +32,26 @@ emailRouter.post('/forgot', (req, res, next) => {
                     res.status(500);
                     return next(err);
                 }
-                console.log(user)
+                // console.log(user)
                 // return res.send(user);
             }
         )
 
-        // let htmlEmail = `
-        //     <div style=''>
-        //         <p>You are receiving this email because you (or someone else) has requested the rest of the password for your accoun. Please click on the following link, or paste this into your browser to complete the process. The link will expire in one hour:</p>
-        //         <p>https://www.ravenailz.com/reset/${token}</p>
-        //         <p>If you did not request this please ignore this email to keep your account secure.</p>
-        //     </div>
-        // `
-
-         let htmlEmail = `
+        let htmlEmail = `
             <div style=''>
                 <p>You are receiving this email because you (or someone else) has requested the rest of the password for your accoun. Please click on the following link, or paste this into your browser to complete the process. The link will expire in one hour:</p>
-                <p>localhost3000/forgot/${token}</p>
+                <p>https://www.ravenailz.com/reset/${token}</p>
                 <p>If you did not request this please ignore this email to keep your account secure.</p>
             </div>
         `
+
+        //  let htmlEmail = `
+        //     <div style=''>
+        //         <p>You are receiving this email because you (or someone else) has requested the rest of the password for your accoun. Please click on the following link, or paste this into your browser to complete the process. The link will expire in one hour:</p>
+        //         <p>localhost3000/forgot/${token}</p>
+        //         <p>If you did not request this please ignore this email to keep your account secure.</p>
+        //     </div>
+        // `
 
         const mailerConfig = {
             host: 'smtp.office365.com',

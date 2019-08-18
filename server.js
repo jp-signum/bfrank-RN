@@ -47,14 +47,14 @@ mongoose.connect(url,
 );
 
 // //decode jwt and add a req.body on all request sent to /api
-// app.use('/api/store', expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
+app.use('/api/store', expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
 
 //routes
 app.use('/auth', require('./routes/auth'));
 app.use('/api/store', require('./routes/store'));
 app.use('/api/store/nails', require('./routes/store'));
 app.use('/api/email', require('./routes/email'));
-// app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
+app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
 
 app.use((err, req, res, next) => {
     console.error(err);
