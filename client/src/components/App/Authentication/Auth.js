@@ -74,7 +74,9 @@ class Auth extends Component {
                     ? <ForgotForm back={this.handleLoginSwitch}/>
                     : <div>
                             {this.state.login
-                                ? <Login switch={this.handleForgotSwitch}/>
+                                ? <Login
+                                    history={this.props.history} 
+                                    switch={this.handleForgotSwitch}/>
                                 : <Signup />
                             }
                         </div>

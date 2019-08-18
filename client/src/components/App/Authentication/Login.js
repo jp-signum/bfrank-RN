@@ -156,7 +156,7 @@ class LoginForm extends Component {
                     <EmailInput
                         onChange={this.handleChange}
                         value={this.state.username}
-                        name='email'
+                        name='username'
                         type='text'
                         autocomplete='username'
                         placeholder='Email' />

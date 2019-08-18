@@ -14,7 +14,8 @@ const Container = styled.div`
     
 `
 
-function AuthenticationComponent() {
+function AuthenticationComponent(props) {
+    console.log(props)
     return (
         <Container>
             <Helmet titleTemplate='%s | Rave Nailz'>
@@ -28,7 +29,7 @@ function AuthenticationComponent() {
                 accountNo='accountPlain'
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap} />
-            <Auth />
+            <Auth history={props.history}/>
         </Container>
     )
 }

@@ -26,7 +26,7 @@ function LogicSwitch(props) {
     useEffect(() => {
         ValidateToken(props)
     })
-  
+
 
     return (
         <Container>

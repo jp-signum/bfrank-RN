@@ -4,7 +4,7 @@ import { NavDivDark, NavDivDarkLap } from '../../Shared/StyleConstants'
 import { withContext } from '../../AppContext'
 
 import Navigation from '../../Shared/Navigation'
-import ResetForm from './ResetForm'
+import Instructions from './Instructions'
 
 function Reset(props) {
     return (
@@ -15,7 +15,7 @@ function Reset(props) {
                 accountNo='accountPlain'
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap} />
-            <ResetForm id={props.match.params.id}/>
+            <Instructions id={props.match.params.id} />
         </div>
     )
 }

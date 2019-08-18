@@ -133,7 +133,6 @@ class Forgot extends Component {
         this.setState({
             buttonText: '...sending'
         })
-
         
         if (validateForm(this.state.errors)) {
             axios.post('/api/email/forgot', this.state)

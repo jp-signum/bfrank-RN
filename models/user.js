@@ -18,7 +18,8 @@ const UserSchema = new Schema(
         },
         rpt: {
             type: String
-        }
+        },
+        cart: String
     }
 );
 

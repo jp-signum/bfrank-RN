@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { NavDivDark, NavDivDarkLap } from '../../Shared/StyleConstants'
 import { withContext } from '../../AppContext'

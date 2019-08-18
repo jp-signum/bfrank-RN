@@ -5,6 +5,8 @@ import { withContext } from '../../AppContext'
 import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
 import { validateForm } from '../../Shared/HelperFunctions'
 
+//this whole thing has to be redone -> add password rules also
+
 const LoginContainer = styled.div`
  
 
