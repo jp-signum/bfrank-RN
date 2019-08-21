@@ -213,13 +213,11 @@ class ResetForm extends Component {
                 {this.state.sucessMessage &&
                     <SucessDiv>
                         <p>{this.state.sucessMessage}</p>
-
                         <Link
                             to='/authentication'
-                            style={{ textDecoration: 'none', position: 'relative' }}>
+                            style={{ textDecoration: 'none' }}>
                             <StyledSpan>Login</StyledSpan>
                         </Link>
-
                     </SucessDiv>
                 }
             </div>

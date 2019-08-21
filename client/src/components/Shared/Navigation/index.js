@@ -177,7 +177,9 @@ class NavigationMobile extends Component {
                         </ImgDiv>
                         <LaptopMenuRight>
                             <NameRight>
-                                <span>Account</span>
+                                <Link className={this.state.isAccount ? this.props.accountYes : this.props.accountNo} to='/account/:id'>
+                                    <span>Account</span>
+                                </Link>
                             </NameRight>
                             <NameRight>
                                 <CartCount>

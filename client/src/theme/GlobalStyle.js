@@ -398,6 +398,78 @@ button {
   }
 }
 
+/* instruction video */
+
+/* #instructVid1 {
+  @media (min-aspect-ratio: 16/9) {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-aspect-ratio: 16/9) {
+    width: auto;
+    height: 100%;
+  }
+} */
+
+/* Scroll class swap */
+
+.scrollShow {
+  text-align: center;
+    font-size: 1.1em;
+    letter-spacing: 0.06em;
+    padding: 0px 12px 0px 12px;
+    transition: all ease .35s;
+    opacity: 1;
+
+    ${media.phoneL`
+        font-size: 1.2em;
+    `}
+
+    ${media.tablet`
+        font-size: 1.3em;
+        padding: 10px 10px 10px 10px;
+    `}
+
+    ${media.laptop`
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.4em;
+      padding: 50px 0px 20px 0px;
+    `}
+
+   
+}
+
+.scrollHide {
+  text-align: center;
+    font-size: 1.1em;
+    letter-spacing: 0.06em;
+    padding: 0px 12px 0px 12px;
+    transition: all ease 1s;
+    opacity: 0;
+
+    ${media.phoneL`
+        font-size: 1.2em;
+    `}
+
+    ${media.tablet`
+        font-size: 1.3em;
+        padding: 10px 10px 10px 10px;
+    `}
+
+    ${media.laptop`
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.4em;
+      padding: 10px 0px 10px 0px;
+    `}
+}
+
 `
 
 export default GlobStyle
