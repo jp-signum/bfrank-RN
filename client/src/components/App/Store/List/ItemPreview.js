@@ -19,20 +19,18 @@ const Container = styled.div`
 const ImgDiv = styled.div`
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
+    border-radius: 4px;
 
-     ${media.laptop`
-        width:100%;
-        height: 400px;
-    `}
-
-    ${media.laptopL`
-        height: 344px;
+    ${media.laptop`
+        width: 340px;
+        height: 360px;
     `}
 `
 
 const Img = styled.img`
     width: 100%;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
 
     ${media.laptop`
         height: 100%;
