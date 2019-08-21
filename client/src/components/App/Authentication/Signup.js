@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { withContext } from '../../AppContext'
 import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
@@ -10,7 +11,6 @@ import media from '../../../theme/Device'
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    margin-bottom: 100px;
 `
 
 const UsernameInput = styled.input`
@@ -72,6 +72,37 @@ const ErrorMessageDiv = styled.div`
      ${media.phoneM`
         font-size: 1em;
     `}
+`
+
+const Recovery = styled.div`
+    padding: 5px 0px 0px 0px;
+    font-size: 0.8em;
+    text-align: center;
+
+     ${media.phoneM`
+        font-size: 1em;
+    `}
+`
+
+const CenterDiv = styled.div`
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+`
+
+const RecSpan = styled.span`
+   color: rgb(253,  253,  253, 0.5);
+`
+
+const RecLink = styled.div`
+    color: rgb(253,  253,  253, 0.5);
+    text-decoration: underline;
+    cursor: pointer;
+
+    :hover {
+        text-decoration: none;
+        color: rgb(253,  253,  253, 0.8);
+    }
 `
 
 class LoginForm extends Component {
@@ -178,6 +209,18 @@ class LoginForm extends Component {
                         <ErrorDiv>{this.state.errorMessage}</ErrorDiv>
                     }
                 </Form>
+                <CenterDiv>
+                    <Recovery>
+                        <RecSpan>By providing your email address, <br /> you agree to our </RecSpan>
+                        <Link style={{ display: 'inline-block' }} to='/privacy-policy'>
+                            <RecLink>Privacy Policy</RecLink>
+                        </Link>
+                        <RecSpan><br />and </RecSpan>
+                        <Link style={{ display: 'inline-block' }} to='/terms-conditions'>
+                            <RecLink>Terms Of Service</RecLink>
+                        </Link><RecSpan>.</RecSpan>
+                    </Recovery>
+                </CenterDiv>
             </div>
         )
     }

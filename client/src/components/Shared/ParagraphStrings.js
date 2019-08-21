@@ -101,4 +101,16 @@ export const  ContactInfo = {
    CU13: "The Services are not directed to individuals who are under 13 and we do not solicit nor knowingly collect Personal Information from children under the age of 13. If you believe that we have unknowingly collected any Personal Information from someone under the age of 13, please contact us immediately at info@ravenailz.com and the information will be deleted.",
    U1: "If at any time you would like to unsubscribe from our email list, you may do so by contacting us at info@ravenailz.com.",
    CU1: "If you have any questions about this Policy, your Personal Information, or the Services, you can contact us at info@ravenailz.com."
+}, About = {
+    Title1: "Press on nails for the rebellious. Styles ranging from goth to 90's to punk to glam and trendy.",
+    Main1: "Rave Nailz is one of the dopest press-on nail suppliers based out of Austin Texas. Owned and operated by nail artist, illustrator, and graphic designer Braelinn Frank, who hand-designs each set herself. These nails are not for the faint of heart- they range from long and witchy to neon and chain-adorned. Literally, you can have your nails chained together in the most fashionable way if you so choose. There's more that just what's available to purchase- check out her ",
+    Main2: " for her latest radical designs she's always posting.",
+    In1: "Remove any and all polish. Press-ons stick best to clean nails.",
+    In2: "Gently buff your natural nails with a nail file. The goal is to rough up the surface to give the glue more to hold onto.",
+    In3: "Put 1-2 drops of glue (included) on your natural nail.",
+    In4: "Press the false nail on your natural nail and hold for at least 10 seconds.",
+    In5: "Enjoy your mani for up to two weeks!",
+}, SocialHrefs = {
+    instaH: "//www.instagram.com/Rave_Nailz",
+    fbH: "//www.facebook.com/RaveNailz/"
 }
