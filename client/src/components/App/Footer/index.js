@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { ContactInfo } from '../../Shared/ParagraphStrings'
+import { ContactInfo, SocialHrefs } from '../../Shared/ParagraphStrings'
 
 import OutboundLink from '../../Shared/OutboundLink'
 import Copyright from './Copyright'
@@ -216,13 +216,13 @@ class Footer extends Component {
                         <SociallinkDiv>
                             <OutboundLink spanText='Instagram'
                                 eventLabel='toInstagram'
-                                to='//www.instagram.com/rave_nailz/' />
+                                to={SocialHrefs.instaH} />
                         </SociallinkDiv>
                         <SociallinkDivD>&#x2662;</SociallinkDivD>
                         <SociallinkDiv>
                             <OutboundLink spanText='Facebook'
                                 eventLabel='toFacebook'
-                                to='//www.facebook.com/RaveNailz/' />
+                                to={SocialHrefs.fbH} />
                         </SociallinkDiv>
                         <SociallinkDivD>&#x2662;</SociallinkDivD>
                         <ModalSpan onClick={this.handleOpenModal}>Newsletter</ModalSpan>

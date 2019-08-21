@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { withContext } from '../../../AppContext'
 
 import media from '../../../../theme/Device'
-
 import ItemPreview from './ItemPreview'
 
 const Container = styled.div`
@@ -22,23 +21,17 @@ const Container = styled.div`
         padding: 4%;
     `}
 
-
     ${media.laptop`
-        grid-template-columns: 26.6vw 26.6vw 26.6vw;
-        grid-gap: 51px;
-        padding: 5%;
-        margin-left: 10px;
+        grid-template-columns: 40vw 40vw;
+        grid-gap: 40px;
+        padding-top: 100px;
+        margin-left: 80px;
     `}
 
     ${media.laptopL`
-        grid-template-columns: 20vw 20vw 20vw 20vw;
-        grid-gap: 42.5px;
-        margin-left: 2px;
-    `}
-
-    ${media.laptopLM`
-        grid-gap: 49px;
-        margin-left: 0px;
+        grid-template-columns: 26vw 26vw 26vw;
+        grid-gap: 40px;
+        margin-left: 90px;
     `}
 `
 
