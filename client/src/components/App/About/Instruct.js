@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
+import Fade from 'react-reveal'
 
 import { About, SocialHrefs } from '../../Shared/ParagraphStrings'
 
@@ -9,7 +10,6 @@ import OutboundLinkU from '../../Shared/OutboundLinkU'
 import media from '../../../theme/Device'
 import HowTo from './HowTo'
 
-
 const Container = styled.div`
     background: #0D0D0D;
     display: flex;
@@ -17,6 +17,8 @@ const Container = styled.div`
     flex-direction: column;
     color: #fdfdfd;
     padding-top: 70px;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
 
     ${media.phoneL`
         padding: 100px 10px 0px 10px;
@@ -25,6 +27,10 @@ const Container = styled.div`
     ${media.tablet`
         padding: 140px 100px 0px 100px;
     `}
+
+    ${media.laptop`
+        padding: 160px 50px 50px 50px;
+    `}
 `
 
 const Header = styled.div`
@@ -32,6 +38,10 @@ const Header = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    ${media.laptop`
+        padding: 40px 0px 0px 20px;
+    `}
 `
 
 const Title = styled.div`
@@ -49,16 +59,12 @@ const Title = styled.div`
         font-size: 2em;
         line-height: 1.45em;
     `}
-`
 
-const Info = styled.div`
-    text-align: center;
-    font-size: 1.1em;
-    letter-spacing: 0.06em;
-    padding: 0px 12px 0px 12px;
-
-    ${media.phoneL`
-        font-size: 1.2em;
+    ${media.laptop`
+        font-size: 2.5em;
+        font-weight: 400;
+        line-height: 1.3em;
+        width: 800px;
     `}
 `
 
@@ -71,12 +77,28 @@ const Instructions = styled.div`
 
 const VidContainer = styled.div`
     width: 95vw;
-    /* box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.1); */
     margin: 20px 0px 0px 0px;
+
+    ${media.tablet`
+        width: 74vw;
+        margin: 40px 0px 20px 0px;
+    `}
+
+    ${media.laptop`
+        width: 600px;
+    `}
 `
 
 const InstructList = styled.div`
     padding: 0px 10px 0px 0px;
+
+    ${media.tablet`
+        padding: 10px 0px 20px 0px;
+    `}
+
+    ${media.laptop`
+        width: 800px;
+    `}
 `
 
 const InstructListItem = styled.li`
@@ -86,42 +108,93 @@ const InstructListItem = styled.li`
     ${media.phoneL`
         font-size: 1.2em;
     `}
+
+    ${media.tablet`
+        font-size: 1.3em;
+    `}
+
+    ${media.laptop`
+        font-size: 1.4em;
+    `}
 `
 
+const WidthFix = styled.div`
+    ${media.laptop`
+        width: 800px;
+    `}
+`
 
-function Instruct() {
-    return (
-        <Container>
-            <Header>
-                <Title>
-                    {About.Title1}
-                </Title>
-            </Header>
-            <MainPics />
-            <Info>
-                <span>{About.Main1}</span>
-                <OutboundLinkU spanText='Instagram'
-                    eventLabel='toInstagram'
-                    to={SocialHrefs.instaH} />
-                <span>{About.Main2}</span>
-            </Info>
-            <Instructions>
-                <VidContainer>
-                    <HowTo />
-                </VidContainer>
-                <InstructList>
-                    <ol>
-                        <InstructListItem>{About.In1}</InstructListItem>
-                        <InstructListItem>{About.In2}</InstructListItem>
-                        <InstructListItem>{About.In3}</InstructListItem>
-                        <InstructListItem>{About.In4}</InstructListItem>
-                        <InstructListItem>{About.In5}</InstructListItem>
-                    </ol>
-                </InstructList>
-            </Instructions>
-            <SecondaryPics />
-        </Container>
-    )
+class Instruct extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            scrolledPast: false
+        }
+    }
+
+    handleScrollBy = (x) => {
+        this.setState({
+            scrolledPast: x
+        })
+    }
+
+    onScroll = () => {
+        if ((window.pageYOffset || document.documentElement.scrollTop) > 310) {
+            this.handleScrollBy(true)
+        } else {
+            this.handleScrollBy(false)
+        }
+    }
+
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.onScroll)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll)
+    }
+
+    render() {
+        return (
+            <Container>
+                <Header>
+                    <Fade duration={2500}>
+                        <Title>
+                            {About.Title1}
+                        </Title>
+                    </Fade>
+                </Header>
+                <MainPics />
+                <div className={this.state.scrolledPast ? 'scrollShow' : 'scrollHide'}>
+                    <WidthFix>
+                        <span>{About.Main1}</span>
+                        <OutboundLinkU spanText='Instagram'
+                            eventLabel='toInstagram'
+                            to={SocialHrefs.instaH} />
+                        <span>{About.Main2}</span>
+                    </WidthFix>
+                </div>
+                <Instructions>
+                        <VidContainer>
+                            <HowTo />
+                        </VidContainer>
+                    <InstructList>
+                        <Fade>
+                            <ol>
+                                <InstructListItem>{About.In1}</InstructListItem>
+                                <InstructListItem>{About.In2}</InstructListItem>
+                                <InstructListItem>{About.In3}</InstructListItem>
+                                <InstructListItem>{About.In4}</InstructListItem>
+                                <InstructListItem>{About.In5}</InstructListItem>
+                            </ol>
+                        </Fade>
+                    </InstructList>
+                </Instructions>
+                <SecondaryPics />
+            </Container>
+        )
+    }
 }
 
 export default Instruct;
