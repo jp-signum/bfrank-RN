@@ -1,5 +1,5 @@
-require("babel-register")({
-    presets: ["es2015", "react"]
+require('babel-register')({
+    presets: ['es2015', 'react']
 });
 
 const router = require('./SitemapRoutes').default;
@@ -12,13 +12,12 @@ generateSitemap = async () => {
     try {
         let res = await getAxios.get('https://www.ravenailz.com/api/store/')
         let idMap = [];
+        let nails = res.data
 
-        for (var i = 0; i < res.length; i++) {
-            idMap.push({ id: res[i]._id });
+        for (var i = 0; i < nails.length; i++) {
+            idMap.push({ id: nails[i]._id });
         }
 
-        console.log(typeof res)
-        console.log(res)
         const paramsConfig = {
             '/store/:id': idMap
         };
@@ -34,16 +33,14 @@ generateSitemap = async () => {
     }
 }
 
-generateSitemap()
-
-// generateSitemap().then(() => { console.info('Sitemap Generated')},
-//     err => {
-//         console.info('Error while generating sitemap');
-//         console.info(err);
-//     }
-// ).finally(
-//     () => process.exit()
-// );
+generateSitemap().then(() => { console.info('Sitemap Generated')},
+    err => {
+        console.info('Error while generating sitemap');
+        console.info(err);
+    }
+).finally(
+    () => process.exit()
+);
 
 
 
