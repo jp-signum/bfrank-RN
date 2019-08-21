@@ -2,6 +2,7 @@ const express = require("express");
 const storeRouter = express.Router();
 const Item = require("../models/item");
 const cloudinary = require('cloudinary')
+const cmd = require('node-cmd');
 
 storeRouter.get('/', (req, res, next) => {
     Item.find(req.query, (err, items) => {
@@ -50,6 +51,10 @@ storeRouter.post('/nails', (req, res, next) => {
                 let urls = res.map(cloud => cloud.url)
                 let obj = { ...itemObj, pictures: urls }
                 saveItem(obj)
+                cmd.run('npm run sitemap')
+                cmd.run('git add -A')
+                cmd.run('git commit -m "updated sitemap"')
+                cmd.run('git push')
             })
             .catch((err) => res.status(400).json(err))
         function saveItem(obj) {
