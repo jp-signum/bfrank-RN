@@ -7,31 +7,30 @@ import Fade from 'react-reveal'
 import media from '../../../../theme/Device'
 
 const Container = styled.div`
-    padding: 6%;
+    padding: 4%;
+    transition:all ease 0.5s;
+    -o-transition: all .5s ease;
+
+    ${media.tablet`
+        padding: 0px;
+    `}
 `
 
 const ImgDiv = styled.div`
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
-
-     ${media.laptop`
-        width:100%;
-        height: 400px;
-    `}
+    border-radius: 4px;
 
     ${media.laptop`
-        width:100%;
-        height: 400px;
-    `}
-
-    ${media.laptop`
-        height: 344px;
+        width: 240px;
+        height: 280px;
     `}
 `
 
 const Img = styled.img`
     width: 100%;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
 

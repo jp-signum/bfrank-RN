@@ -71,6 +71,7 @@ const ThumbnailImgContainer = styled.div`
     display: relative;
     height: 100px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
     margin: 0px 0px 20px 20px;
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
@@ -88,6 +89,7 @@ const ThumbnailImgContainer = styled.div`
 const ThumbnailImg = styled.img`
     width: 100%;
     height: 100%;
+    border-radius: 4px;
 `
 
 const MainContainer = styled.div`
@@ -108,7 +110,7 @@ const MainImgContainer = styled.div`
     margin: 36px 20px 0px 20px;
      transition:all ease 0.5s;
     -o-transition: all .5s ease;
-
+    border-radius: 4px;
 
     ${media.laptopL`
          margin: 36px 0px 0px 60px;
@@ -126,6 +128,7 @@ const MainImgContainer = styled.div`
 const MainImg = styled.img`
     width: 100%;
     height: 100%;
+    border-radius: 4px;
 `
 
 class SlideShow extends Component {
