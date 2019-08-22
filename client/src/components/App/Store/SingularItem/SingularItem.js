@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { withContext } from '../../../AppContext'
 import Currency from 'react-currency-formatter'
 import Helmet from 'react-helmet'
 import Modal from 'react-modal'
 
+import { withContext } from '../../../AppContext'
 import { Meta } from '../../../Shared/Meta'
 import { filterById, getNested, filterByNotId } from '../../../Shared/HelperFunctions'
 import { customModalStyles } from '../../../Shared/StyleConstants'
@@ -16,13 +16,12 @@ import SlideShow from './SlideShow'
 
 import ShareIcon from '../../../../assets/icons/share_black.svg'
 
-
 const Container = styled.div`
     transition:all ease 0.5s;
     -o-transition: all .5s ease;
 
     ${media.laptop`
-        margin-top: 120px;
+        margin-top: 130px;
     `}
 `
 

@@ -31,6 +31,7 @@ const Title = styled.div`
         font-size: 2em;
         padding-right: 10%;
         float: right;
+        bottom: 12px;
     `}
 `
 
@@ -39,28 +40,24 @@ const List = styled.div`
     grid-template-columns: auto auto;
 
     ${media.tablet`
-        display: grid;
         grid-template-columns: 28.5vw 28.5vw 28.5vw;
         grid-gap: 20px;
         padding: 4%;
     `}
 
     ${media.laptop`
-        grid-template-columns: 26.6vw 26.6vw 26.6vw;
-        grid-gap: 51px;
-        padding: 5%;
-        margin-left: 10px;
+        grid-template-columns: 26vw 26vw 26vw;
+        padding: 100px 0px 0px 0px;
+        margin-left: 110px;
     `}
 
     ${media.laptopL`
-        grid-template-columns: 20vw 20vw 20vw 20vw;
-        grid-gap: 42.5px;
-        margin-left: 2px;
+        margin-left: 140px;
     `}
 
     ${media.laptopLM`
-        grid-gap: 49px;
-        margin-left: 0px;
+        grid-template-columns: 23vw 23vw 23vw;
+        margin-left: 180px;
     `}
 `
 
