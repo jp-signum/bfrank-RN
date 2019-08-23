@@ -54,6 +54,7 @@ app.use('/auth', require('./routes/auth'));
 app.use('/api/store', require('./routes/store'));
 app.use('/api/store/nails', require('./routes/store'));
 app.use('/api/email', require('./routes/email'));
+app.use('/api/inventory', require('./routes/inventory'));
 app.use(expressJwt({ secret: process.env.SECRET }).unless({ method: 'GET' }));
 
 app.use((err, req, res, next) => {

@@ -1,14 +1,27 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-
-const AutoIncrement = require('mongoose-sequence')(mongoose);
+require('mongoose-currency').loadType(mongoose);
+let Currency = mongoose.Types.Currency;
 
 const CartSchema = new Schema(
     {
         user: String,
-        nails: [String]
-}, {timestamps: true});
+        nails: [String],
+        status: String,
+        items: [{
+            id: String,
+            quantity: Number,
+            item_details: {
+                name: String,
+                description: String,
+                price: {
+                    type: Currency
+                },
+                picture: String,
+            }
+        }]
+    }
+)
 
-CartSchema.plugin(AutoIncrement, {inc_field: 'id'});
 
 module.exports = mongoose.model('Cart', CartSchema);

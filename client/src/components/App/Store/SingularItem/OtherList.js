@@ -47,7 +47,7 @@ const List = styled.div`
 
     ${media.laptop`
         grid-template-columns: 26vw 26vw 26vw;
-        padding: 100px 0px 0px 0px;
+        padding: 100px 0px 40px 0px;
         margin-left: 110px;
     `}
 

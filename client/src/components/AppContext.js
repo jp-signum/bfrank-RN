@@ -9,6 +9,7 @@ itemAxios.interceptors.request.use((config) => {
 })
 
 const getAxios = axios.create();
+const inventoryAxios = axios.create();
 
 const AppContext = React.createContext();
 
@@ -74,7 +75,12 @@ export class AppContextProvider extends Component {
     }
 
     addToCart = (id) => {
-        this.setState({ localCart: [...this.state.localCart, id] })
+        return inventoryAxios.post('http://localhost:3000/api/inventory/a2c', id)
+            .then(res => {
+                
+                
+                return res;
+            })
     }
 
     componentDidMount() {
