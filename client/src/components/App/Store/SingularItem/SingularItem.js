@@ -333,7 +333,38 @@ class SingularItem extends Component {
     }
 
     handleCart = () => {
-        this.props.addToCart(this.props.id)
+        const filteredPostArr = filterById(this.props.nails, this.props.id),
+            filteredPostObj = filteredPostArr[0];
+
+        const name = getNested(['name'], filteredPostObj),
+            description = getNested(['description'], filteredPostObj),
+            price = (getNested(['price'], filteredPostObj) / 100),
+            picturesObj = getNested(['pictures'], filteredPostObj),
+            mainPicUrl = getNested(['0'], picturesObj);
+
+        const userJSON = localStorage.getItem('user')
+        const user = JSON.parse(userJSON)
+
+        if (user) {
+            let data = {
+                id: this.props.id,
+                name: name,
+                description: description,
+                price: price,
+                pic: mainPicUrl,
+                username: user.username
+            }
+            this.props.addToCart(data)
+        } else {
+            let data = {
+                id: this.props.id,
+                name: name,
+                description: description,
+                price: price,
+                pic: mainPicUrl,
+            }
+            this.props.addToCart(data)
+        }
     }
 
     openModal = () => {
@@ -348,7 +379,7 @@ class SingularItem extends Component {
             showModal: false
         });
     }
-    
+
     componentDidUpdate() {
         if (this.state.showModal) {
             document.body.style.overflow = 'hidden';
