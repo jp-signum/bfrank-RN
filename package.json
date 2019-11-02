@@ -15,7 +15,7 @@
     "express-unless": "^0.5.0",
     "heroku-ssl-redirect": "0.0.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.7.5",
     "mongoose-currency": "^0.2.0",
     "mongoose-sequence": "^5.1.0",
     "morgan": "^1.9.1",
