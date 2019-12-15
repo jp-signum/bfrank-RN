@@ -7,17 +7,17 @@ import media from '../../../../theme/Device'
 
 const CenterContainer = styled.div`
     transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
+        -o-transition: all ease 0.5s;
     display: flex;
     align-items: center;
     justify-content: center;
 `
 
 const ShareContainer = styled.div`
-    margin-top: 40%;
     transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
+        -o-transition: all ease 0.5s;
     width: 260px;
+    margin-top: 40%;
 
     ${media.phoneM`
         width: 290px;
@@ -43,27 +43,27 @@ const Container = styled.div`
 `
 
 const WhiteContainer = styled.div`
-    background: rgb(253,  253,  253, 1);
-    border-radius: 0px 0px 4px 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: rgb(253,  253,  253, 1);
+    border-radius: 0px 0px 4px 4px;
 `
 
 const TitleDiv = styled.div`
-    text-transform: uppercase;
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     background:  rgb(0, 0, 0, 0);
     color: #fdfdfd;
+    font-size: 1.3em;
     letter-spacing: 1.8px;
+    text-transform: uppercase;
+    text-align: center;
     border-top: #fdfdfd 2px solid;
     border-left: #fdfdfd 2px solid;
     border-right: #fdfdfd 2px solid;
     border-radius: 4px 4px 0px 0px;
-    font-size: 1.3em;
     padding: 7px 0px 7px 0px;
-    transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
-    text-align: center;
     
     ${media.phoneM`
         font-size: 1.4em;
@@ -91,10 +91,10 @@ const ShareIcons = styled.div`
 `
 
 const UrlDiv = styled.div`
-    border: 2px solid rgba(13, 13, 13, 0.3);
-    border-radius: 4px;
     overflow-wrap: break-word;
     text-align: center;
+    border: 2px solid rgba(13, 13, 13, 0.3);
+    border-radius: 4px;
     margin: 12px;
     padding: 4px;
 
@@ -115,16 +115,16 @@ const ShareBtn = styled.button`
    margin: 5% 20% 8% 20%;
 
     :hover {
-        border: 2px solid rgba(13, 13, 13, 1);
         cursor: pointer;
         color: rgba(13, 13, 13, 1);
         background: white;
+        border: 2px solid rgba(13, 13, 13, 1);
     }
 
    ${media.tablet`
+        font-size: 1.2em;
         margin: 20px 100px 30px 100px;
         padding: 6px 0px 6px 0px;
-        font-size: 1.2em;
     `} 
 `
 
@@ -154,7 +154,6 @@ class Copy2Clip extends Component {
     }
 
     render() {
-
         return (
             <CenterContainer>
                 <ShareContainer>
@@ -162,39 +161,31 @@ class Copy2Clip extends Component {
                         <TitleDiv>Share This Look</TitleDiv>
                         <WhiteContainer>
                             <ShareIcons>
-                                <FacebookShareButton
-                                    url={this.state.value}
+                                <FacebookShareButton url={this.state.value}
                                     quote={this.props.description}
                                     className='facebookShare'>
-                                    <FacebookIcon
+                                    <FacebookIcon size={52}
                                         iconBgStyle={{ fill: '#fdfdfd' }}
-                                        logoFillColor='#0D0D0D'
-                                        size={52} />
+                                        logoFillColor='#0D0D0D' />
                                 </FacebookShareButton>
-                                <TwitterShareButton
-                                    url={this.state.value}
+                                <TwitterShareButton url={this.state.value}
                                     title={this.props.description}
                                     className='twitterShare'>
-                                    <TwitterIcon
+                                    <TwitterIcon size={52}
                                         iconBgStyle={{ fill: '#fdfdfd' }}
-                                        logoFillColor='#0D0D0D'
-                                        size={52} />
+                                        logoFillColor='#0D0D0D' />
                                 </TwitterShareButton>
-                                <PinterestShareButton
-                                    url={this.state.value}
+                                <PinterestShareButton url={this.state.value}
                                     media={this.props.img}
                                     description={this.props.description}
                                     className='pinterestShare'>
-                                    <PinterestIcon
+                                    <PinterestIcon size={52}
                                         iconBgStyle={{ fill: '#fdfdfd' }}
-                                        logoFillColor='#0D0D0D'
-                                        size={52} />
+                                        logoFillColor='#0D0D0D' />
                                 </PinterestShareButton>
                             </ShareIcons>
                             <UrlDiv>{'https://www.ravenailz.com' + this.props.location}</UrlDiv>
-                            <CopyToClipboard
-                                onCopy={this.onCopy}
-                                text={this.state.value}>
+                            <CopyToClipboard onCopy={this.onCopy} text={this.state.value}>
                                 <ShareBtn>
                                     {this.state.coppied
                                         ? <span>COPPIED!</span>

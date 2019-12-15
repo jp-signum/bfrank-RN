@@ -11,7 +11,7 @@ import Navigation from '../../../Shared/Navigation/index'
 const Container = styled.div`
     margin-top: 16%;
 
-     ${media.tablet`
+    ${media.tablet`
         margin-top: 7%;
     `}
 `

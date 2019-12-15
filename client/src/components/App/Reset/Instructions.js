@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import ResetForm from './ResetForm'
 
 const Container = styled.div`
-    background: #0D0D0D;
-    height: 76vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background: #0D0D0D;
     color: #fdfdfd;
+    height: 76vh;
 `
 
 const Title = styled.div`
@@ -37,9 +37,7 @@ class Instructions extends Component {
         return (
             <Container>
                 <Title>{this.state.titleText}</Title>
-                <ResetForm 
-                    resetText={this.resetText}
-                    id={this.props.id} />
+                <ResetForm resetText={this.resetText} id={this.props.id} />
             </Container>
         )
     }

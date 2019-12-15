@@ -15,6 +15,7 @@ const MobileFix = styled.div`
 function Copyright() {
     let d = new Date(),
         currentYear = d.getFullYear();
+        
     return (
         <MobileFix>
             &copy; {currentYear} Rave Nailz All Rights Reserved

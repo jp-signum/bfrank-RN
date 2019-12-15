@@ -5,11 +5,11 @@ import OtherItem from './OtherItem'
 import media from '../../../../theme/Device'
 
 const Container = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     position: relative;
     width: 100%;
     height: 100%;
-    transition: all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.laptop`
         margin-top: -50px;
@@ -17,10 +17,12 @@ const Container = styled.div`
 `
 
 const Title = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     position: relative;
-    padding: 3% 0% 3% 3.5%;
     font-size: 1.4em;
     font-weight: bold;
+    padding: 3% 0% 3% 3.5%;
 
     ${media.tablet`
         font-size: 1.8em;
@@ -28,14 +30,16 @@ const Title = styled.div`
     `}
 
     ${media.laptop`
-        font-size: 2em;
-        padding-right: 10%;
-        float: right;
         bottom: 12px;
+        font-size: 2em;
+        float: right;
+        padding-right: 10%;
     `}
 `
 
 const List = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: grid;
     grid-template-columns: auto auto;
 
@@ -64,7 +68,6 @@ const List = styled.div`
 class OtherList extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             scrolledPast: false,
             classNameBefore: 'otherShopAnimate',
@@ -106,6 +109,7 @@ class OtherList extends Component {
                 />
             )
         })
+        
         return (
             <Container>
                 <Title className={this.state.scrolledPast ? this.state.classNameAfter : this.state.classNameBefore}>Shop Other Nails</Title>

@@ -97,14 +97,14 @@ const Update = styled.div`
     `}
 
     ${media.tablet`
-        padding: 24px 0px 24px 0px;
         font-size: 1.4em;
+        padding: 24px 0px 24px 0px;
     `}
 `
 
 const Content = styled.div`
     transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
+        -o-transition: all ease 0.5s;
     padding: 10px 0px 10px 0px;
 
     ${media.phoneM`
@@ -112,14 +112,14 @@ const Content = styled.div`
     `}
 
     ${media.phoneL`
-        padding: 20px 0px 20px 0px;
         font-size: 1.1em;
+        padding: 20px 0px 20px 0px;
     `}
 
     ${media.tablet`
-        padding: 24px 0px 24px 0px;
         font-size: 1.3em;
         line-height: 1.5em;
+        padding: 24px 0px 24px 0px;
     `}
 `
 

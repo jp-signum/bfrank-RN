@@ -15,9 +15,7 @@ function Forgot(props) {
                 accountNo='accountPlain'
                 navStyle={NavDivDark}
                 navStyleLap={NavDivDarkLap} />
-            <LogicSwitch 
-                history={props.history}
-                id={props.match.params.id} />
+            <LogicSwitch history={props.history} id={props.match.params.id} />
         </div>
     )
 }

@@ -112,5 +112,6 @@ export const  ContactInfo = {
     In5: "Enjoy your mani for up to two weeks!",
 }, SocialHrefs = {
     instaH: "//www.instagram.com/Rave_Nailz",
-    fbH: "//www.facebook.com/RaveNailz/"
+    fbH: "//www.facebook.com/RaveNailz/",
+    mLogoAlt1: "Rave Nailz main logo'"
 }

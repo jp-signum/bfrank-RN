@@ -8,26 +8,25 @@ import { strongPasswordRegex, validEmailRegex } from '../../Shared/Regex'
 
 import media from '../../../theme/Device'
 
-
 const Form = styled.form`
     display: flex;
     flex-direction: column;
 `
 
 const EmailInput = styled.input`
-    padding: 0px 0px 4px 0px;
-    margin: 20px 0px 20px 0px; 
-    width: 100%;
     background: #0D0D0D ;
     color: #fdfdfd;
     border-bottom: solid 2px rgb(253,  253,  253, 0.5);
+    width: 100%;
+    padding: 0px 0px 4px 0px;
+    margin: 20px 0px 20px 0px; 
 
     :focus {
         outline:  none !important;
         outline-color: none !important;
         outline-style: none !important;
         outline-width: none !important;
-        -webkit-focus-ring-color: none !important;
+            -webkit-focus-ring-color: none !important;
         border-bottom: solid 2px rgb(253,  253,  253, 1); 
     }
 `
@@ -37,18 +36,18 @@ const PasswordInput = styled(EmailInput)`
 `
 
 const SubmitBtn = styled.button`
-   background: #fdfdfd;
-   color: #060606;
-   cursor: pointer;
+    cursor: pointer;
+    background: #fdfdfd;
+    color: #060606;
     border-radius: 4px;
     border: solid 2px #fdfdfd;
     font-size: 1.1em;
     padding: 2px 0px 2px 0px;
    
-   :hover {
+    :hover {
         background: #060606;
         color: #fdfdfd;
-   }
+    }
 `
 
 const ErrorDiv = styled.div`
@@ -57,11 +56,11 @@ const ErrorDiv = styled.div`
 `
 
 const SucessDiv = styled(ErrorDiv)`
-    color: #7fe060;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    color: #7fe060;
 `
 
 const ErrorMessageDiv = styled.div`
@@ -70,7 +69,7 @@ const ErrorMessageDiv = styled.div`
     padding-bottom: 10px;
     margin-top: -10px;
 
-     ${media.phoneM`
+    ${media.phoneM`
         font-size: 1em;
     `}
 `
@@ -213,9 +212,7 @@ class ResetForm extends Component {
                 {this.state.sucessMessage &&
                     <SucessDiv>
                         <p>{this.state.sucessMessage}</p>
-                        <Link
-                            to='/authentication'
-                            style={{ textDecoration: 'none' }}>
+                        <Link to='/authentication' style={{ textDecoration: 'none' }}>
                             <StyledSpan>Login</StyledSpan>
                         </Link>
                     </SucessDiv>

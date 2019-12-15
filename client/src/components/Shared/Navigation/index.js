@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+import { SocialHrefs } from '../../Shared/ParagraphStrings'
+
 import NavMenu from './Menu'
 import media from '../../../theme/Device'
 
@@ -37,38 +39,38 @@ const NavLogo = styled.img`
 `
 
 const Name = styled.div`
-    letter-spacing: .016em;
-    font-weight: 400;
     position: relative;
-    right: 35px;
-    font-size: 1.2em;
-    padding-left: 40px;
-    color: #fdfdfd ;
     display: inline-block;
+    right: 35px;
+    color: #fdfdfd ;
+    font-weight: 400;
+    font-size: 1.2em;
+    letter-spacing: .016em;
+    padding-left: 40px;
 `
 
 const NameRight = styled.div`
-    letter-spacing: .016em;
-    font-weight: 400;
-    font-size: 1.2em;
-    padding-left: 40px;
+    cursor: pointer;
     color: #fdfdfd;
     display: inline-block;
-    cursor: pointer;
+    font-size: 1.2em;
+    letter-spacing: .016em;
+    font-weight: 400;
+    padding-left: 40px;
 
     :hover{
-    color: rgb(253,  253,  253, 0.45)
-}
+        color: rgb(253,  253,  253, 0.45)
+    }
 `
 
 const MobileName = styled.div`
-    color: #fdfdfd ;
+    cursor: pointer;
     position: absolute;
     right: 26px;
     top: 20px;
+    color: #fdfdfd ;
     font-size: 1.2em;
     letter-spacing: .05em;
-    cursor: pointer;
 
     :hover{
         color: rgb(253,  253,  253, 0.45)
@@ -168,11 +170,9 @@ class NavigationMobile extends Component {
                         </LaptopMenu>
                         <ImgDiv>
                             <Link to='/'>
-                                <NavLogo
-                                    src={MainLogoWhite}
+                                <NavLogo src={MainLogoWhite} alt={SocialHrefs.mLogoAlt1}
                                     onMouseOver={e => (e.currentTarget.src = MainLogoRed)}
-                                    onMouseOut={e => (e.currentTarget.src = MainLogoWhite)}
-                                    alt='Rave Nailz main logo' />
+                                    onMouseOut={e => (e.currentTarget.src = MainLogoWhite)} />
                             </Link>
                         </ImgDiv>
                         <LaptopMenuRight>

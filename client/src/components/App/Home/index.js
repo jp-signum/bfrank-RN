@@ -215,7 +215,7 @@ const SociallinkDiv = styled.div`
     display: inline;
     padding-right: 6px;
 
-     ${media.tablet`
+    ${media.tablet`
         padding: 0px 8px 0px 0px; 
     `}
 `

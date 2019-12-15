@@ -11,11 +11,11 @@ import Navigation from '../../Shared/Navigation/index'
 import Conditions from './Conditions'
 
 const Container = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     margin-top: 20%;
-     transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
-     ${media.tablet`
+    ${media.tablet`
         margin-top: 6%;
     `}
 `

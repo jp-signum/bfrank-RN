@@ -197,8 +197,7 @@ class Footer extends Component {
             <Container>
                 {this.state.isLaptop &&
                     <Link to='/'>
-                        <RFooterImg
-                            src={RLogoWhite}
+                        <RFooterImg src={RLogoWhite} alt={SocialHrefs.mLogoAlt1}
                             onMouseOver={e => (e.currentTarget.src = RLogoRed)}
                             onMouseOut={e => (e.currentTarget.src = RLogoWhite)} />
                     </Link>

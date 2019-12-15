@@ -6,12 +6,12 @@ import PicSwitchMain from './PicSwitchMain'
 
 
 const UpDownImgContainer = styled.div`
-    width: 100%;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: relative;
-    height: 400px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    width: 100%;
+    height: 400px;
 
     ${media.tablet`
         height: 540px;
@@ -20,6 +20,8 @@ const UpDownImgContainer = styled.div`
 `
 
 const AddOne = styled.i`
+    transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
     position: absolute;
     top: 200px;
     right: 10px;
@@ -27,8 +29,6 @@ const AddOne = styled.i`
     border-width: 0 1.5px 1.5px 0;
     display: inline-block;
     padding: 12px;
-    transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
 
     ${media.tablet`
         right: 43%;
@@ -39,6 +39,8 @@ const AddOne = styled.i`
 `
 
 const SubtractOne = styled.i`
+    transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
     position: absolute;
     top: 200px;
     left: 10px;
@@ -46,8 +48,6 @@ const SubtractOne = styled.i`
     border-width: 0 1.5px 1.5px 0;
     display: inline-block;
     padding: 12px;
-    transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
 
     ${media.tablet`
         left: 24px;
@@ -67,15 +67,15 @@ const ThumbnailContainer = styled.div`
 `
 
 const ThumbnailImgContainer = styled.div`
-    width: 70%;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
+    cursor: pointer;
     display: relative;
-    height: 100px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
     border-radius: 4px;
+    width: 70%;
+    height: 100px;
     margin: 0px 0px 20px 20px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-    cursor: pointer;
 
     ${media.laptopL`
         margin: 0px 0px 20px 60px;
@@ -87,14 +87,14 @@ const ThumbnailImgContainer = styled.div`
 `
 
 const ThumbnailImg = styled.img`
+    border-radius: 4px;
     width: 100%;
     height: 100%;
-    border-radius: 4px;
 `
 
 const MainContainer = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     width: 520px;
 
     ${media.laptopL`
@@ -103,25 +103,25 @@ const MainContainer = styled.div`
 `
 
 const MainImgContainer = styled.div`
-    width: 90%;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: relative;
-    height: 520px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
-    margin: 36px 20px 0px 20px;
-     transition:all ease 0.5s;
-    -o-transition: all .5s ease;
     border-radius: 4px;
+    height: 520px;
+    width: 90%;
+    margin: 36px 20px 0px 20px;
 
     ${media.laptopL`
-         margin: 36px 0px 0px 60px;
+        margin: 36px 0px 0px 60px;
     `}  
 
     ${media.laptopLM`
-         margin: 36px 0px 0px 80px;
+        margin: 36px 0px 0px 80px;
     `} 
 
     ${media.laptopLL`
-         margin: 36px 0px 0px 100px;
+        margin: 36px 0px 0px 100px;
     `} 
 `
 

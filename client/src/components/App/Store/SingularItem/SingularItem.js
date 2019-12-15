@@ -17,8 +17,8 @@ import SlideShow from './SlideShow'
 import ShareIcon from '../../../../assets/icons/share_black.svg'
 
 const Container = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
 
     ${media.laptop`
         margin-top: 130px;
@@ -26,8 +26,8 @@ const Container = styled.div`
 `
 
 const FlexDiv = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
 
     ${media.tablet`
         display: grid;
@@ -41,9 +41,9 @@ const FlexDiv = styled.div`
 `
 
 const StuffDiv = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     padding: 20px 26px 20px 26px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease; 
 
     ${media.tablet`
         padding: 40px 30px 20px 40px;
@@ -67,10 +67,10 @@ const StuffDiv = styled.div`
 `
 
 const Quantity = styled.div`
-    font-size: 0.9em;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     color: #d63c4f;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    font-size: 0.9em;
 
     ${media.phoneM`
         font-size: 1em;
@@ -82,10 +82,10 @@ const Quantity = styled.div`
 `
 
 const PositionDiv = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     position: relative;
     padding: 4px 0px 4px 0px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.tablet`
         padding: 6px 0px 20px 0px;
@@ -93,12 +93,12 @@ const PositionDiv = styled.div`
 `
 
 const Name = styled.div`
-    color: #0D0D0D;
-    font-weight: bold;
-    font-size: 1.2em;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: inline-block;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    color: #0D0D0D;
+    font-size: 1.2em;
+    font-weight: bold;
 
     ${media.phoneM`
         font-size: 1.3em;
@@ -111,11 +111,11 @@ const Name = styled.div`
 `
 
 const Price = styled.div`
-    display: inline-block;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     position: absolute;
     right: 0px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    display: inline-block;
 
     ${media.phoneM`
         font-size: 1.2em;
@@ -132,8 +132,8 @@ const Price = styled.div`
 `
 
 const Description = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
 
     ${media.phoneM`
         font-size: 1.1em;
@@ -146,13 +146,15 @@ const Description = styled.div`
 `
 
 const AddCartBtn = styled.div`
+    transition: width ease 0.5s;
+        -o-transition: width ease 0.5s;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #0D0D0D;
     height: 60px;
     width: 80vw;
-    background: #0D0D0D;
-    cursor: pointer;
     border: 2px solid #0D0D0D;  
     border-radius: 4px;
     margin: 14px 0px 14px 0px;
@@ -197,12 +199,12 @@ const AddSpan = styled.span`
 `
 
 const ConstantDiv = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.phoneM`
         font-size: 1.1em;
@@ -214,9 +216,9 @@ const ConstantDiv = styled.div`
 `
 
 const Include = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     padding: 4px 0px 4px 0px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.tablet`
         font-size: 1.1em;
@@ -224,8 +226,8 @@ const Include = styled.div`
 `
 
 const Ready = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
 
     ${media.tablet`
         font-size: 1.1em;
@@ -233,8 +235,8 @@ const Ready = styled.div`
 `
 
 const File = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     
     ${media.tablet`
         font-size: 1.1em;
@@ -242,9 +244,9 @@ const File = styled.div`
 `
 
 const ShareDiv = styled.div`
+    cursor: pointer;
     position: relative;
     padding: 10px 0px 10px 0px;
-    cursor: pointer;
 
     :hover span{
         text-decoration: underline;
@@ -267,17 +269,17 @@ const ShareSpan = styled.span`
 `
 
 const ModalCloseBtn = styled.button`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
+    cursor: pointer;
     position: absolute;
     right: 30px;
     top: 30px;
-    cursor: pointer;
     background: none;
     color: #fffdfd;
+    font-size: 2em;
     height: 30px;
     width: 30px;
-    font-size: 2em;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     :hover {
         color: #D63C4F;
@@ -285,8 +287,8 @@ const ModalCloseBtn = styled.button`
 `
 
 const OtherDiv = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
 
     ${media.tablet`
         padding: 40px 0px 0px 0px;
@@ -447,13 +449,11 @@ class SingularItem extends Component {
                 <OtherDiv>
                     <Others notIncluded={filterNotIncludedArr} />
                 </OtherDiv>
-                <Modal
-                    isOpen={this.state.showModal}
+                <Modal isOpen={this.state.showModal}
                     contentLabel='Sharing to different social platforms modal'
                     onRequestClose={this.closeModal}
                     style={customModalStyles}>
-                    <Copy2Clip
-                        img={mainPicUrl}
+                    <Copy2Clip img={mainPicUrl}
                         description={description}
                         location={this.props.location} />
                     <ModalCloseBtn onClick={this.closeModal}>

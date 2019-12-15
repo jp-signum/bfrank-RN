@@ -27,6 +27,7 @@ const MainPicDiv = styled.div`
     transition:all ease 0.5s;
         -o-transition: all ease 0.5s;
     transform: rotate(3deg);
+        -webkit-transform: rotate(3deg);
     width: 95vw;
     margin: 20px 0px 0px 0px;
 

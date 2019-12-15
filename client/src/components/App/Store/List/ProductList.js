@@ -7,12 +7,12 @@ import media from '../../../../theme/Device'
 import ItemPreview from './ItemPreview'
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     color: #0D0D0D;
     background: #fdfdfd;
-    transition: all ease 0.5s;
-    -o-transition: all .5s ease;
+    width: 100%;
+    height: 100%;
 
     ${media.tablet`
         display: grid;
@@ -49,6 +49,7 @@ function ProductList(props) {
             />
         )
     })
+    
     return (
         <Container>
             {AllItems}

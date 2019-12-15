@@ -30,8 +30,9 @@ const MainPicDiv = styled.div`
     padding: 10px 0px 20px 0px;
 
     ${media.laptop`
-        width: 26vw;
         transform: rotate(-3deg);
+            -webkit-transform: rotate(-3deg)
+        width: 26vw;
     `}
 
      ${media.laptopL`
@@ -48,8 +49,8 @@ const MainPic = styled.img`
 const SecondaryPicDiv = styled.div`
     transition:all ease 0.5s;
         -o-transition: all ease 0.5s;
-      width: 95vw;
-      padding: 10px 0px 10px 0px;
+    width: 95vw;
+    padding: 10px 0px 10px 0px;
 
     ${media.tablet`
         width: 74vw;

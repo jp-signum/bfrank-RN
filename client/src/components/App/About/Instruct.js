@@ -175,9 +175,7 @@ class Instruct extends Component {
                 <div className={this.state.scrolledPast ? 'scrollShow' : 'scrollHide'}>
                     <WidthFix>
                         <span>{About.Main1}</span>
-                        <OutboundLinkU spanText='Instagram'
-                            eventLabel='toInstagram'
-                            to={SocialHrefs.instaH} />
+                        <OutboundLinkU spanText='Instagram' eventLabel='toInstagram' to={SocialHrefs.instaH} />
                         <span>{About.Main2}</span>
                     </WidthFix>
                 </div>

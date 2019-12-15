@@ -9,25 +9,25 @@ import NewsletterModal from '../NewsletterModal'
 
 const PositionDiv = styled.div`
     position: absolute;
-    width: 100%;
-    height: 20%;
     bottom: 0;
     right: 0;
     left: 0;
+    width: 100%;
+    height: 20%;
 `
 
 const SocialContainer = styled.div`
     position: absolute;
     bottom: 10%;
     left: 20.5%;
-    letter-spacing: .05em;
     font-size: 1.2em;
+    letter-spacing: .05em;
     z-index: 2000;
     outline:  none !important;
     outline-color: none !important;
     outline-style: none !important;
     outline-width: none !important;
-    -webkit-focus-ring-color: none !important;
+        -webkit-focus-ring-color: none !important;
 
     ${media.phoneM`
         left: 32%;
@@ -40,15 +40,15 @@ const SocialContainer = styled.div`
 
 const SociallinkDiv = styled.div`
     display: inline;
-    padding-right: 6px;
-    z-index: 2000;
     font-size: 0.8em;
+    z-index: 2000;
+    padding-right: 6px;
 `
 const SociallinkDivD = styled(SociallinkDiv)`
-   font-size: .6em;
    position: relative;
    bottom: 2px;
    color: rgb(214, 60, 79, 0.8);
+   font-size: .6em;
 `
 
 class NavMenu extends Component {
@@ -61,14 +61,14 @@ class NavMenu extends Component {
     }
 
     handleStateChange = (state) => {
-        this.setState({ 
-            menuOpen: state.isOpen 
+        this.setState({
+            menuOpen: state.isOpen
         })
     }
 
     closeMenu = () => {
-        this.setState({ 
-            menuOpen: false 
+        this.setState({
+            menuOpen: false
         })
     }
 
@@ -94,8 +94,7 @@ class NavMenu extends Component {
 
     render() {
         return (
-            <Menu
-                isOpen={this.state.menuOpen}
+            <Menu isOpen={this.state.menuOpen}
                 onStateChange={(state) => this.handleStateChange(state)}
                 burgerBarClassName={this.props.burgerBarClassName}>
                 <Link onClick={this.closeMenu} to='/' className='menu-item'>Home</Link>
@@ -106,19 +105,15 @@ class NavMenu extends Component {
                 <PositionDiv>
                     <SocialContainer>
                         <SociallinkDiv>
-                            <OutboundLink spanText='Instagram'
-                                eventLabel='toInstagram'
-                                to='//www.instagram.com/rave_nailz/' />
+                            <OutboundLink spanText='Instagram' eventLabel='toInstagram' to='//www.instagram.com/rave_nailz/' />
                         </SociallinkDiv>
                         <SociallinkDivD>&#x2662;</SociallinkDivD>
                         <SociallinkDiv>
-                            <OutboundLink spanText='Facebook'
-                                eventLabel='toFacebook'
-                                to='//www.facebook.com/RaveNailz/' />
+                            <OutboundLink spanText='Facebook' eventLabel='toFacebook' to='//www.facebook.com/RaveNailz/' />
                         </SociallinkDiv>
                     </SocialContainer>
                 </PositionDiv>
-                <NewsletterModal ref={this.newsModal}/>
+                <NewsletterModal ref={this.newsModal} />
             </Menu>
         )
     }

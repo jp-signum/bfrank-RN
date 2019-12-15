@@ -7,9 +7,9 @@ import Fade from 'react-reveal'
 import media from '../../../../theme/Device'
 
 const Container = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     padding: 4%;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.tablet`
         padding: 0px;
@@ -17,8 +17,8 @@ const Container = styled.div`
 `
 
 const ImgDiv = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     border-radius: 4px;
 
     ${media.laptop`
@@ -28,11 +28,11 @@ const ImgDiv = styled.div`
 `
 
 const Img = styled.img`
-    width: 100%;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.11);
     border-radius: 4px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    width: 100%;
 
     ${media.laptop`
         height: 100%;
@@ -40,12 +40,12 @@ const Img = styled.img`
 `
 
 const Name = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     color: #0D0D0D;
-    font-weight: bold;
     font-size: 1em;
+    font-weight: bold;
     padding: 2px 0px 2px 0px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.phoneM`
         font-size: 1.1em;
@@ -67,10 +67,10 @@ const Price = styled.div`
 `
 
 const Quantity = styled.div`
-    font-size: 0.8em;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     color: #d63c4f;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    font-size: 0.8em;
 
     ${media.phoneM`
         font-size: 0.9em;
@@ -82,8 +82,8 @@ const Quantity = styled.div`
 `
 
 const StuffDiv = styled.div`
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
 
     ${media.laptop`
         padding: 20px 0px 0px 0px;
@@ -91,7 +91,6 @@ const StuffDiv = styled.div`
 `
 
 function OtherItem(props) {
-
     const itemPrice = (props.item.price / 100),
         itemName = props.item.name,
         itemPicArr = props.item.pictures,
@@ -101,16 +100,11 @@ function OtherItem(props) {
     return (
         <Container>
             <Fade duration={2000}>
-                <Link
-                    to={'/store/' + itemID}
-                    id={itemID}
-                    className='itemPreview-link' >
+                <Link to={'/store/' + itemID} id={itemID} className='itemPreview-link' >
                     <ImgDiv>
-                        <Img
-                            src={itemPicArr[0]}
+                        <Img src={itemPicArr[0]} alt='product picture'
                             onMouseOver={e => (e.currentTarget.src = itemPicArr[1])}
-                            onMouseOut={e => (e.currentTarget.src = itemPicArr[0])}
-                            alt='product picture' />
+                            onMouseOut={e => (e.currentTarget.src = itemPicArr[0])} />
                     </ImgDiv>
                 </Link>
             </Fade>
@@ -121,10 +115,7 @@ function OtherItem(props) {
                             <div>{quantity}<span> remaining</span></div>
                         }
                     </Quantity>
-                    <Link
-                        to={'/store/' + itemID}
-                        id={itemID}
-                        className='itemPreview-link' >
+                    <Link to={'/store/' + itemID} id={itemID} className='itemPreview-link' >
                         <Name>{itemName}</Name>
                     </Link>
                     <Price><Currency quantity={itemPrice} symbol='$' locale='en' /></Price>
