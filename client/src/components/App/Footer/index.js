@@ -14,9 +14,9 @@ import RLogoRed from '../../../assets/icons/R_red.svg'
 
 const Container = styled.div`
     position: relative;
-    width: 100%;
     background: #0D0D0D;
     color: #fdfdfd;
+    width: 100%;
 `
 
 const FlexContainer = styled.div`
@@ -31,12 +31,12 @@ const FeatureDiv = styled.div`
 `
 
 const InstructionSpan = styled.div`
-    letter-spacing: .08em;
-    font-size: 1.1em;
-     transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-    color: rgba(253, 253, 253, 0.45);
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     cursor: pointer;
+    color: rgba(253, 253, 253, 0.45);
+    font-size: 1.1em;
+    letter-spacing: .08em;
 
     :hover {
         color: rgba(253, 253, 253, 1);
@@ -48,8 +48,8 @@ const InstructionSpan = styled.div`
 `
 
 const SocialContainer = styled.div`
-    letter-spacing: .04em;
     font-size: 1.1em;
+    letter-spacing: .04em;
 
     ${media.phoneM`
         font-size: 1.2em;
@@ -57,35 +57,34 @@ const SocialContainer = styled.div`
 `
 
 const SociallinkDiv = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: inline;
     padding-right: 6px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
-     ${media.tablet`
+    ${media.tablet`
         padding: 0px 0px 0px 8px; 
     `}
 `
 
 const SociallinkDivD1 = styled(SociallinkDiv)`
-   font-size: 0.7em;
    position: relative;
    bottom: 2px;
    color: rgb(214, 60, 79, 0.8);
+   font-size: 0.7em;
    padding-left: 6px;
 `
 
 const SociallinkDivD = styled(SociallinkDiv)`
-   font-size: 0.6em;
    position: relative;
    bottom: 2px;
    color: rgb(214, 60, 79, 0.8);
+   font-size: 0.6em;
 `
 
 const FooterInfoDiv1 = styled.div`
     font-size: 0.9em;
     padding: 12px 0px 0px 0px; 
-
 
     ${media.phoneM`
         font-size: 1.0em;
@@ -109,11 +108,11 @@ const TermsDiv = styled.div`
 `
 
 const TermsSpan = styled.span`
-     transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
+    cursor: pointer;
     color: rgba(253, 253, 253, 0.45);
     padding: 0px 0px 0px 8px;
-    cursor: pointer;
 
     :hover {
         color: rgba(253, 253, 253, 1);
@@ -121,8 +120,8 @@ const TermsSpan = styled.span`
 `
 
 const ModalSpan = styled.span`
-     transition:all ease 0.5s;
-    -o-transition: all .5s ease;
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     cursor: pointer;
     color: rgba(253, 253, 253, 0.45);
 
@@ -141,11 +140,11 @@ const EmailSpace = styled.div`
 `
 
 const RFooterImg = styled.img`
-    width: 36px;
+    cursor: pointer;
     position: absolute;
     top: 40px;
     left: 60px;
-    cursor: pointer;
+    width: 36px;
 `
 
 class Footer extends Component {
@@ -233,7 +232,7 @@ class Footer extends Component {
                         <Link to='/privacy-policy'><TermsSpan>Privacy Policy</TermsSpan></Link>
                     </TermsDiv>
                 </FlexContainer>
-                <NewsletterModal ref={this.newsModal}/>
+                <NewsletterModal ref={this.newsModal} />
             </Container>
         )
     }

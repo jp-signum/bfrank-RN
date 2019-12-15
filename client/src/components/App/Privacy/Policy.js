@@ -5,10 +5,9 @@ import { Policy } from '../../Shared/ParagraphStrings'
 
 import media from '../../../theme/Device'
 
-
 const Container = styled.div`
     transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
+        -o-transition: all ease 0.5s;
     padding: 12px;
 
     ${media.phoneM`
@@ -39,30 +38,30 @@ const CenterDiv = styled.div`
 
 const Title = styled.div`
     transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
+        -o-transition: all ease 0.5s;
     font-size: 1.5em;
     font-weight: bold;
-    padding: 18px 0px 20px 0px;
     letter-spacing: .1em;
+    padding: 18px 0px 20px 0px;
 
     ${media.phoneM`
         padding: 20px 0px 24px 0px;
     `}
 
     ${media.phoneL`
-        padding: 26px 0px 30px 0px;
         font-size: 1.6em;
+        padding: 26px 0px 30px 0px;
     `}
 
     ${media.tablet`
-        padding: 40px 0px 40px 0px;
         font-size: 1.8em; 
+        padding: 40px 0px 40px 0px;
     `}
 `
 
 const Header = styled.div`
     transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
+        -o-transition: all ease 0.5s;
     font-size: 1.3em;
     font-weight: bold;
     padding: 10px 0px 10px 0px;
@@ -72,19 +71,19 @@ const Header = styled.div`
     `}
 
     ${media.phoneL`
-        padding: 20px 0px 20px 0px;
         font-size: 1.4em;
+        padding: 20px 0px 20px 0px;
     `}
 
     ${media.tablet`
-        padding: 24px 0px 24px 0px;
         font-size: 1.6em;
+        padding: 24px 0px 24px 0px;
     `}
 `
 
 const Update = styled.div`
     transition:all ease 0.5s;
-    -o-transition: all 0.5s ease;
+        -o-transition: all ease 0.5s;
     font-size: 1.1em;
     padding: 10px 0px 10px 0px;
 

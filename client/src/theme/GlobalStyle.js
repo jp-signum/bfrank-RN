@@ -11,7 +11,7 @@ const GlobStyle = createGlobalStyle`
 @font-face {
   font-family: 'AceSans';
   src: ${AceSans} format('woff');
-
+  
   font-display: fallback;
   font-weight: normal;
   font-style: normal;
@@ -21,7 +21,6 @@ const GlobStyle = createGlobalStyle`
   font-family: 'Privity';
   src: ${PrivityRegular1} format('woff'),
         ${PrivityRegular2} format('woff2');
-
   font-display: fallback;
   font-weight: normal;
   font-style: normal;
@@ -35,6 +34,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Privity', sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 input {

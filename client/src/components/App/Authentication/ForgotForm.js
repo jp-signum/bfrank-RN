@@ -13,19 +13,19 @@ const ForgotForm = styled.form`
 `
 
 const EmailInput = styled.input`
-    padding: 0px 0px 4px 0px;
-    margin: 20px 0px 20px 0px; 
-    width: 100%;
     background: #0D0D0D ;
     color: #fdfdfd;
     border-bottom: solid 2px rgb(253,  253,  253, 0.5);
+    width: 100%;
+    padding: 0px 0px 4px 0px;
+    margin: 20px 0px 20px 0px; 
 
     :focus {
         outline:  none !important;
         outline-color: none !important;
         outline-style: none !important;
         outline-width: none !important;
-        -webkit-focus-ring-color: none !important;
+            -webkit-focus-ring-color: none !important;
         border-bottom: solid 2px rgb(253,  253,  253, 1); 
     }
 
@@ -35,11 +35,11 @@ const EmailInput = styled.input`
 `
 
 const SubmitBtn = styled.button`
-   background: #fdfdfd;
-   color: #060606;
-   cursor: pointer;
-    border-radius: 4px;
+    cursor: pointer;
+    background: #fdfdfd;
+    color: #060606;
     border: solid 2px #fdfdfd;
+    border-radius: 4px;
     font-size: 1.1em;
     padding: 2px 0px 2px 0px;
    
@@ -55,9 +55,9 @@ const SubmitBtn = styled.button`
 `
 
 const ErrorDiv = styled.div`
-    padding: 10px 0px 0px 0px;
     text-align: center;
     color: #BF455B;
+    padding: 10px 0px 0px 0px;
 `
 
 const SucessDiv = styled(ErrorDiv)`
@@ -65,8 +65,8 @@ const SucessDiv = styled(ErrorDiv)`
 `
 
 const Back = styled.div`
-    padding: 5px 0px 0px 0px;
     font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
 
     ${media.phoneM`
         font-size: 1em;

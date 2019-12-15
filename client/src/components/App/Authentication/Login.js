@@ -13,12 +13,12 @@ const StyledLoginForm = styled.form`
 `
 
 const EmailInput = styled.input`
+    background: #0D0D0D;
+    color: #fdfdfd;
+    width: 100%;
+    border-bottom: solid 2px rgb(253,  253,  253, 0.5);
     padding: 0px 0px 4px 0px;
     margin: 20px 0px 20px 0px; 
-    width: 100%;
-    background: #0D0D0D ;
-    color: #fdfdfd;
-    border-bottom: solid 2px rgb(253,  253,  253, 0.5);
 
     :focus {
         outline:  none !important;
@@ -39,11 +39,11 @@ const PasswordInput = styled(EmailInput)`
 `
 
 const LoginBtn = styled.button`
-   background: #fdfdfd;
-   color: #060606;
-   cursor: pointer;
-    border-radius: 4px;
+    cursor: pointer;
+    background: #fdfdfd;
+    color: #060606;
     border: solid 2px #fdfdfd;
+    border-radius: 4px;
     font-size: 1.1em;
     padding: 2px 0px 2px 0px;
    
@@ -63,8 +63,8 @@ const LoginErrorDiv = styled.div`
 `
 
 const Recovery = styled.div`
-    padding: 5px 0px 0px 0px;
     font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
 
      ${media.phoneM`
         font-size: 1em;
@@ -78,8 +78,8 @@ const CenterDiv = styled.div`
 `
 
 const RecSpan = styled.div`
-    color: rgb(253,  253,  253, 0.5);
     cursor: pointer;
+    color: rgb(253,  253,  253, 0.5);
 
     :hover {
         color: rgb(253,  253,  253, 0.5);

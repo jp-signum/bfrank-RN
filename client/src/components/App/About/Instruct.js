@@ -11,14 +11,14 @@ import media from '../../../theme/Device'
 import HowTo from './HowTo'
 
 const Container = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     background: #0D0D0D;
+    color: #fdfdfd;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: #fdfdfd;
     padding-top: 70px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.phoneL`
         padding: 100px 10px 0px 10px;
@@ -34,6 +34,8 @@ const Container = styled.div`
 `
 
 const Header = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +47,8 @@ const Header = styled.div`
 `
 
 const Title = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     text-align: center;
     font-size: 1.4em;
     text-transform: uppercase;
@@ -90,6 +94,8 @@ const VidContainer = styled.div`
 `
 
 const InstructList = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     padding: 0px 10px 0px 0px;
 
     ${media.tablet`
@@ -102,6 +108,8 @@ const InstructList = styled.div`
 `
 
 const InstructListItem = styled.li`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     letter-spacing: 0.06em;
     padding: 4px 0px 4px 0px;
     
@@ -160,9 +168,7 @@ class Instruct extends Component {
             <Container>
                 <Header>
                     <Fade duration={2500}>
-                        <Title>
-                            {About.Title1}
-                        </Title>
+                        <Title>{About.Title1}</Title>
                     </Fade>
                 </Header>
                 <MainPics />
@@ -176,9 +182,9 @@ class Instruct extends Component {
                     </WidthFix>
                 </div>
                 <Instructions>
-                        <VidContainer>
-                            <HowTo />
-                        </VidContainer>
+                    <VidContainer>
+                        <HowTo />
+                    </VidContainer>
                     <InstructList>
                         <Fade>
                             <ol>

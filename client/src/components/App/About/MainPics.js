@@ -8,6 +8,8 @@ import PicutrePlaceholder3 from '../../../assets/images/speedway_opt.jpg'
 import media from '../../../theme/Device'
 
 const Container = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,15 +24,15 @@ const Container = styled.div`
 `
 
 const MainPicDiv = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
+    transform: rotate(3deg);
     width: 95vw;
     margin: 20px 0px 0px 0px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
-    transform: rotate(3deg);
 
     ${media.tablet`
-        margin: 100px 0px 40px 0px;
         width: 74vw;
+        margin: 100px 0px 40px 0px;
     `}
 
      ${media.laptop`
@@ -51,10 +53,10 @@ const MainPic = styled.img`
 `
 
 const SecondaryPicDiv = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     width: 40vw;
     padding: 20px 0px 20px 0px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
     
     ${media.laptop`
         width: 26vw;

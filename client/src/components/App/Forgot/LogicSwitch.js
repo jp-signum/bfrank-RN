@@ -8,7 +8,7 @@ const Container = styled.div`
     height: 80vh;
 `
 
-function LogicSwitch(props) {  
+function LogicSwitch(props) {
     const ValidateToken = (x) => {
         const token = x.id;
         const d = moment(new Date()).unix()
@@ -19,7 +19,7 @@ function LogicSwitch(props) {
             localStorage.setItem('token', token)
             x.history.push('/reset/' + tokenDecoded.data._id)
         } else {
-            x.history.push('/authentication')    
+            x.history.push('/authentication')
         }
     }
 
@@ -30,7 +30,7 @@ function LogicSwitch(props) {
 
     return (
         <Container>
-       
+
         </Container>
     )
 }

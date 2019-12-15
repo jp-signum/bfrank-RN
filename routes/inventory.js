@@ -6,21 +6,22 @@ const Cart = require('../models/cart');
 
 // add item to cart 
 inventoryRouter.post('/a2c', (req, res, next) => {
-    // console.log(req.body)
-    if (req.body.username) {
-        console.log('logged in')
-    } else {
-        new Cart(obj).save((err, c) => {
-            if (err)
-                res.send(err)
-            else if (!c)
-                res.send(400)
-            else {
-                return res.status(200).send(c)
-            }
-            next()
-        })
-    }
+    console.log(req.body)
+    
+    // if (req.body.username) {
+    //     console.log('logged in')
+    // } else {
+    //     new Cart(obj).save((err, c) => {
+    //         if (err)
+    //             res.send(err)
+    //         else if (!c)
+    //             res.send(400)
+    //         else {
+    //             return res.status(200).send(c)
+    //         }
+    //         next()
+    //     })
+    // }
 })
 
 //uploading multiple files with express-fileupload

@@ -10,9 +10,9 @@ import media from '../../../theme/Device'
 import Navigation from '../../Shared/Navigation/index'
 
 const Container = styled.div`
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     margin-top: 20%;
-     transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
      ${media.tablet`
         margin-top: 6%;

@@ -8,6 +8,8 @@ import PicutrePlaceholder4 from '../../../assets/images/witch_opt.jpg'
 import media from '../../../theme/Device'
 
 const Container = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,10 +24,10 @@ const Container = styled.div`
 `
 
 const MainPicDiv = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     width: 40vw;
     padding: 10px 0px 20px 0px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.laptop`
         width: 26vw;
@@ -44,14 +46,14 @@ const MainPic = styled.img`
 `
 
 const SecondaryPicDiv = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
       width: 95vw;
       padding: 10px 0px 10px 0px;
-      transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
     ${media.tablet`
-        margin: 40px 0px 40px 0px;
         width: 74vw;
+        margin: 40px 0px 40px 0px;
     `}
 
     ${media.laptop`

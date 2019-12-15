@@ -7,13 +7,15 @@ import ForgotForm from './ForgotForm'
 import media from '../../../theme/Device'
 
 const Container = styled.div`
-    background: #0D0D0D;
-    height: 76vh;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: flex;
+    color: #fdfdfd;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #fdfdfd;
+    background: #0D0D0D;
+    height: 76vh;
 
     ${media.phoneM`
         height: 78vh;
@@ -29,9 +31,11 @@ const Container = styled.div`
 `
 
 const AuthToggle = styled.div`
-    padding: 50px 0px 20px 0px;
+    transition: all ease 0.5s;
+        -o-transition: all ease 0.5s;
     font-size: 1.6em;
     letter-spacing: 0.1em;
+    padding: 50px 0px 20px 0px;
 
      ${media.phoneM`
         font-size: 2em;

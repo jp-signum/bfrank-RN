@@ -15,7 +15,6 @@ import MainLogoDark from '../../../assets/icons/main_logo_dark.svg'
 import rSvg from '../../../assets/icons/R_white.svg'
 
 const LandingContainer = styled.div`
-    background: #0D0D0D;
     position: fixed;
     top: 0;
     left: 0;
@@ -24,15 +23,17 @@ const LandingContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #0D0D0D;
     z-index: 2;
 `
 
 const LandingLogo = styled.img`
-    width: 4.8vw;
-    transition: ease 0.5s;
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     position: absolute;
     top: 12px;
     left: 12px;
+    width: 4.8vw;
 
     ${media.phoneS`
         width: 5.2vw;
@@ -78,14 +79,15 @@ const LandingLogo = styled.img`
 `
 
 const InfoContainer = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     text-align: center;
-    transition: ease 0.5s;
     width: 250px;
     padding-top: 10px;
 
     ${media.phoneS`
-        padding-top: 24px;
         width: 260px;
+        padding-top: 24px;
     `}
 
     ${media.phoneM`
@@ -104,15 +106,16 @@ const InfoContainer = styled.div`
 `
 
 const ShopDiv = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
+    cursor: pointer;
     background: #0D0D0D;
     border: 2px solid #fdfdfd;
     text-transform: uppercase;
     border-radius: 4px;
-    padding: 6px 0px 6px 0px;
-    letter-spacing: 1.8px;
     font-size: 1.2em;
-    transition: ease 0.5s;
-    cursor: pointer;
+    letter-spacing: 1.8px;
+    padding: 6px 0px 6px 0px;
     margin-bottom: 12px;
 
     :hover {
@@ -149,17 +152,18 @@ const MailDiv = styled.div`
 `
 
 const SubscribeDiv = styled.div`
-    text-transform: uppercase;
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     background:  #0D0D0D;
     color: #fdfdfd;
     font-size: 1.2em;
+    text-transform: uppercase;
     letter-spacing: 1.8px;
     border-top: #fdfdfd 2px solid;
     border-left: #fdfdfd 2px solid;
     border-right: #fdfdfd 2px solid;
     border-radius: 4px 4px 0px 0px;
     padding: 6px 0px 6px 0px;
-    transition: ease 0.5s;
 
     ${media.phoneS`
         font-size: 1.3em;
@@ -173,9 +177,10 @@ const SubscribeDiv = styled.div`
 `
 
 const ListDescriptionDiv = styled.div`
-    transition: ease 0.5s;
-    padding: 8px 8px 8px 8px;
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     color: #0D0D0D;
+    padding: 8px 8px 8px 8px;
 
     ${media.phoneS`
         padding: 9px 9px 9px 9px;
@@ -205,10 +210,10 @@ const SocialContainer = styled.div`
 `
 
 const SociallinkDiv = styled.div`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     display: inline;
     padding-right: 6px;
-    transition:all ease 0.5s;
-    -o-transition: all .5s ease;
 
      ${media.tablet`
         padding: 0px 8px 0px 0px; 
@@ -216,25 +221,26 @@ const SociallinkDiv = styled.div`
 `
 
 const SociallinkDivD1 = styled(SociallinkDiv)`
-   font-size: 0.7em;
    position: relative;
    bottom: 2px;
+   font-size: 0.7em;
    color: rgb(214, 60, 79, 0.8);
 `
 
 const Rsvg = styled.img`
+    transition:all ease 0.5s;
+        -o-transition: all ease 0.5s;
     height: 130px;
-    transition: ease 0.5s;
     padding: 8px 8px 8px 8px;
 
     ${media.phoneS`
-        padding: 9px 9px 9px 9px;
         height: 134px;
+        padding: 9px 9px 9px 9px;
     `}
     
     ${media.phoneM`
-        padding: 10px 0px 10px 0px;
         height: 136px;
+        padding: 10px 0px 10px 0px;
     `}
 `
 

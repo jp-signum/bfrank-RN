@@ -4,8 +4,8 @@ import { withContext } from '../../AppContext'
 
 function ProtectedRoute(props) {
     const { component: Component, ...rest } = props;
-    
-    return(
+
+    return (
         props.token ?
             <Route {...rest} component={Component} /> :
             <Redirect to='/authentication' />
